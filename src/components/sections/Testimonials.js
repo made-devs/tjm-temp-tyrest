@@ -2,8 +2,9 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
-import { Cog, Star, BadgeCheck, Quote } from 'lucide-react';
+import { Cog, Star, BadgeCheck } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay'; // <-- Impor Autoplay
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -100,7 +101,15 @@ const TestimonialCard = ({ testimonial }) => {
 
 export default function Testimonials() {
   const sectionRef = useRef(null);
-  const [emblaRef] = useEmblaCarousel({ align: 'start', loop: true });
+  // Konfigurasi Embla Carousel dengan Autoplay
+  const [emblaRef] = useEmblaCarousel({ align: 'start', loop: true }, [
+    Autoplay({
+      playOnInit: true,
+      delay: 4000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    }),
+  ]);
 
   useGSAP(
     () => {
@@ -134,34 +143,39 @@ export default function Testimonials() {
   return (
     <section ref={sectionRef} className="bg-black py-20 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center">
-          <div className="testimonial-header-element flex justify-center items-center gap-2">
-            <Cog
-              size={20}
-              className="text-red-500 animate-spin"
-              style={{ animationDuration: '5s' }}
-            />
-            <p className="font-jakarta text-sm font-bold uppercase tracking-widest text-red-500">
-              Testimoni Pelanggan
+        {/* Menggunakan grid 5 kolom untuk rasio 2:3 */}
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 items-center">
+          {/* Kolom Kiri: Teks Header (mengambil 2 dari 5 kolom) */}
+          <div className="lg:col-span-2 text-center lg:pr-[3rem] lg:text-left">
+            <div className="testimonial-header-element flex justify-center lg:justify-start items-center gap-2">
+              <Cog
+                size={20}
+                className="text-red-500 animate-spin"
+                style={{ animationDuration: '5s' }}
+              />
+              <p className="font-jakarta text-sm font-bold uppercase tracking-widest text-red-500">
+                Testimoni Pelanggan
+              </p>
+            </div>
+            <h2 className="testimonial-header-element font-teko text-5xl font-medium uppercase mt-2">
+              Apa Kata Mereka Tentang Kami
+            </h2>
+            <p className="testimonial-header-element font-jakarta text-gray-400 max-w-2xl mx-auto lg:mx-0 mt-2">
+              Kami bangga dengan kepercayaan yang telah diberikan oleh ribuan
+              pelanggan. Berikut adalah beberapa cerita dari mereka.
             </p>
           </div>
-          <h2 className="testimonial-header-element font-teko text-5xl font-medium uppercase mt-2">
-            Apa Kata Mereka Tentang Kami
-          </h2>
-          <p className="testimonial-header-element font-jakarta text-gray-400 max-w-2xl mx-auto mt-2">
-            Kami bangga dengan kepercayaan yang telah diberikan oleh ribuan
-            pelanggan. Berikut adalah beberapa cerita dari mereka.
-          </p>
-        </div>
 
-        <div className="testimonials-slider mt-12 cursor-grab active:cursor-grabbing">
-          <div className="embla" ref={emblaRef}>
-            <div className="embla__container">
-              {testimonialsData.map((testimonial, index) => (
-                <div className="embla__slide !h-auto p-4 group" key={index}>
-                  <TestimonialCard testimonial={testimonial} />
-                </div>
-              ))}
+          {/* Kolom Kanan: Slider Testimoni (mengambil 3 dari 5 kolom) */}
+          <div className="lg:col-span-4 testimonials-slider w-full cursor-grab active:cursor-grabbing">
+            <div className="embla embla--testimonials" ref={emblaRef}>
+              <div className="embla__container">
+                {testimonialsData.map((testimonial, index) => (
+                  <div className="embla__slide !h-auto p-2 group" key={index}>
+                    <TestimonialCard testimonial={testimonial} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

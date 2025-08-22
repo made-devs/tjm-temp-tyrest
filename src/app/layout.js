@@ -2,6 +2,7 @@ import './globals.css';
 import { Teko, Plus_Jakarta_Sans } from 'next/font/google';
 import Navbar from '@/components/Navbar'; // <-- 1. Impor Navbar
 import SmoothScrolling from '../components/SmoothScrolling';
+import Footer from '../components/sections/Footer';
 
 // Konfigurasi font Plus Jakarta Sans untuk teks biasa
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <SmoothScrolling />
         <Navbar /> {/* <-- 2. Tampilkan Navbar di sini */}
         {children}
+        <Footer />
       </body>
     </html>
   );
