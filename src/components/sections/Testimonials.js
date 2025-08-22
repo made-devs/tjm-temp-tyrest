@@ -50,7 +50,6 @@ const TestimonialCard = ({ testimonial }) => {
     testimonial.avatar || 'https://placehold.co/48x48/222/FFFFFF?text=TJM';
 
   return (
-    // Hapus 'group' dari sini
     <div className="relative h-full bg-[#111] border border-gray-800 p-6 flex flex-col overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_10px_rgba(239,68,68,0.8)]">
       <div className="flex items-center gap-4">
         <Image
@@ -90,7 +89,7 @@ const TestimonialCard = ({ testimonial }) => {
         ))}
       </div>
       <p className="font-jakarta text-gray-300 text-sm leading-relaxed flex-grow">
-        "{testimonial.text}"
+        {`"${testimonial.text}"`}
       </p>
       <p className="font-jakarta text-xs text-red-500 font-bold uppercase mt-4 pt-4 border-t border-gray-800">
         Layanan: {testimonial.service}
@@ -159,7 +158,6 @@ export default function Testimonials() {
           <div className="embla" ref={emblaRef}>
             <div className="embla__container">
               {testimonialsData.map((testimonial, index) => (
-                // Tambahkan 'group' di sini
                 <div className="embla__slide !h-auto p-4 group" key={index}>
                   <TestimonialCard testimonial={testimonial} />
                 </div>
