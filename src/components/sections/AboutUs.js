@@ -1,14 +1,23 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { Cog, Users, Calendar, MapPin, Wrench } from "lucide-react"; // 1. Impor ikon baru
-import { motion } from "framer-motion";
+import { useRef } from 'react';
+import Image from 'next/image';
+import { Cog, Users, Calendar, MapPin, Wrench } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Daftarkan plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const StatItem = ({ value, label, icon: Icon }) => (
-  <div className="text-center">
+  <div className="stat-item text-center">
     <div className="flex items-center justify-center gap-2">
       <Icon className="text-red-500" size={32} />
-      <p className="font-teko text-6xl font-bold text-white">{value}</p>
+      {/* Tambahkan class untuk target animasi angka */}
+      <p className="stat-value font-teko text-6xl font-bold text-white">
+        {value}
+      </p>
     </div>
     <p className="font-jakarta text-sm uppercase tracking-wider text-gray-400 mt-1">
       {label}
@@ -17,19 +26,59 @@ const StatItem = ({ value, label, icon: Icon }) => (
 );
 
 export default function AboutUs() {
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 60%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      // Animasikan kolom gambar dan teks
+      tl.from('.about-image-col', {
+        opacity: 0,
+        x: -50,
+        duration: 0.8,
+        ease: 'power2.out',
+      }).from(
+        '.about-text-col',
+        {
+          opacity: 0,
+          x: 50,
+          duration: 0.8,
+          ease: 'power2.out',
+        },
+        '-=0.6'
+      ); // Mulai sedikit lebih cepat dari akhir animasi sebelumnya
+
+      // Animasikan statistik
+      gsap.from('.stat-item', {
+        scrollTrigger: {
+          trigger: '.stats-grid',
+          start: 'top 85%',
+        },
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        duration: 0.6,
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="bg-black text-white mt-[4rem] py-20 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="bg-black text-white pt-[9rem] pb-20 overflow-hidden"
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Kolom Kiri: Komposisi Gambar */}
-          <motion.div
-            className="relative h-[450px] lg:h-[550px]"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {/* Foto Garis Kuning (Latar Belakang) */}
+          <div className="about-image-col relative h-[450px] lg:h-[550px]">
             <Image
               src="/features/feature2.webp"
               alt="Detail ban mobil"
@@ -37,7 +86,6 @@ export default function AboutUs() {
               height={500}
               className="absolute top-0 right-0 w-[85%] h-[85%] object-cover"
             />
-            {/* Foto Garis Merah (Depan) */}
             <Image
               src="/features/feature1.webp"
               alt="Tim mekanik TJM Auto Care"
@@ -45,22 +93,16 @@ export default function AboutUs() {
               height={400}
               className="absolute bottom-0 left-0 w-[70%] h-[70%] object-cover z-10 border-8 border-black"
             />
-          </motion.div>
+          </div>
 
-          {/* Kolom Kanan: Box Teks (Garis Biru) */}
-          <motion.div
-            className="lg:-ml-24 lg:mt-[1rem] z-20"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
+          {/* Kolom Kanan: Box Teks */}
+          <div className="about-text-col lg:-ml-24 lg:mt-[1rem] z-20">
             <div className="bg-[#000000] p-8 md:p-12 ">
               <div className="flex items-center gap-2">
                 <Cog
                   size={20}
                   className="text-red-500 animate-spin"
-                  style={{ animationDuration: "5s" }}
+                  style={{ animationDuration: '5s' }}
                 />
                 <p className="font-jakarta text-sm font-bold uppercase tracking-widest text-red-500">
                   Tentang Kami
@@ -83,12 +125,11 @@ export default function AboutUs() {
                 Selengkapnya
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bagian Angka-angka Statistik */}
-        {/* 2. Perbarui layout grid dan tambahkan item baru */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+        <div className="stats-grid grid grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
           <StatItem value="5000+" label="Pelanggan Puas" icon={Users} />
           <StatItem value="15+" label="Tahun Pengalaman" icon={Calendar} />
           <StatItem value="19" label="Cabang di Indonesia" icon={MapPin} />

@@ -1,42 +1,42 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { DollarSign, ThumbsUp, ShieldCheck, Cog } from "lucide-react";
-import { motion } from "framer-motion";
+import { useRef } from 'react';
+import Image from 'next/image';
+import { DollarSign, ThumbsUp, ShieldCheck, Cog } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Data untuk setiap kartu keunggulan
+// Daftarkan plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
 const features = [
   {
     icon: DollarSign,
-    title: "Harga Terjangkau",
+    title: 'Harga Terjangkau',
     description:
-      "Kualitas servis terbaik dengan harga yang transparan dan kompetitif.",
-    image: "/features/feature1.webp", // Ganti dengan path gambar Anda
+      'Kualitas servis terbaik dengan harga yang transparan dan kompetitif.',
+    image: '/features/feature1.webp',
   },
   {
     icon: ThumbsUp,
-    title: "Pelayanan Terbaik",
+    title: 'Pelayanan Terbaik',
     description:
-      "Tim kami siap memberikan solusi dan pelayanan yang ramah untuk setiap customer.",
-    image: "/features/feature2.webp", // Ganti dengan path gambar Anda
+      'Tim kami siap memberikan solusi dan pelayanan yang ramah untuk setiap customer.',
+    image: '/features/feature2.webp',
   },
   {
     icon: ShieldCheck,
-    title: "Kualitas Terjamin",
+    title: 'Kualitas Terjamin',
     description:
-      "Kami menggunakan suku cadang berkualitas dan bergaransi untuk hasil yang maksimal.",
-    image: "/features/feature3.webp", // Ganti dengan path gambar Anda
+      'Kami menggunakan suku cadang berkualitas dan bergaransi untuk hasil yang maksimal.',
+    image: '/features/feature3.webp',
   },
 ];
 
+// Komponen FeatureCard tidak perlu lagi logic animasi sendiri
 const FeatureCard = ({ feature }) => (
-  <motion.div
-    className="bg-[#111] border border-gray-800 overflow-hidden" // Tambahkan overflow-hidden untuk kerapian
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true, amount: 0.3 }}
-  >
+  <div className="feature-card bg-[#111] border border-gray-800 overflow-hidden">
     <div className="p-6">
       <div className="flex items-center gap-4">
         <div className="bg-red-600 p-3 rounded-full">
@@ -52,7 +52,6 @@ const FeatureCard = ({ feature }) => (
         </div>
       </div>
     </div>
-    {/* Ganti tinggi tetap dengan rasio aspek */}
     <div className="relative aspect-[4/3]">
       <Image
         src={feature.image}
@@ -61,18 +60,39 @@ const FeatureCard = ({ feature }) => (
         className="object-cover"
       />
     </div>
-  </motion.div>
+  </div>
 );
 
 export default function WhyChooseUs() {
+  const sectionRef = useRef(null);
+
+  // Animasi untuk memunculkan semua kartu saat section di-scroll
+  useGSAP(
+    () => {
+      gsap.from('.feature-card', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%', // Mulai saat 80% bagian atas section masuk layar
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.6,
+        stagger: 0.2, // Efek muncul satu per satu
+        ease: 'power2.out',
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="bg-black py-20">
+    <section ref={sectionRef} className="bg-black py-20">
       <div className="container mx-auto px-4 text-center">
         <div className="flex justify-center items-center gap-2">
           <Cog
             size={20}
             className="text-red-500 animate-spin"
-            style={{ animationDuration: "5s" }}
+            style={{ animationDuration: '5s' }}
           />
           <p className="font-jakarta text-sm font-bold uppercase tracking-widest text-red-500">
             Selamat Datang di TJM Auto Care

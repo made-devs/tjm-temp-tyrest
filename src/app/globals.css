@@ -1,5 +1,36 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @theme {
   --font-jakarta: var(--font-jakarta);
   --font-teko: var(--font-teko);
+}
+
+/* Styling untuk Embla Carousel */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  /* Atur lebar slide dan jarak antar slide */
+  flex: 0 0 80%; /* Lebar awal untuk mobile */
+  min-width: 0;
+  padding-left: 20px;
+}
+
+/* Breakpoints untuk lebar slide di layar lebih besar */
+@media (min-width: 640px) {
+  .embla__slide {
+    flex: 0 0 40%;
+  }
+}
+@media (min-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 28%;
+  }
+}
+@media (min-width: 1280px) {
+  .embla__slide {
+    flex: 0 0 22%;
+  }
 }
