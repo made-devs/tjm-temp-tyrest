@@ -7,33 +7,10 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import InstagramEmbed from '@/components/InstagramEmbed';
+import { promoData } from '@/data/promoData';
 
 // Daftarkan plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
-
-const promoData = [
-  {
-    title: 'Promo Kemerdekaan HUT RI',
-    description:
-      'Dapatkan 21 promo gratis senilai 4,1 juta rupiah. Promo terbatas khusus bulan ini!',
-    thumbnail: '/promo/promo1.webp',
-    videoUrl: 'https://www.instagram.com/p/DMzxjnwxO3C',
-  },
-  {
-    title: '19 Promo Service AC Gratis',
-    description:
-      'Nikmati 19 promo gratis service AC senilai 3.7jt, termasuk Diskon Coating, Free Spooring, Tune-Up, dan banyak lagi!',
-    thumbnail: '/promo/promo2.webp',
-    videoUrl: 'https://www.instagram.com/p/DMx4TdMyeFm',
-  },
-  {
-    title: 'Promo Kaki-Kaki Terbesar',
-    description:
-      'Promo kemerdekaan terbesar! Dapatkan bagian dari total hadiah senilai 80,8jt rupiah untuk servis kaki-kaki.',
-    thumbnail: '/promo/promo3.webp',
-    videoUrl: 'https://www.instagram.com/p/DMx1_qSyS6T/',
-  },
-];
 
 const VideoModal = ({ videoUrl, onClose }) => {
   const isInstagram = videoUrl.includes('instagram.com');
@@ -104,37 +81,12 @@ const VideoModal = ({ videoUrl, onClose }) => {
 };
 
 const PromoCard = ({ promo, onClick }) => {
-  const cardRef = useRef(null);
-
-  // Animasi hover pada kartu
-  useGSAP(
-    () => {
-      const card = cardRef.current;
-      const animation = gsap.to(card, {
-        y: -8,
-        duration: 0.3,
-        paused: true,
-        ease: 'power2.inOut',
-      });
-
-      card.addEventListener('mouseenter', () => animation.play());
-      card.addEventListener('mouseleave', () => animation.reverse());
-
-      return () => {
-        card.removeEventListener('mouseenter', () => animation.play());
-        card.removeEventListener('mouseleave', () => animation.reverse());
-      };
-    },
-    { scope: cardRef }
-  );
-
   return (
     <div
-      ref={cardRef}
-      className="promo-card bg-[#111] border border-gray-800 transition-colors duration-300 hover:border-red-500 cursor-pointer"
+      className="bg-[#111] border border-gray-800 transition-all duration-300 hover:border-red-500 hover:-translate-y-2 cursor-pointer h-full"
       onClick={onClick}
     >
-      <div className="relative aspect-[3/4] overflow-hidden">
+      <div className="relative aspect-[3/4] overflow-hidden group">
         <Image
           src={promo.thumbnail}
           alt={promo.title}
@@ -161,16 +113,33 @@ export default function Promos() {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const sectionRef = useRef(null);
 
-  // Animasi scroll-triggered untuk memunculkan kartu promo
   useGSAP(
     () => {
-      gsap.from('.promo-card', {
+      // Animasi untuk header
+      gsap.from('.promo-header-element', {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 80%',
           toggleActions: 'play none none none',
         },
         opacity: 0,
+        filter: 'blur(10px)',
+        y: 30,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+
+      // Animasi untuk kartu promo
+      gsap.from('.promo-card-wrapper', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        filter: 'blur(10px)',
+        scale: 0.9,
         y: 50,
         stagger: 0.2,
         duration: 0.8,
@@ -184,7 +153,7 @@ export default function Promos() {
     <>
       <section ref={sectionRef} className="bg-black py-20">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center items-center gap-2">
+          <div className="promo-header-element flex justify-center items-center gap-2">
             <Cog
               size={20}
               className="text-red-500 animate-spin"
@@ -194,28 +163,31 @@ export default function Promos() {
               Promo Bulan Ini
             </p>
           </div>
-          <h2 className="font-teko text-5xl font-medium uppercase mt-2">
+          <h2 className="promo-header-element font-teko text-5xl font-medium uppercase mt-2">
             Jangan Lewatkan Penawaran Kami
           </h2>
-          <p className="font-jakarta text-gray-400 max-w-2xl mx-auto mt-2">
+          <p className="promo-header-element font-jakarta text-gray-400 max-w-2xl mx-auto mt-2">
             Ikuti terus update terbaru dari bengkel kami, mulai dari promo
             servis bulanan hingga tips perawatan mobil langsung dari mekanik
             kami.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 text-left">
-            {promoData.map((promo, index) => (
-              <PromoCard
-                key={index}
-                promo={promo}
-                onClick={() => setSelectedVideo(promo.videoUrl)}
-              />
-            ))}
+          {/* Wrapper untuk membatasi lebar grid dan memperkecil kartu */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 text-left">
+              {promoData.map((promo, index) => (
+                <div key={index} className="promo-card-wrapper">
+                  <PromoCard
+                    promo={promo}
+                    onClick={() => setSelectedVideo(promo.videoUrl)}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Render modal secara kondisional */}
       {selectedVideo && (
         <VideoModal
           videoUrl={selectedVideo}

@@ -9,15 +9,21 @@ import gsap from 'gsap';
 export default function Hero() {
   const heroContentRef = useRef(null);
 
-  useGSAP(() => {
-    // Animasikan konten ke state akhirnya (visible dan posisi normal)
-    gsap.to(heroContentRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power2.out',
-    });
-  });
+  useGSAP(
+    () => {
+      // Animasi Staggered Blur & Scale
+      gsap.from('.hero-element', {
+        opacity: 0,
+        filter: 'blur(10px)',
+        scale: 0.9,
+        y: 20,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.2, // Efek muncul satu per satu
+      });
+    },
+    { scope: heroContentRef }
+  ); // Scope animasi ke dalam heroContentRef
 
   return (
     <section className="relative h-[85vh] flex items-center text-white">
@@ -36,13 +42,9 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4">
         {/* Pembungkus untuk mendorong konten ke kanan */}
         <div className="flex justify-end pr-[7rem]">
-          {/* Atur state awal animasi di sini untuk menghindari FOUC (flash of unstyled content) */}
-          <div
-            ref={heroContentRef}
-            className="max-w-2xl"
-            style={{ opacity: 0, transform: 'translateY(20px)' }}
-          >
-            <div className="flex items-center gap-2">
+          <div ref={heroContentRef} className="max-w-2xl">
+            {/* Tambahkan className 'hero-element' pada setiap item yang ingin dianimasikan */}
+            <div className="hero-element flex items-center gap-2">
               <Cog
                 size={20}
                 className="text-red-500 animate-spin"
@@ -53,20 +55,21 @@ export default function Hero() {
               </p>
             </div>
 
-            <h1 className="font-teko text-6xl md:text-7xl font-medium uppercase leading-none mt-2">
+            <h1 className="hero-element font-teko text-6xl md:text-7xl font-medium uppercase leading-none mt-2">
               Perbaikan Presisi <br />
               Untuk Mobil Anda
             </h1>
 
-            <p className="font-jakarta text-gray-300 mt-4 max-w-lg">
+            <p className="hero-element font-jakarta text-gray-300 mt-4 max-w-lg">
               Dari kaki-kaki, suspensi, rack steer, hingga mesin diesel, kami
               menangani setiap masalah dengan detail dan keahlian. Percayakan
               kendaraan Anda pada mekanik berpengalaman kami.
             </p>
 
+            {/* Class transisi yang konflik sudah diperbaiki */}
             <a
               href="#"
-              className="inline-block mt-8 bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
+              className="hero-element inline-block mt-8 bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-colors duration-300 ease-in-out hover:bg-white hover:text-red-600"
             >
               Lihat Layanan Kami
             </a>

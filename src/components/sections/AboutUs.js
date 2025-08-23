@@ -14,7 +14,6 @@ const StatItem = ({ value, label, icon: Icon }) => (
   <div className="stat-item text-center">
     <div className="flex items-center justify-center gap-2">
       <Icon className="text-red-500" size={32} />
-      {/* Tambahkan class untuk target animasi angka */}
       <p className="stat-value font-teko text-6xl font-bold text-white">
         {value}
       </p>
@@ -53,18 +52,46 @@ export default function AboutUs() {
           ease: 'power2.out',
         },
         '-=0.6'
-      ); // Mulai sedikit lebih cepat dari akhir animasi sebelumnya
+      );
 
-      // Animasikan statistik
-      gsap.from('.stat-item', {
-        scrollTrigger: {
-          trigger: '.stats-grid',
-          start: 'top 85%',
-        },
-        opacity: 0,
-        y: 30,
-        stagger: 0.2,
-        duration: 0.6,
+      // Animasi statistik dengan counter
+      const statItems = gsap.utils.toArray('.stat-item');
+      statItems.forEach((item) => {
+        const valueEl = item.querySelector('.stat-value');
+        const targetValue = parseInt(valueEl.textContent.replace('+', ''), 10);
+        const suffix = valueEl.textContent.includes('+') ? '+' : '';
+
+        // Objek dummy untuk dianimasikan
+        let counter = { val: 0 };
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 90%', // Mulai saat item masuk viewport
+              toggleActions: 'play none none none',
+            },
+          })
+          .from(item, {
+            // Animasi fade in untuk setiap item
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            ease: 'power2.out',
+          })
+          .to(
+            counter,
+            {
+              // Animasi counter
+              val: targetValue,
+              duration: 1.5,
+              ease: 'power1.out',
+              onUpdate: () => {
+                valueEl.textContent = Math.round(counter.val) + suffix;
+              },
+            },
+            '-=0.4'
+          ); // Mulai counter sesaat setelah fade in
       });
     },
     { scope: sectionRef }

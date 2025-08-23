@@ -65,3 +65,20 @@
     flex: 0 0 33.3333%;
   }
 }
+
+/* Animasi untuk swipe indicator */
+@keyframes swipe {
+  0%,
+  100% {
+    transform: translateX(-10px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+}
+
+.animate-swipe {
+  animation: swipe 2s ease-in-out infinite;
+}

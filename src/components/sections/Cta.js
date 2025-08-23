@@ -40,7 +40,7 @@ export default function Cta() {
         style={{ backgroundImage: "url('/hero.webp')" }}
       />
       {/* Lapisan Overlay Gelap */}
-      <div className="absolute inset-0 -z-10 bg-black/70" />
+      <div className="absolute inset-0 -z-10 bg-black/20" />
 
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="cta-element font-teko text-5xl md:text-6xl font-medium uppercase">

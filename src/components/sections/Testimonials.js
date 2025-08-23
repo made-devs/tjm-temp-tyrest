@@ -141,7 +141,10 @@ export default function Testimonials() {
   );
 
   return (
-    <section ref={sectionRef} className="bg-black py-20 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="bg-black pt-10 pb-20 md:py-20 overflow-hidden"
+    >
       <div className="container mx-auto px-4">
         {/* Menggunakan grid 5 kolom untuk rasio 2:3 */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 items-center">

@@ -1,22 +1,20 @@
 import './globals.css';
 import { Teko, Plus_Jakarta_Sans } from 'next/font/google';
-import Navbar from '@/components/Navbar'; // <-- 1. Impor Navbar
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import SmoothScrolling from '../components/SmoothScrolling';
-import Footer from '../components/sections/Footer';
 
-// Konfigurasi font Plus Jakarta Sans untuk teks biasa
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-jakarta', // Variabel untuk font body
+  variable: '--font-jakarta',
 });
 
-// Konfigurasi font Teko untuk judul
 const teko = Teko({
   subsets: ['latin'],
   display: 'swap',
   weight: ['400', '500', '600', '700'],
-  variable: '--font-teko', // Variabel untuk font judul
+  variable: '--font-teko',
 });
 
 export const metadata = {
@@ -31,8 +29,13 @@ export default function RootLayout({ children }) {
         className={`${plusJakartaSans.variable} ${teko.variable} bg-black text-white font-jakarta`}
       >
         <SmoothScrolling />
-        <Navbar /> {/* <-- 2. Tampilkan Navbar di sini */}
-        {children}
+        <Navbar />
+        {/* Tambahkan padding atas di sini */}
+        <main className="pt-[72px]">
+          {' '}
+          {/* Sesuaikan angka ini jika tinggi navbar berubah */}
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
