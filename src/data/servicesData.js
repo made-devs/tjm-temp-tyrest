@@ -17,6 +17,28 @@ export const servicesData = [
         description:
           'Solusi lengkap mencakup 27 item pengerjaan, mulai dari tune-up 65 komponen, servis kaki-kaki 25 titik, hingga servis dan pembersihan AC.',
         image: 'https://i.imgur.com/MDDAasV.png',
+        details: [
+          {
+            title: 'Tune Up 65 Komponen',
+            description: 'Termasuk Engine Scanner untuk diagnosis akurat.',
+          },
+          {
+            title: 'Gurah Mesin & Injector Cleaning',
+            description: 'Membersihkan ruang bakar dan sistem injeksi.',
+          },
+          {
+            title: 'General Check Up Kaki-Kaki 25 Titik',
+            description: 'Inspeksi mendalam pada sistem suspensi dan kemudi.',
+          },
+          {
+            title: 'Servis Rem Komplit 4 Roda',
+            description: 'Pemeriksaan dan pembersihan sistem pengereman.',
+          },
+          {
+            title: 'Servis & Cleaning AC',
+            description: 'Termasuk freon, kondensor, dan filter AC.',
+          },
+        ],
       },
       {
         slug: 'kaki-kaki-rust-protection',
@@ -24,6 +46,28 @@ export const servicesData = [
         description:
           'Perawatan kaki-kaki komplit dipadukan dengan restorasi kolong dan aplikasi lapisan anti karat berteknologi tinggi.',
         image: 'https://i.imgur.com/JfdodPE.png',
+        details: [
+          {
+            title: 'Tune Up 65 Komponen',
+            description: 'Mengembalikan performa mesin ke kondisi optimal.',
+          },
+          {
+            title: 'General Check Up Kaki-Kaki 25 Titik',
+            description: 'Inspeksi dan perbaikan menyeluruh pada suspensi.',
+          },
+          {
+            title: 'Rust Protection Plus',
+            description: 'Aplikasi anti karat, anti panas, dan peredam suara.',
+          },
+          {
+            title: 'Undercarriage Detailing',
+            description: 'Pembersihan menyeluruh bagian bawah mobil.',
+          },
+          {
+            title: 'Painting Metal Exhaust',
+            description: 'Melapisi dan melindungi knalpot dari korosi.',
+          },
+        ],
       },
       {
         slug: 'kaki-kaki-engine-tune-up',
@@ -31,6 +75,28 @@ export const servicesData = [
         description:
           'Kombinasi sempurna antara servis kaki-kaki 25 titik dengan tune-up mesin 65 komponen.',
         image: 'https://i.imgur.com/ZHTy54C.png',
+        details: [
+          {
+            title: 'Tune Up 65 Komponen',
+            description: 'Pemeriksaan dan pembersihan menyeluruh.',
+          },
+          {
+            title: 'Gurah Mesin Carbon Cleaner',
+            description: 'Khusus untuk mobil bensin, membersihkan ruang bakar.',
+          },
+          {
+            title: 'General Check Up Kaki-Kaki 25 Titik',
+            description: 'Inspeksi mendalam pada sistem suspensi.',
+          },
+          {
+            title: 'Octane Booster & Stel Klep',
+            description: 'Meningkatkan performa dan efisiensi mesin.',
+          },
+          {
+            title: 'Injector Cleaning',
+            description: 'Membersihkan injektor untuk pembakaran sempurna.',
+          },
+        ],
       },
       {
         slug: 'kaki-kaki-auto-detailing',
@@ -38,6 +104,28 @@ export const servicesData = [
         description:
           'Paket perawatan total yang menggabungkan servis kaki-kaki komplit dengan detailing eksterior 3-langkah.',
         image: 'https://i.imgur.com/vRUBwn5.png',
+        details: [
+          {
+            title: 'Tune Up 65 Komponen',
+            description: 'Mengembalikan performa mesin ke kondisi prima.',
+          },
+          {
+            title: 'General Check Up Kaki-Kaki 25 Titik',
+            description: 'Memastikan keamanan dan kenyamanan suspensi.',
+          },
+          {
+            title: 'Full Detailing Eksterior 3 Step',
+            description: 'Mengembalikan kilau cat mobil seperti baru.',
+          },
+          {
+            title: 'Detailing Interior',
+            description: 'Pembersihan menyeluruh bagian dalam kabin mobil.',
+          },
+          {
+            title: 'Glass Treatment / Jamur Kaca',
+            description: 'Menghilangkan jamur dan kotoran pada kaca.',
+          },
+        ],
       },
     ],
   },

@@ -4,8 +4,9 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDown, Phone, Menu, X } from 'lucide-react';
-// Mengimpor langsung dari servicesData
 import { servicesData } from '@/data/servicesData';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 // Komponen untuk link dengan animasi slide
 const AnimatedNavLink = ({ href, children, onClick }) => (
@@ -31,7 +32,6 @@ const ServicesDropdown = ({ isVisible, onItemClick }) => (
     }`}
   >
     <div className="py-2 bg-[#111] rounded-md">
-      {/* Langsung mapping dari servicesData */}
       {servicesData.map((service, index) => (
         <Link
           key={`service-${index}`}
@@ -49,8 +49,40 @@ const ServicesDropdown = ({ isVisible, onItemClick }) => (
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isServicesMobileOpen, setIsServicesMobileOpen] = useState(false); // State untuk accordion mobile
   const dropdownRef = useRef(null);
   const servicesButtonRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+
+  const tl = useRef();
+
+  useGSAP(
+    () => {
+      tl.current = gsap
+        .timeline({ paused: true })
+        .to(mobileMenuRef.current, {
+          x: '0%',
+          duration: 0.5,
+          ease: 'power2.inOut',
+        })
+        .from(
+          '.mobile-nav-item',
+          { opacity: 0, y: 20, stagger: 0.1, duration: 0.3 },
+          '-=0.2'
+        );
+    },
+    { scope: mobileMenuRef }
+  );
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      tl.current.play();
+    } else {
+      document.body.style.overflow = 'auto';
+      tl.current.reverse();
+    }
+  }, [isMenuOpen]);
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
@@ -73,19 +105,14 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
-      document.body.style.overflow = 'auto';
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isMenuOpen, handleKeyDown, handleClickOutside]);
+  }, [handleKeyDown, handleClickOutside]);
 
   const navigationItems = [
     { label: 'Beranda', href: '/' },
@@ -168,46 +195,62 @@ export default function Navbar() {
         </div>
       </header>
 
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-black z-50 flex flex-col lg:hidden">
-          <div className="flex items-center justify-between p-4 border-b border-gray-800">
+      {/* Mobile Menu Overlay */}
+      <div
+        ref={mobileMenuRef}
+        className="fixed top-0 right-0 h-full w-full bg-black z-50 flex flex-col lg:hidden transform translate-x-full"
+      >
+        <div className="flex items-center justify-between p-4 border-b border-gray-800">
+          <Link
+            href="/"
+            onClick={closeMenu}
+            className="focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
+          >
+            <Image
+              src="/logo/logotjm.webp"
+              alt="TJM Auto Care"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
+            />
+          </Link>
+          <button
+            onClick={closeMenu}
+            className="text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+          >
+            <X size={24} />
+          </button>
+        </div>
+        <nav className="flex flex-col items-center flex-grow gap-6 text-xl overflow-y-auto py-8 px-8">
+          {navigationItems.map((item) => (
             <Link
-              href="/"
+              key={`mobile-${item.label}`}
+              href={item.href}
               onClick={closeMenu}
-              className="focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
+              className="mobile-nav-item font-jakarta font-medium text-gray-300 hover:text-red-500"
             >
-              <Image
-                src="/logo/logotjm.webp"
-                alt="TJM Auto Care"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
-              />
+              {item.label}
             </Link>
+          ))}
+
+          {/* Accordion untuk Layanan */}
+          <div className="mobile-nav-item w-full text-center">
             <button
-              onClick={closeMenu}
-              className="text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+              onClick={() => setIsServicesMobileOpen(!isServicesMobileOpen)}
+              className="flex justify-center items-center gap-2 w-full font-jakarta font-medium text-gray-300 hover:text-red-500"
             >
-              <X size={24} />
+              <span>Layanan Kami</span>
+              <ChevronDown
+                className={`transition-transform duration-300 ${
+                  isServicesMobileOpen ? 'rotate-180' : ''
+                }`}
+              />
             </button>
-          </div>
-          <nav className="flex flex-col items-center justify-center flex-grow gap-8 text-xl">
-            {navigationItems.map((item) => (
-              <Link
-                key={`mobile-${item.label}`}
-                href={item.href}
-                onClick={closeMenu}
-                className="font-jakarta font-medium text-gray-300 hover:text-red-500"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="text-center">
-              <h3 className="font-jakarta font-medium text-gray-300 mb-4">
-                Layanan Kami
-              </h3>
-              <div className="flex flex-col gap-3">
-                {/* Langsung mapping dari servicesData */}
+            <div
+              style={{ maxHeight: isServicesMobileOpen ? '500px' : '0px' }}
+              className="transition-all duration-500 ease-in-out overflow-hidden"
+            >
+              <div className="flex flex-col gap-3 pt-4">
                 {servicesData.map((service, index) => (
                   <Link
                     key={`mobile-service-${index}`}
@@ -220,17 +263,18 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
-            <a
-              href="tel:+62123456789"
-              onClick={closeMenu}
-              className="flex items-center gap-2 bg-red-600 text-white font-bold text-sm px-6 py-3 rounded mt-8"
-            >
-              <Phone size={16} />
-              Hubungi Kami
-            </a>
-          </nav>
-        </div>
-      )}
+          </div>
+
+          <a
+            href="tel:+62123456789"
+            onClick={closeMenu}
+            className="mobile-nav-item flex items-center gap-2 bg-red-600 text-white font-bold text-sm px-6 py-3 rounded mt-4"
+          >
+            <Phone size={16} />
+            Hubungi Kami
+          </a>
+        </nav>
+      </div>
     </>
   );
 }

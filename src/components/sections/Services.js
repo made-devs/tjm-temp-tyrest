@@ -185,7 +185,7 @@ export default function Services() {
           </div>
         </div>
         {isMobile && (
-          <div className="mt-8 flex justify-center items-center gap-2 text-gray-400 md:hidden animate-swipe">
+          <div className="mt-8 flex justify-center items-center gap-2 text-red-500 md:hidden animate-swipe">
             <MoveRight size={16} />
             <p className="font-jakarta text-sm font-bold uppercase tracking-widest">
               Geser

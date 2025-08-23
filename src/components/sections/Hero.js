@@ -66,13 +66,15 @@ export default function Hero() {
               kendaraan Anda pada mekanik berpengalaman kami.
             </p>
 
-            {/* Class transisi yang konflik sudah diperbaiki */}
-            <a
-              href="#"
-              className="hero-element inline-block mt-8 bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-colors duration-300 ease-in-out hover:bg-white hover:text-red-600"
-            >
-              Lihat Layanan Kami
-            </a>
+            {/* FIX: Tombol dibungkus div agar animasi tidak konflik */}
+            <div className="hero-element mt-8">
+              <a
+                href="#"
+                className="inline-block bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
+              >
+                Lihat Layanan Kami
+              </a>
+            </div>
           </div>
         </div>
       </div>

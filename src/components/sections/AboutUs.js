@@ -13,12 +13,16 @@ gsap.registerPlugin(ScrollTrigger);
 const StatItem = ({ value, label, icon: Icon }) => (
   <div className="stat-item text-center">
     <div className="flex items-center justify-center gap-2">
-      <Icon className="text-red-500" size={32} />
-      <p className="stat-value font-teko text-6xl font-bold text-white">
+      {/* FIX: Menggunakan dua ikon berbeda untuk handle responsif */}
+      <Icon className="text-red-500 md:hidden" size={24} />{' '}
+      {/* Tampil di mobile */}
+      <Icon className="text-red-500 hidden md:block" size={32} />{' '}
+      {/* Tampil di desktop */}
+      <p className="stat-value font-teko text-5xl md:text-6xl font-bold text-white">
         {value}
       </p>
     </div>
-    <p className="font-jakarta text-sm uppercase tracking-wider text-gray-400 mt-1">
+    <p className="font-jakarta text-xs md:text-sm uppercase tracking-wider text-gray-400 mt-1">
       {label}
     </p>
   </div>
@@ -61,19 +65,17 @@ export default function AboutUs() {
         const targetValue = parseInt(valueEl.textContent.replace('+', ''), 10);
         const suffix = valueEl.textContent.includes('+') ? '+' : '';
 
-        // Objek dummy untuk dianimasikan
         let counter = { val: 0 };
 
         gsap
           .timeline({
             scrollTrigger: {
               trigger: item,
-              start: 'top 90%', // Mulai saat item masuk viewport
+              start: 'top 90%',
               toggleActions: 'play none none none',
             },
           })
           .from(item, {
-            // Animasi fade in untuk setiap item
             opacity: 0,
             y: 30,
             duration: 0.6,
@@ -82,7 +84,6 @@ export default function AboutUs() {
           .to(
             counter,
             {
-              // Animasi counter
               val: targetValue,
               duration: 1.5,
               ease: 'power1.out',
@@ -91,7 +92,7 @@ export default function AboutUs() {
               },
             },
             '-=0.4'
-          ); // Mulai counter sesaat setelah fade in
+          );
       });
     },
     { scope: sectionRef }
