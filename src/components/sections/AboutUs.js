@@ -6,6 +6,7 @@ import { Cog, Users, Calendar, MapPin, Wrench } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 // Daftarkan plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -146,12 +147,12 @@ export default function AboutUs() {
                 modern, kami memastikan setiap kendaraan mendapatkan penanganan
                 presisi dan hasil yang memuaskan.
               </p>
-              <a
-                href="#"
+              <Link
+                href="/tentang-kami"
                 className="inline-block mt-8 bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
               >
                 Selengkapnya
-              </a>
+              </Link>
             </div>
           </div>
         </div>

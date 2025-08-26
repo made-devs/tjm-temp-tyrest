@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link'; // Impor komponen Link
 import { Cog } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -66,14 +67,14 @@ export default function Hero() {
               kendaraan Anda pada mekanik berpengalaman kami.
             </p>
 
-            {/* FIX: Tombol dibungkus div agar animasi tidak konflik */}
+            {/* Tombol CTA sekarang menggunakan komponen Link */}
             <div className="hero-element mt-8">
-              <a
-                href="#"
+              <Link
+                href="/layanan"
                 className="inline-block bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
               >
                 Lihat Layanan Kami
-              </a>
+              </Link>
             </div>
           </div>
         </div>

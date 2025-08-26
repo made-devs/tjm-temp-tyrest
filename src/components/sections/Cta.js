@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,12 +54,12 @@ export default function Cta() {
           Anda.
         </p>
         <div className="cta-element mt-8">
-          <a
-            href="#"
+          <Link
+            href="/kontak"
             className="inline-block bg-red-600 text-white font-jakarta font-bold text-base px-10 py-4 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
           >
             Hubungi Kami Sekarang
-          </a>
+          </Link>
         </div>
       </div>
     </section>

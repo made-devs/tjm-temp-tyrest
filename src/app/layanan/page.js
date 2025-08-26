@@ -3,16 +3,16 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-// Menggunakan data yang lebih lengkap untuk mendapatkan deskripsi
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import { servicesData } from '@/data/servicesData';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SectionHeader from '@/components/SectionHeader'; // Impor SectionHeader
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Komponen untuk kartu servis dengan style yang disamakan
+// Komponen untuk kartu servis
 const ServiceCard = ({ service }) => (
   <div className="relative h-[450px] overflow-hidden border border-transparent transition-all duration-500 ease-in-out group hover:border-red-500 hover:shadow-[0_0_25px_rgba(239,68,68,0.6)]">
     <Image
@@ -83,7 +83,7 @@ export default function ServicesPage() {
             <Link href="/" className="text-gray-300 hover:text-red-500">
               Home
             </Link>
-            <span className="text-gray-500">/</span>
+            <ChevronRight size={16} className="text-red-500" />
             <span className="text-white">Layanan</span>
           </div>
         </div>
@@ -92,6 +92,15 @@ export default function ServicesPage() {
       {/* Grid Daftar Servis */}
       <section className="py-20">
         <div className="container mx-auto px-4">
+          {/* Tambahkan SectionHeader di sini */}
+          <div className="mb-16">
+            <SectionHeader
+              subtitle="LAYANAN KAMI"
+              title="SOLUSI PERAWATAN KENDARAAN ANDA"
+              description="Dari perawatan rutin hingga detailing premium, kami menawarkan rangkaian layanan lengkap yang dirancang untuk menjaga kendaraan Anda dalam kondisi terbaik."
+            />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicesData.map((service) => (
               <div key={service.slug} className="service-card-wrapper">

@@ -2,14 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Phone,
-  Mail,
-} from 'lucide-react';
+import { Facebook, Instagram, Phone, Mail } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa'; // Impor ikon TikTok
 
 // Komponen kecil untuk link sosial media
 const SocialLink = ({ href, icon: Icon }) => (
@@ -44,10 +38,19 @@ export default function Footer() {
               solusi lengkap untuk perawatan dan perbaikan mobil Anda.
             </p>
             <div className="flex items-center gap-4 mt-6">
-              <SocialLink href="#" icon={Facebook} />
-              <SocialLink href="#" icon={Twitter} />
-              <SocialLink href="#" icon={Instagram} />
-              <SocialLink href="#" icon={Linkedin} />
+              {/* Link sosial media diperbarui */}
+              <SocialLink
+                href="https://www.facebook.com/profile.php?id=100069959570435"
+                icon={Facebook}
+              />
+              <SocialLink
+                href="https://www.instagram.com/tjmautocare/"
+                icon={Instagram}
+              />
+              <SocialLink
+                href="https://www.tiktok.com/@tjmautocare"
+                icon={FaTiktok}
+              />
             </div>
           </div>
 
@@ -59,7 +62,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="#"
+                  href="/tentang-kami"
                   className="font-jakarta text-sm text-gray-400 hover:text-red-500 transition-colors"
                 >
                   Tentang Kami
@@ -67,7 +70,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/layanan"
                   className="font-jakarta text-sm text-gray-400 hover:text-red-500 transition-colors"
                 >
                   Layanan
@@ -75,15 +78,15 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/galeri"
                   className="font-jakarta text-sm text-gray-400 hover:text-red-500 transition-colors"
                 >
-                  Testimoni
+                  Galeri
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/kontak"
                   className="font-jakarta text-sm text-gray-400 hover:text-red-500 transition-colors"
                 >
                   Hubungi Kami
@@ -100,15 +103,21 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={18} className="text-red-500 mt-1 flex-shrink-0" />
-                <span className="font-jakarta text-sm text-gray-400">
-                  +62 123 4567 890
-                </span>
+                <a
+                  href="tel:+6285169576890"
+                  className="font-jakarta text-sm text-gray-400 hover:text-red-500"
+                >
+                  +62 851 6957 6890
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={18} className="text-red-500 mt-1 flex-shrink-0" />
-                <span className="font-jakarta text-sm text-gray-400">
+                <a
+                  href="mailto:info@tjmautocare.com"
+                  className="font-jakarta text-sm text-gray-400 hover:text-red-500"
+                >
                   info@tjmautocare.com
-                </span>
+                </a>
               </li>
             </ul>
           </div>
