@@ -1,5 +1,146 @@
-// src/data/servicesData.js
+// Data dikelompokkan berdasarkan brand untuk digunakan di halaman layanan dengan tab.
+export const serviceGroups = [
+  {
+    brand: 'TJM Auto Care',
+    description: 'Solusi lengkap untuk mesin, kaki-kaki, dan servis umum.',
+    services: [
+      {
+        slug: 'paket-combo-kaki-kaki',
+        href: '/layanan/paket-combo-kaki-kaki',
+        title: 'Paket Combo Kaki Kaki',
+        description:
+          'Solusi lengkap untuk kenyamanan dan keamanan kaki-kaki mobil Anda.',
+        image: 'https://i.imgur.com/MDDAasV.png',
+      },
+      {
+        slug: 'paket-combo-super-komplit',
+        href: '/layanan/paket-combo-super-komplit',
+        title: 'Paket Combo Super Komplit',
+        description:
+          'Perawatan menyeluruh dari mesin hingga kaki-kaki untuk performa maksimal.',
+        image: 'https://i.imgur.com/cAfOdfV.png',
+      },
+      {
+        slug: 'paket-custom-suspension',
+        href: '/layanan/paket-custom-suspension',
+        title: 'Paket Custom Suspension',
+        description:
+          'Tingkatkan handling dan gaya dengan suspensi yang disesuaikan.',
+        image: 'https://i.imgur.com/tzKLRrz.png',
+      },
+      {
+        slug: 'paket-diesel',
+        href: '/layanan/paket-diesel',
+        title: 'Paket Diesel',
+        description:
+          'Perawatan khusus untuk mesin diesel agar tetap bertenaga dan efisien.',
+        image: 'https://i.imgur.com/yIFOPHI.png',
+      },
+      {
+        slug: 'paket-kaki-kaki',
+        href: '/layanan/paket-kaki-kaki',
+        title: 'Paket Kaki Kaki',
+        description:
+          'Fokus pada perbaikan dan perawatan komponen suspensi dan kemudi.',
+        image: 'https://i.imgur.com/zPeuknD.png',
+      },
+      {
+        slug: 'paket-overhaul-engine',
+        href: '/layanan/paket-overhaul-engine',
+        title: 'Paket Overhaul Engine',
+        description:
+          'Mengembalikan kondisi mesin seperti baru untuk performa puncak.',
+        image: 'https://i.imgur.com/1JQxDIu.png',
+      },
+      {
+        slug: 'paket-racksteer-hemat',
+        href: '/layanan/paket-racksteer-hemat',
+        title: 'Paket Racksteer Hemat',
+        description:
+          'Solusi ekonomis untuk perbaikan sistem kemudi rack steer.',
+        image: 'https://i.imgur.com/i2D6YLu.png',
+      },
+      {
+        slug: 'paket-special',
+        href: '/layanan/paket-special',
+        title: 'Paket Special',
+        description:
+          'Penawaran khusus dengan kombinasi layanan paling populer.',
+        image: 'https://i.imgur.com/Q4G7rpP.png',
+      },
+      {
+        slug: 'paket-steering',
+        href: '/layanan/paket-steering',
+        title: 'Paket Steering',
+        description:
+          'Perbaikan dan perawatan sistem kemudi untuk handling yang presisi.',
+        image: 'https://i.imgur.com/GpBwT2l.png',
+      },
+      {
+        slug: 'paket-super-hemat',
+        href: '/layanan/paket-super-hemat',
+        title: 'Paket Super Hemat',
+        description:
+          'Pilihan cerdas untuk perawatan rutin dengan harga terbaik.',
+        image: 'https://i.imgur.com/n18zKaQ.png',
+      },
+    ],
+  },
+  {
+    brand: 'TJM AC Mobil',
+    description:
+      'Spesialis perawatan dan perbaikan sistem pendingin mobil Anda.',
+    services: [
+      {
+        slug: 'paket-ac-mobil',
+        href: '/layanan/paket-ac-mobil',
+        title: 'Paket AC Mobil',
+        description:
+          'Layanan lengkap untuk memastikan AC mobil Anda selalu dingin dan segar.',
+        image: '/services/ac1.webp',
+      },
+    ],
+  },
+  {
+    brand: 'TJM Auto Detailing',
+    description: 'Mengembalikan kilau dan melindungi penampilan mobil Anda.',
+    services: [
+      {
+        slug: 'paket-detailing',
+        href: '/layanan/paket-detailing',
+        title: 'Paket Detailing',
+        description:
+          'Layanan lengkap untuk merawat eksterior maupun interior mobil Anda.',
+        image: '/services/detailing1.webp',
+      },
+      {
+        slug: 'paket-nano-ceramic-coating',
+        href: '/layanan/paket-nano-ceramic-coating',
+        title: 'Paket Nano Ceramic Coating',
+        description:
+          'Proteksi cat superior dengan teknologi nano-ceramic untuk kilau maksimal.',
+        image: '/services/nano1.webp',
+      },
+    ],
+  },
+  {
+    brand: 'TJM Undercarriage & Rust Protection+',
+    description: 'Perlindungan total dari ancaman karat dan korosi.',
+    services: [
+      {
+        slug: 'paket-anti-karat',
+        href: '/layanan/paket-anti-karat',
+        title: 'Paket Anti Karat',
+        description:
+          'Proteksi lengkap untuk kolong mobil dengan material berkualitas tinggi.',
+        image: '/services/karat1.webp',
+      },
+    ],
+  },
+];
 
+// Data dalam format array tunggal untuk digunakan di halaman detail ([slug]/page.js).
+// JANGAN HAPUS INI.
 export const servicesData = [
   {
     slug: 'paket-combo-kaki-kaki',
@@ -7,7 +148,7 @@ export const servicesData = [
     title: 'Paket Combo Kaki Kaki',
     description:
       'Solusi lengkap untuk kenyamanan dan keamanan kaki-kaki mobil Anda.',
-    image: 'https://i.imgur.com/MDDAasV.png',
+    image: '/services/service1.webp',
     details:
       'Paket ini mencakup pemeriksaan dan perbaikan menyeluruh pada komponen suspensi, steering, dan roda untuk mengembalikan stabilitas dan kenyamanan berkendara seperti semula.',
     variants: [
@@ -135,7 +276,7 @@ export const servicesData = [
     title: 'Paket Combo Super Komplit',
     description:
       'Perawatan menyeluruh dari mesin hingga kaki-kaki untuk performa maksimal.',
-    image: 'https://i.imgur.com/cAfOdfV.png',
+    image: '/services/service2.webp',
     details:
       'Layanan terlengkap kami yang mencakup tune-up mesin, servis AC, spooring, balancing, hingga pembersihan ruang bakar. Mobil Anda akan kembali ke kondisi prima.',
     variants: [
@@ -243,7 +384,7 @@ export const servicesData = [
     title: 'Paket Custom Suspension',
     description:
       'Tingkatkan handling dan gaya dengan suspensi yang disesuaikan.',
-    image: 'https://i.imgur.com/tzKLRrz.png',
+    image: '/services/service3.webp',
     details:
       'Modifikasi sistem suspensi sesuai dengan preferensi Anda, baik untuk kebutuhan harian, balap, maupun off-road. Kami menggunakan produk berkualitas untuk hasil terbaik.',
     variants: [
@@ -349,7 +490,7 @@ export const servicesData = [
     title: 'Paket Diesel',
     description:
       'Perawatan khusus untuk mesin diesel agar tetap bertenaga dan efisien.',
-    image: 'https://i.imgur.com/yIFOPHI.png',
+    image: '/services/service4.webp',
     details:
       'Layanan ini berfokus pada sistem injeksi, filter bahan bakar, dan komponen vital lainnya pada mesin diesel untuk memastikan tenaga maksimal dan emisi yang rendah.',
     variants: [
@@ -583,7 +724,7 @@ export const servicesData = [
     title: 'Paket Kaki Kaki',
     description:
       'Fokus pada perbaikan dan perawatan komponen suspensi dan kemudi.',
-    image: 'https://i.imgur.com/zPeuknD.png',
+    image: '/services/service5.webp',
     details:
       'Perbaikan spesifik pada komponen seperti tie rod, ball joint, shock absorber, dan bushing untuk mengatasi masalah handling dan kenyamanan.',
     variants: [
@@ -715,7 +856,7 @@ export const servicesData = [
     title: 'Paket Overhaul Engine',
     description:
       'Mengembalikan kondisi mesin seperti baru untuk performa puncak.',
-    image: 'https://i.imgur.com/1JQxDIu.png',
+    image: '/services/service6.webp',
     details:
       'Proses pembongkaran mesin total untuk pembersihan, pemeriksaan, dan penggantian komponen internal yang aus. Mesin Anda akan diremajakan sepenuhnya.',
     variants: [
@@ -821,7 +962,7 @@ export const servicesData = [
     href: '/layanan/paket-racksteer-hemat',
     title: 'Paket Racksteer Hemat',
     description: 'Solusi ekonomis untuk perbaikan sistem kemudi rack steer.',
-    image: 'https://i.imgur.com/i2D6YLu.png',
+    image: '/services/service7.webp',
     details:
       'Mengatasi masalah pada sistem kemudi seperti setir berat atau bunyi dengan solusi efektif dan terjangkau, termasuk garansi pengerjaan.',
     variants: [
@@ -862,7 +1003,7 @@ export const servicesData = [
     href: '/layanan/paket-special',
     title: 'Paket Special',
     description: 'Penawaran khusus dengan kombinasi layanan paling populer.',
-    image: 'https://i.imgur.com/Q4G7rpP.png',
+    image: '/services/service8.webp',
     details:
       'Paket ini dirancang khusus untuk memberikan perawatan esensial yang paling sering dibutuhkan oleh pelanggan kami, dengan harga yang lebih terjangkau.',
     variants: [
@@ -937,7 +1078,7 @@ export const servicesData = [
     title: 'Paket Steering',
     description:
       'Perbaikan dan perawatan sistem kemudi untuk handling yang presisi.',
-    image: 'https://i.imgur.com/GpBwT2l.png',
+    image: '/services/service9.webp',
     details:
       'Layanan lengkap untuk semua jenis sistem kemudi, dari power steering hidrolik hingga EPS modern, untuk memastikan kontrol penuh dan respons akurat.',
     variants: [
@@ -1039,7 +1180,7 @@ export const servicesData = [
     href: '/layanan/paket-super-hemat',
     title: 'Paket Super Hemat',
     description: 'Pilihan cerdas untuk perawatan rutin dengan harga terbaik.',
-    image: 'https://i.imgur.com/n18zKaQ.pn',
+    image: '/services/service10.webp',
     details:
       'Solusi perawatan berkala yang dirancang untuk menjaga kondisi mobil Anda tetap prima tanpa menguras kantong. Mencakup pengecekan dan servis esensial.',
     variants: [
@@ -1165,6 +1306,457 @@ export const servicesData = [
           {
             title: 'Tune Up 65 Komponen + Engine Scanner',
             description: 'Paket tune up lengkap dengan diagnosa elektronik.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'paket-ac-mobil',
+    href: '/layanan/paket-ac-mobil',
+    title: 'Paket AC Mobil',
+    description:
+      'Spesialis perawatan dan perbaikan sistem pendingin untuk kenyamanan berkendara yang maksimal.',
+    image: '/services/service11.webp',
+    details:
+      'Layanan lengkap untuk memastikan AC mobil Anda selalu dingin dan segar, mulai dari inspeksi, pembersihan, hingga perbaikan komponen.',
+    variants: [
+      {
+        slug: 'super-dingin',
+        title: 'PAKET SUPER DINGIN',
+        description:
+          'Solusi lengkap untuk AC mobil yang lebih dingin dan segar.',
+        image: '/services/ac1.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Mencakup inspeksi AC di 20 titik, pengecekan kebocoran selang, cuci evaporator tanpa bongkar, fogging interior, cuci kondensor, dan cuci blower.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 400RB, sekarang hanya IDR 97RB.',
+          },
+        ],
+      },
+      {
+        slug: 'super-dingin-komplit',
+        title: 'PAKET SUPER DINGIN KOMPLIT',
+        description:
+          'Solusi perawatan AC dan kaki-kaki dengan garansi 30 hari.',
+        image: '/services/ac2.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Meliputi 15 titik servis komponen AC, 25 titik inspeksi kaki-kaki, garansi 30 hari, dan spooring 3D gratis.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 1.500K, sekarang hanya IDR 550K.',
+          },
+        ],
+      },
+      {
+        slug: 'super-menggigil-komplit',
+        title: 'PAKET SUPER MENGGIGIL KOMPLIT',
+        description:
+          'Tingkatkan performa AC Anda dengan 22 titik servis dan gratis spooring 3D.',
+        image: '/services/ac3.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Mencakup 22 titik servis komponen AC, 25 titik inspeksi kaki-kaki, garansi 30 hari, dan gratis spooring 3D.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 2.000K, sekarang hanya IDR 750K.',
+          },
+        ],
+      },
+      {
+        slug: 'super-beku-komplit',
+        title: 'PAKET SUPER BEKU KOMPLIT',
+        description:
+          'Solusi terlengkap untuk AC super dingin dan kaki-kaki prima.',
+        image: '/services/ac4.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Mencakup 25 titik servis komponen AC, 25 titik inspeksi kaki-kaki, garansi 30 hari, dan gratis spooring 3D.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 3.000K, sekarang hanya IDR 1.350K.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'paket-detailing',
+    href: '/layanan/paket-detailing',
+    title: 'Paket Detailing',
+    description:
+      'Mengembalikan kilau dan melindungi penampilan mobil Anda secara profesional.',
+    image: '/services/service12.webp',
+    details:
+      'Layanan lengkap untuk merawat dan memproteksi eksterior maupun interior mobil Anda, mengembalikan kondisi mobil seperti baru.',
+    variants: [
+      {
+        slug: 'basic-eksterior-express',
+        title: 'PAKET BASIC EKSTERIOR EXPRESS DETAILING',
+        description:
+          'Paket detailing eksterior cepat untuk mengembalikan kilau mobil Anda secara efisien.',
+        image: '/services/detailing1.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Mencakup One Step Polish 3-in-1 (compound, wax, finishing), Car Wash Snow, Wheel Dressing, Paint Protection, serta Emblem & Spot Detailing.',
+          },
+          {
+            title: 'Harga Spesial',
+            description:
+              'Dari Mulai dari IDR 799K, sekarang hanya START FROM IDR 399K.',
+          },
+        ],
+      },
+      {
+        slug: 'basic-interior-express',
+        title: 'PAKET BASIC INTERIOR EXPRESS DETAILING',
+        description:
+          'Pembersihan interior menyeluruh tanpa bongkar jok untuk interior yang bersih dan segar.',
+        image: '/services/detailing2.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Meliputi Car Wash Snow, Deep Interior Cleaning, pembersihan atap, plafon, plastik, karpet, door trim, jok, cuci karpet basah, vacuum, hingga steaming uap.',
+          },
+          {
+            title: 'Harga Spesial',
+            description:
+              'Dari Mulai dari IDR 799K, sekarang hanya START FROM IDR 399K.',
+          },
+        ],
+      },
+      {
+        slug: 'cuci-jok-steam',
+        title: 'PAKET CUCI SNOW JOK MOBIL',
+        description:
+          'Fokus pada kebersihan jok mobil Anda untuk hasil bersih maksimal dan wangi.',
+        image: '/services/detailing3.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Meliputi Poles Snow Jok, vacuum noda, Spoot Cleaning, Interior Spray, pewangi, dan Steam Uap Jok Mobil.',
+          },
+          {
+            title: 'Harga Spesial',
+            description:
+              'Dari Mulai dari IDR 700K, sekarang hanya START FROM IDR 350K.',
+          },
+        ],
+      },
+      {
+        slug: 'engine-detailing',
+        title: 'PAKET ENGINE DETAILING',
+        description:
+          'Perawatan ruang mesin secara detail untuk melindungi dan mengkilapkan hingga ke sudut tersulit.',
+        image: '/services/detailing4.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Meliputi pembersihan debu, kotoran, noda menempel, dan sisa oli, sekaligus melindungi dan mengkilapkan area ruang mesin.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 700.000, sekarang hanya IDR 350.000.',
+          },
+        ],
+      },
+      {
+        slug: 'kinclong-eksterior-complete',
+        title: 'PAKET KINCLONG EKSTERIOR',
+        description:
+          'Paket detailing eksterior lengkap untuk hasil maksimal dengan 4 Step Polish.',
+        image: '/services/detailing5.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Termasuk 4 Step Polish (heavy cut, medium cut, ultra super finish, waxing), Car Wash Snow, Glass Treatment, Wheel Dressing, dan Premium Glass Hydrophobic Protection.',
+          },
+          {
+            title: 'Harga Spesial',
+            description:
+              'Dari Mulai dari IDR 1.300K, sekarang hanya START FROM IDR 650.000.',
+          },
+        ],
+      },
+      {
+        slug: 'kinclong-interior-complete',
+        title: 'PAKET KINCLONG INTERIOR',
+        description:
+          'Pembersihan interior super lengkap dengan bongkar jok total untuk menjangkau semua area.',
+        image: '/services/detailing6.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Meliputi Deep Interior Cleaning dengan bongkar jok, pembersihan hama & serangga, cleaning & dressing door trim, jok, plastik, karpet, atap, hingga steaming uap.',
+          },
+          {
+            title: 'Harga Spesial',
+            description:
+              'Dari Mulai dari IDR 1.700K, sekarang hanya START FROM IDR 850.000.',
+          },
+        ],
+      },
+      {
+        slug: 'komplit-detailing-1',
+        title: 'PAKET KOMPLIT DETAILING 1',
+        description:
+          'Paket kombinasi perawatan interior (tanpa bongkar jok) dan eksterior lengkap.',
+        image: '/services/detailing7.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Termasuk 4 step polish, wheel dressing, premium glass treatment, hydrophobic protection, engine detailing, dan deep interior cleaning.',
+          },
+          {
+            title: 'Harga Spesial',
+            description:
+              'Dari Mulai dari IDR 1.700K, sekarang hanya START FROM IDR 900K.',
+          },
+        ],
+      },
+      {
+        slug: 'komplit-detailing-2',
+        title: 'PAKET KOMPLIT DETAILING 2',
+        description:
+          'Paket detailing terlengkap yang menggabungkan perawatan eksterior dan interior dengan bongkar jok total.',
+        image: '/services/detailing8.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Semua layanan dari paket Komplit 1 ditambah dengan bongkar jok total untuk pembersihan hama dan serangga secara menyeluruh.',
+          },
+          {
+            title: 'Harga Spesial',
+            description:
+              'Dari Mulai dari IDR 2.700K, sekarang hanya START FROM IDR 1.350K.',
+          },
+        ],
+      },
+      {
+        slug: 'nano-burn-headlamp',
+        title: 'PAKET NANO BURN COATING HEADLAMP',
+        description:
+          'Mengembalikan kondisi headlamp yang pudar dan kuning menjadi seperti baru.',
+        image: '/services/detailing9.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Meningkatkan keamanan berkendara dengan pencahayaan optimal, melapisi dengan chemical premium, dan bonus poles headlamp.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 800.000, sekarang hanya IDR 399.000.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'paket-nano-ceramic-coating',
+    href: '/layanan/paket-nano-ceramic-coating',
+    title: 'Paket Nano Ceramic Coating',
+    description:
+      'Proteksi cat superior dengan teknologi nano-ceramic untuk kilau maksimal dan daya tahan jangka panjang.',
+    image: '/services/service13.webp',
+    details:
+      'Layanan coating premium kami memberikan lapisan pelindung hidrofobik yang melindungi cat dari goresan halus, sinar UV, dan kontaminan, menjaga mobil Anda tetap terlihat seperti baru.',
+    variants: [
+      {
+        slug: 'nano-ceramic-1',
+        title: 'PAKET NANO CERAMIC COATING 1',
+        description:
+          'Paket perlindungan cat dasar dengan 3 layer Nano Ceramic Coating untuk kilau maksimal.',
+        image: '/services/nano1.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Termasuk detailing interior & eksterior, glass treatment + hydrophobic, glass coat, cuci snow + clay bar, recovery trim, back to black permanent, dan layanan detailing esensial lainnya.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 4.000K, sekarang hanya IDR 1.999K.',
+          },
+        ],
+      },
+      {
+        slug: 'nano-ceramic-2',
+        title: 'PAKET NANO CERAMIC COATING 2',
+        description:
+          'Paket perlindungan tingkat lanjut ditambah dengan bongkar jok total untuk hasil lebih detail.',
+        image: '/services/nano2.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Mencakup semua layanan di Paket 1, ditambah dengan bongkar jok total untuk pembersihan hama & serangga, inner fender detailing, dan wheel dressing.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 4.400K, sekarang hanya IDR 2.399K.',
+          },
+        ],
+      },
+      {
+        slug: 'super-komplit-nano-ceramic',
+        title: 'PAKET SUPER KOMPLIT NANO CERAMIC COATING',
+        description:
+          'Paket proteksi dan detailing paling lengkap untuk kesempurnaan tampilan kendaraan Anda.',
+        image: '/services/nano3.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Mencakup semua layanan di Paket 2, ditambah dengan Nano Burn Coating Headlamp, back to black permanent yang lebih mendalam, velg detailing, dan cuci snow jok.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 5.600K, sekarang hanya IDR 2.799K.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'paket-anti-karat',
+    href: '/layanan/paket-anti-karat',
+    title: 'Paket Anti Karat',
+    description:
+      'Perlindungan total untuk bagian bawah mobil Anda dari ancaman karat dan korosi.',
+    image: '/services/service14.webp',
+    details:
+      'Layanan anti karat kami menggunakan material berkualitas tinggi yang juga berfungsi sebagai peredam suara dan penahan panas, memberikan proteksi lengkap untuk kolong mobil Anda.',
+    variants: [
+      {
+        slug: 'super-hemat-1-karat',
+        title: 'PAKET SUPER HEMAT 1',
+        description:
+          'Paket cuci steril uap komplit untuk kebersihan menyeluruh dari interior hingga eksterior.',
+        image: '/services/karat1.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Mencakup cuci steril uap untuk evaporator, interior, eksterior, AC, kondensor, engine bay, ban & velg, serta inspeksi kaki-kaki, AC, dan fogging mobil.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 600.000, sekarang hanya IDR 299.000.',
+          },
+        ],
+      },
+      {
+        slug: 'super-hemat-2-karat',
+        title: 'PAKET SUPER HEMAT 2',
+        description:
+          'Layanan steamer uap lebih lengkap dengan bongkar jok untuk hasil maksimal.',
+        image: '/services/karat2.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Semua layanan di Paket 1 ditambah cuci steril uap dengan bongkar jok dan pembersihan inner fender 4 roda.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 1.000K, sekarang hanya IDR 500.000.',
+          },
+        ],
+      },
+      {
+        slug: 'combo-pasti-hemat-karat',
+        title: 'PAKET COMBO PASTI HEMAT',
+        description:
+          'Paket lengkap untuk perlindungan kolong mobil dengan teknologi Rust Prevention.',
+        image: '/services/karat3.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Termasuk detailing, carwash, scrape karat kolong, dan aplikasi Anti Karat Rust Protection+ pada area kolong, doortrim, dan inner fender.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 2.000K, sekarang hanya IDR 999K.',
+          },
+        ],
+      },
+      {
+        slug: 'triple-combo-1-karat',
+        title: 'PAKET TRIPLE COMBO 1',
+        description:
+          'Paket ultimate yang menggabungkan Anti Karat, Restorasi Kolong, dan Undercarriage Detailing.',
+        image: '/services/karat4.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Semua layanan dari Paket Combo Pasti Hemat ditambah proteksi anti karat menyeluruh, infrared rust protection, dan painting metal exhaust.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 3.000K, sekarang hanya IDR 1.500K.',
+          },
+        ],
+      },
+      {
+        slug: 'triple-combo-2-karat',
+        title: 'PAKET TRIPLE COMBO 2',
+        description:
+          'Kombinasi lengkap antara Undercarriage, Restorasi Kolong, dan Full Detailing.',
+        image: '/services/karat5.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Selain proteksi anti karat dan restorasi, mobil Anda juga akan mendapatkan layanan full detailing interior dan eksterior, termasuk glass treatment dan glass coat.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 4.000K, sekarang hanya IDR 1.999K.',
+          },
+        ],
+      },
+      {
+        slug: 'triple-combo-3-karat',
+        title: 'PAKET TRIPLE COMBO 3',
+        description:
+          'Paket paling premium yang menggabungkan Anti Karat, Restorasi Kolong, dan Nano Ceramic Coating.',
+        image: '/services/karat6.webp',
+        details: [
+          {
+            title: 'Detail Pengerjaan',
+            description:
+              'Dapatkan semua manfaat perlindungan anti karat dan detailing, disempurnakan dengan Nano Ceramic Coating 3 layer untuk proteksi cat dan kilau maksimal.',
+          },
+          {
+            title: 'Harga Spesial',
+            description: 'Dari IDR 6.000K, sekarang hanya IDR 2.999K.',
           },
         ],
       },

@@ -1,18 +1,17 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import { servicesData } from '@/data/servicesData';
+import { serviceGroups } from '@/data/servicesData'; // Impor data baru
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionHeader from '@/components/SectionHeader'; // Impor SectionHeader
+import SectionHeader from '@/components/SectionHeader';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Komponen untuk kartu servis
 const ServiceCard = ({ service }) => (
   <div className="relative h-[450px] overflow-hidden border border-transparent transition-all duration-500 ease-in-out group hover:border-red-500 hover:shadow-[0_0_25px_rgba(239,68,68,0.6)]">
     <Image
@@ -43,16 +42,14 @@ const ServiceCard = ({ service }) => (
 
 export default function ServicesPage() {
   const pageRef = useRef(null);
+  const [activeTab, setActiveTab] = useState(0); // State untuk tab yang aktif
+
+  const activeServices = serviceGroups[activeTab].services;
 
   useGSAP(
     () => {
-      // Animasi untuk kartu servis
       gsap.from('.service-card-wrapper', {
-        scrollTrigger: {
-          trigger: pageRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none none',
-        },
+        key: activeTab, // Animasikan ulang saat tab berubah
         opacity: 0,
         y: 50,
         stagger: 0.1,
@@ -60,7 +57,7 @@ export default function ServicesPage() {
         ease: 'power2.out',
       });
     },
-    { scope: pageRef }
+    { scope: pageRef, dependencies: [activeTab] } // Re-run a
   );
 
   return (
@@ -92,8 +89,7 @@ export default function ServicesPage() {
       {/* Grid Daftar Servis */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          {/* Tambahkan SectionHeader di sini */}
-          <div className="mb-16">
+          <div className="mb-12">
             <SectionHeader
               subtitle="LAYANAN KAMI"
               title="SOLUSI PERAWATAN KENDARAAN ANDA"
@@ -101,8 +97,25 @@ export default function ServicesPage() {
             />
           </div>
 
+          {/* Navigasi Tab */}
+          <div className="flex justify-center flex-wrap gap-4 mb-12">
+            {serviceGroups.map((group, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTab(index)}
+                className={`font-jakarta font-bold text-sm px-6 py-3 transition-colors duration-300 ${
+                  activeTab === index
+                    ? 'bg-red-600 text-white'
+                    : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                }`}
+              >
+                {group.brand}
+              </button>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {servicesData.map((service) => (
+            {activeServices.map((service) => (
               <div key={service.slug} className="service-card-wrapper">
                 <ServiceCard service={service} />
               </div>

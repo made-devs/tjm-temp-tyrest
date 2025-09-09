@@ -4,40 +4,49 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { X, ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react';
-import { galleryData } from '@/data/galleryData';
+import { galleryTabs, galleryImages } from '@/data/galleryData'; // Impor data baru
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import SectionHeader from '@/components/SectionHeader'; // Impor SectionHeader
+import SectionHeader from '@/components/SectionHeader';
 
 export default function GalleryPage() {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [activeTab, setActiveTab] = useState(galleryTabs[0].id);
+  const [lightboxImages, setLightboxImages] = useState([]);
+  const [currentLightboxIndex, setCurrentLightboxIndex] = useState(0);
   const mainRef = useRef(null);
 
-  const openLightbox = (index) => setSelectedImageIndex(index);
-  const closeLightbox = () => setSelectedImageIndex(null);
+  const filteredImages = galleryImages.filter(
+    (image) => image.category === activeTab
+  );
+
+  const openLightbox = (index) => {
+    setLightboxImages(filteredImages);
+    setCurrentLightboxIndex(index);
+  };
+
+  const closeLightbox = () => setLightboxImages([]);
 
   const goToNext = () => {
-    setSelectedImageIndex((prevIndex) => (prevIndex + 1) % galleryData.length);
+    setCurrentLightboxIndex((prev) => (prev + 1) % lightboxImages.length);
   };
 
   const goToPrev = () => {
-    setSelectedImageIndex(
-      (prevIndex) => (prevIndex - 1 + galleryData.length) % galleryData.length
+    setCurrentLightboxIndex(
+      (prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length
     );
   };
 
-  // Animasi saat halaman dimuat
   useGSAP(
     () => {
       gsap.from('.gallery-item', {
         opacity: 0,
-        y: 40,
-        duration: 0.8,
+        scale: 0.9,
+        duration: 0.5,
         ease: 'power3.out',
-        stagger: 0.1,
+        stagger: 0.05,
       });
     },
-    { scope: mainRef }
+    { scope: mainRef, dependencies: [activeTab] }
   );
 
   return (
@@ -66,11 +75,10 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Konten Galeri Masonry */}
+      {/* Konten Galeri dengan Tab */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          {/* Tambahkan SectionHeader di sini */}
-          <div className="mb-16">
+          <div className="mb-12">
             <SectionHeader
               subtitle="PORTOFOLIO KAMI"
               title="HASIL KERJA YANG BERBICARA"
@@ -78,8 +86,26 @@ export default function GalleryPage() {
             />
           </div>
 
+          {/* Navigasi Tab */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+            {galleryTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`font-jakarta font-bold text-xs md:text-sm px-4 py-2.5 transition-colors duration-300 ${
+                  activeTab === tab.id
+                    ? 'bg-red-600 text-white'
+                    : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                }`}
+              >
+                {tab.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid Masonry */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {galleryData.map((item, index) => (
+            {filteredImages.map((item, index) => (
               <div
                 key={item.id}
                 className={`gallery-item group relative cursor-pointer overflow-hidden ${item.span}`}
@@ -104,12 +130,12 @@ export default function GalleryPage() {
       </section>
 
       {/* Lightbox Modal */}
-      {selectedImageIndex !== null && (
+      {lightboxImages.length > 0 && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center animate-fade-in">
           <div className="relative max-w-4xl max-h-[90vh] w-full">
             <Image
-              src={galleryData[selectedImageIndex].src}
-              alt={galleryData[selectedImageIndex].alt}
+              src={lightboxImages[currentLightboxIndex].src}
+              alt={lightboxImages[currentLightboxIndex].alt}
               width={1600}
               height={900}
               className="object-contain w-full h-full"

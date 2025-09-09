@@ -12,7 +12,7 @@ const navLinks = [
   { name: 'Galeri', href: '/galeri' },
   { name: 'TJM Peduli', href: '/peduli' },
   { name: 'Promo', href: '/promo' },
-  { name: 'News', href: '/blog' }, // Menggantikan Blog dengan News
+  { name: 'News', href: '/news' }, // Menggantikan Blog dengan News
   { name: 'Partnership', href: '/partnership' },
   { name: 'TJM Group', href: '/group' },
 ];
