@@ -8,30 +8,71 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 
-// Daftarkan plugin
+// Daftarkan plugin GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-const StatItem = ({ value, label, icon: Icon }) => (
-  <div className="stat-item text-center">
-    <div className="flex items-center justify-center gap-2">
-      {/* FIX: Menggunakan dua ikon berbeda untuk handle responsif */}
-      <Icon className="text-red-500 md:hidden" size={24} />{' '}
-      {/* Tampil di mobile */}
-      <Icon className="text-red-500 hidden md:block" size={32} />{' '}
-      {/* Tampil di desktop */}
-      <p className="stat-value font-teko text-5xl md:text-6xl font-bold text-white">
-        {value}
+/**
+ * Komponen StatItem sekarang menangani animasinya sendiri untuk mencegah hydration mismatch.
+ * Ia akan merender nilai akhir di server & render awal client, lalu menganimasikan angka di client.
+ */
+const StatItem = ({ value, label, icon: Icon }) => {
+  const valueRef = useRef(null);
+
+  useGSAP(() => {
+    const element = valueRef.current;
+    if (!element) return;
+
+    // Ekstrak angka dan sufiks (cth: '+') dari prop 'value'
+    const targetValue = parseInt(value.replace(/[^0-9]/g, ''), 10);
+    const suffix = value.includes('+') ? '+' : '';
+
+    // Objek untuk dianimasikan oleh GSAP
+    const counter = { val: 0 };
+
+    // Animasi counter dari 0 ke nilai target
+    gsap.to(counter, {
+      val: targetValue,
+      duration: 2,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: element.closest('.stat-item'),
+        start: 'top 90%',
+        toggleActions: 'play none none none',
+      },
+      onUpdate: () => {
+        // Update textContent dengan format angka ribuan (pakai titik)
+        element.textContent =
+          Math.round(counter.val)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, '.') + suffix;
+      },
+    });
+  }, [value]); // Jalankan ulang animasi jika 'value' berubah
+
+  return (
+    <div className="stat-item text-center">
+      <div className="flex items-center justify-center gap-2">
+        <Icon className="text-red-500 md:hidden" size={24} />
+        <Icon className="text-red-500 hidden md:block" size={32} />
+        <p
+          ref={valueRef}
+          className="stat-value font-teko text-5xl md:text-6xl font-bold text-white"
+        >
+          {/* Nilai awal ini cocok antara server dan client, mencegah error */}
+          {value}
+        </p>
+      </div>
+      <p className="font-jakarta text-xs md:text-sm uppercase tracking-wider text-gray-400 mt-1">
+        {label}
       </p>
     </div>
-    <p className="font-jakarta text-xs md:text-sm uppercase tracking-wider text-gray-400 mt-1">
-      {label}
-    </p>
-  </div>
-);
+  );
+};
 
 export default function AboutUs() {
   const sectionRef = useRef(null);
 
+  // Logika animasi untuk komponen utama disederhanakan
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -59,41 +100,18 @@ export default function AboutUs() {
         '-=0.6'
       );
 
-      // Animasi statistik dengan counter
-      const statItems = gsap.utils.toArray('.stat-item');
-      statItems.forEach((item) => {
-        const valueEl = item.querySelector('.stat-value');
-        const targetValue = parseInt(valueEl.textContent.replace('+', ''), 10);
-        const suffix = valueEl.textContent.includes('+') ? '+' : '';
-
-        let counter = { val: 0 };
-
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 90%',
-              toggleActions: 'play none none none',
-            },
-          })
-          .from(item, {
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            ease: 'power2.out',
-          })
-          .to(
-            counter,
-            {
-              val: targetValue,
-              duration: 1.5,
-              ease: 'power1.out',
-              onUpdate: () => {
-                valueEl.textContent = Math.round(counter.val) + suffix;
-              },
-            },
-            '-=0.4'
-          );
+      // Animasi untuk memunculkan setiap item statistik
+      gsap.from('.stat-item', {
+        scrollTrigger: {
+          trigger: '.stats-grid',
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: 'power2.out',
       });
     },
     { scope: sectionRef }
@@ -157,12 +175,12 @@ export default function AboutUs() {
           </div>
         </div>
 
-        {/* Bagian Angka-angka Statistik */}
+        {/* Bagian Angka-angka Statistik dengan nilai yang diperbarui */}
         <div className="stats-grid grid grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
-          <StatItem value="5000+" label="Pelanggan Puas" icon={Users} />
+          <StatItem value="100.000+" label="Pelanggan Puas" icon={Users} />
           <StatItem value="15+" label="Tahun Pengalaman" icon={Calendar} />
-          <StatItem value="19" label="Cabang di Indonesia" icon={MapPin} />
-          <StatItem value="25+" label="Jenis Layanan" icon={Wrench} />
+          <StatItem value="26" label="Cabang di Indonesia" icon={MapPin} />
+          <StatItem value="50+" label="Jenis Layanan" icon={Wrench} />
         </div>
       </div>
     </section>

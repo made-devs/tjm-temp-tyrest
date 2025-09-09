@@ -7,7 +7,7 @@ export const servicesData = [
     title: 'Paket Combo Kaki Kaki',
     description:
       'Solusi lengkap untuk kenyamanan dan keamanan kaki-kaki mobil Anda.',
-    image: '/services/service1.webp',
+    image: 'https://i.imgur.com/MDDAasV.png',
     details:
       'Paket ini mencakup pemeriksaan dan perbaikan menyeluruh pada komponen suspensi, steering, dan roda untuk mengembalikan stabilitas dan kenyamanan berkendara seperti semula.',
     variants: [
@@ -135,7 +135,7 @@ export const servicesData = [
     title: 'Paket Combo Super Komplit',
     description:
       'Perawatan menyeluruh dari mesin hingga kaki-kaki untuk performa maksimal.',
-    image: '/services/service2.webp',
+    image: 'https://i.imgur.com/cAfOdfV.png',
     details:
       'Layanan terlengkap kami yang mencakup tune-up mesin, servis AC, spooring, balancing, hingga pembersihan ruang bakar. Mobil Anda akan kembali ke kondisi prima.',
     variants: [
@@ -243,7 +243,7 @@ export const servicesData = [
     title: 'Paket Custom Suspension',
     description:
       'Tingkatkan handling dan gaya dengan suspensi yang disesuaikan.',
-    image: '/services/service3.webp',
+    image: 'https://i.imgur.com/tzKLRrz.png',
     details:
       'Modifikasi sistem suspensi sesuai dengan preferensi Anda, baik untuk kebutuhan harian, balap, maupun off-road. Kami menggunakan produk berkualitas untuk hasil terbaik.',
     variants: [
@@ -349,7 +349,7 @@ export const servicesData = [
     title: 'Paket Diesel',
     description:
       'Perawatan khusus untuk mesin diesel agar tetap bertenaga dan efisien.',
-    image: '/services/service4.webp',
+    image: 'https://i.imgur.com/yIFOPHI.png',
     details:
       'Layanan ini berfokus pada sistem injeksi, filter bahan bakar, dan komponen vital lainnya pada mesin diesel untuk memastikan tenaga maksimal dan emisi yang rendah.',
     variants: [
@@ -583,7 +583,7 @@ export const servicesData = [
     title: 'Paket Kaki Kaki',
     description:
       'Fokus pada perbaikan dan perawatan komponen suspensi dan kemudi.',
-    image: '/services/service5.webp',
+    image: 'https://i.imgur.com/zPeuknD.png',
     details:
       'Perbaikan spesifik pada komponen seperti tie rod, ball joint, shock absorber, dan bushing untuk mengatasi masalah handling dan kenyamanan.',
     variants: [
@@ -715,7 +715,7 @@ export const servicesData = [
     title: 'Paket Overhaul Engine',
     description:
       'Mengembalikan kondisi mesin seperti baru untuk performa puncak.',
-    image: '/services/service6.webp',
+    image: 'https://i.imgur.com/1JQxDIu.png',
     details:
       'Proses pembongkaran mesin total untuk pembersihan, pemeriksaan, dan penggantian komponen internal yang aus. Mesin Anda akan diremajakan sepenuhnya.',
     variants: [
@@ -821,7 +821,7 @@ export const servicesData = [
     href: '/layanan/paket-racksteer-hemat',
     title: 'Paket Racksteer Hemat',
     description: 'Solusi ekonomis untuk perbaikan sistem kemudi rack steer.',
-    image: '/services/service1.webp',
+    image: 'https://i.imgur.com/i2D6YLu.png',
     details:
       'Mengatasi masalah pada sistem kemudi seperti setir berat atau bunyi dengan solusi efektif dan terjangkau, termasuk garansi pengerjaan.',
     variants: [
@@ -862,7 +862,7 @@ export const servicesData = [
     href: '/layanan/paket-special',
     title: 'Paket Special',
     description: 'Penawaran khusus dengan kombinasi layanan paling populer.',
-    image: '/services/service2.webp',
+    image: 'https://i.imgur.com/Q4G7rpP.png',
     details:
       'Paket ini dirancang khusus untuk memberikan perawatan esensial yang paling sering dibutuhkan oleh pelanggan kami, dengan harga yang lebih terjangkau.',
     variants: [
@@ -937,7 +937,7 @@ export const servicesData = [
     title: 'Paket Steering',
     description:
       'Perbaikan dan perawatan sistem kemudi untuk handling yang presisi.',
-    image: '/services/service3.webp',
+    image: 'https://i.imgur.com/GpBwT2l.png',
     details:
       'Layanan lengkap untuk semua jenis sistem kemudi, dari power steering hidrolik hingga EPS modern, untuk memastikan kontrol penuh dan respons akurat.',
     variants: [
@@ -1039,7 +1039,7 @@ export const servicesData = [
     href: '/layanan/paket-super-hemat',
     title: 'Paket Super Hemat',
     description: 'Pilihan cerdas untuk perawatan rutin dengan harga terbaik.',
-    image: '/services/service4.webp',
+    image: 'https://i.imgur.com/n18zKaQ.pn',
     details:
       'Solusi perawatan berkala yang dirancang untuk menjaga kondisi mobil Anda tetap prima tanpa menguras kantong. Mencakup pengecekan dan servis esensial.',
     variants: [

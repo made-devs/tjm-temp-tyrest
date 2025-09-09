@@ -4,13 +4,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-// Link "Kontak" dihapus dari sini agar tidak duplikat dengan tombol CTA
+// Daftar link navigasi diperbarui dengan menu baru
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Layanan', href: '/layanan' },
   { name: 'Tentang Kami', href: '/tentang-kami' },
   { name: 'Galeri', href: '/galeri' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'TJM Peduli', href: '/peduli' },
+  { name: 'Promo', href: '/promo' },
+  { name: 'News', href: '/blog' }, // Menggantikan Blog dengan News
+  { name: 'Partnership', href: '/partnership' },
+  { name: 'TJM Group', href: '/group' },
 ];
 
 const AnimatedNavLink = ({ href, children }) => {
@@ -46,7 +50,6 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        // Perubahan di sini: 'bg-transparent' menjadi 'bg-black'
         scrolled
           ? 'bg-black/80 backdrop-blur-sm shadow-lg'
           : 'bg-black/80 backdrop-blur-sm'
@@ -64,7 +67,8 @@ export default function Navbar() {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          {/* Jarak antar menu disesuaikan untuk mengakomodasi link baru */}
+          <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => (
               <AnimatedNavLink key={link.name} href={link.href}>
                 {link.name}

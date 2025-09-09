@@ -44,27 +44,15 @@ export default function Hero() {
         {/* Pembungkus untuk mendorong konten ke kanan */}
         <div className="flex justify-end pr-[7rem]">
           <div ref={heroContentRef} className="max-w-2xl">
-            {/* Tambahkan className 'hero-element' pada setiap item yang ingin dianimasikan */}
-            <div className="hero-element flex items-center gap-2">
-              <Cog
-                size={20}
-                className="text-red-500 animate-spin"
-                style={{ animationDuration: '5s' }}
-              />
-              <p className="font-jakarta text-sm font-bold uppercase tracking-widest text-red-500">
-                Bengkel Spesialis TJM
-              </p>
-            </div>
-
             <h1 className="hero-element font-teko text-6xl md:text-7xl font-medium uppercase leading-none mt-2">
-              Perbaikan Presisi <br />
-              Untuk Mobil Anda
+              Solusi Dari semua <br /> permasalahan anda
             </h1>
 
             <p className="hero-element font-jakarta text-gray-300 mt-4 max-w-lg">
-              Dari kaki-kaki, suspensi, rack steer, hingga mesin diesel, kami
-              menangani setiap masalah dengan detail dan keahlian. Percayakan
-              kendaraan Anda pada mekanik berpengalaman kami.
+              Dari Kaki-Kaki, Suspensi, Rack Steer, Anti Karat, Detailing &
+              Coating, Quick Service hingga mesin Diesel, kami menangani setiap
+              masalah dengan detail dan keahlian. Percayakan kendaraan Anda pada
+              mekanik berpengalaman kami.
             </p>
 
             {/* Tombol CTA sekarang menggunakan komponen Link */}
