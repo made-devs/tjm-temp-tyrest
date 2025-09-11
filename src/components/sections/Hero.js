@@ -38,12 +38,13 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4 w-full">
         {/*
           PERBAIKAN:
-          - Konten sekarang selalu rata kiri di semua ukuran layar (justify-start).
+          - Konten rata kiri di mobile (justify-start).
+          - Konten kembali ke kanan di desktop (lg:justify-end).
         */}
-        <div className="flex justify-start">
+        <div className="flex justify-start lg:justify-end lg:pr-[7rem]">
           <div
             ref={heroContentRef}
-            className="max-w-2xl text-left" // Teks sekarang selalu rata kiri.
+            className="max-w-2xl text-left" // Teks selalu rata kiri.
           >
             <h1 className="hero-element font-teko text-5xl sm:text-6xl lg:text-7xl font-medium uppercase leading-none mt-2">
               Solusi Dari semua <br /> permasalahan anda
