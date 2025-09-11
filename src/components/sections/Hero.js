@@ -2,8 +2,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link'; // Impor komponen Link
-import { Cog } from 'lucide-react';
+import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
@@ -12,7 +11,6 @@ export default function Hero() {
 
   useGSAP(
     () => {
-      // Animasi Staggered Blur & Scale
       gsap.from('.hero-element', {
         opacity: 0,
         filter: 'blur(10px)',
@@ -20,15 +18,14 @@ export default function Hero() {
         y: 20,
         duration: 0.8,
         ease: 'power2.out',
-        stagger: 0.2, // Efek muncul satu per satu
+        stagger: 0.2,
       });
     },
     { scope: heroContentRef }
-  ); // Scope animasi ke dalam heroContentRef
+  );
 
   return (
     <section className="relative h-[85vh] flex items-center text-white">
-      {/* Gambar Background */}
       <Image
         src="/hero.webp"
         alt="Mekanik TJM Auto Care sedang bekerja"
@@ -36,15 +33,19 @@ export default function Hero() {
         className="object-cover z-0"
         priority
       />
-      {/* Lapisan Overlay Gelap */}
       <div className="absolute inset-0 bg-black/60 z-10" />
 
-      {/* Konten Hero */}
-      <div className="relative z-20 container mx-auto px-4">
-        {/* Pembungkus untuk mendorong konten ke kanan */}
-        <div className="flex justify-end pr-[7rem]">
-          <div ref={heroContentRef} className="max-w-2xl">
-            <h1 className="hero-element font-teko text-6xl md:text-7xl font-medium uppercase leading-none mt-2">
+      <div className="relative z-20 container mx-auto px-4 w-full">
+        {/*
+          PERBAIKAN:
+          - Konten sekarang selalu rata kiri di semua ukuran layar (justify-start).
+        */}
+        <div className="flex justify-start">
+          <div
+            ref={heroContentRef}
+            className="max-w-2xl text-left" // Teks sekarang selalu rata kiri.
+          >
+            <h1 className="hero-element font-teko text-5xl sm:text-6xl lg:text-7xl font-medium uppercase leading-none mt-2">
               Solusi Dari semua <br /> permasalahan anda
             </h1>
 
@@ -55,7 +56,6 @@ export default function Hero() {
               mekanik berpengalaman kami.
             </p>
 
-            {/* Tombol CTA sekarang menggunakan komponen Link */}
             <div className="hero-element mt-8">
               <Link
                 href="/layanan"
