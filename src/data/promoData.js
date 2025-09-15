@@ -7,17 +7,17 @@ export const promoData = [
     videoUrl: "https://www.instagram.com/p/DOGnd0REebL/", // URL diperbarui
   },
   {
-    title: "19 Promo Service AC Gratis",
+    title: "PROMO SEPTEMBER EKSTRA TJM AC",
     description:
-      "Nikmati 19 promo gratis service AC senilai 3.7jt, termasuk Diskon Coating, Free Spooring, Tune-Up, dan banyak lagi!",
+      "Dapatkan 20 promo gratis senilai total Rp 4,5 juta untuk setiap service AC. Manfaatkan berbagai penawaran menarik, mulai dari voucher diskon 50% Nano Ceramic Coating, gratis Nano Burn Headlamp, hingga inspeksi gratis 65 titik dan inspeksi kaki-kaki 25 titik.",
     thumbnail: "/promo/promo5.webp",
     videoUrl: "https://www.instagram.com/p/DOfop7ykebI/", // URL diperbarui
   },
   {
-    title: "Promo Kaki-Kaki Terbesar",
+    title: "Voucher TJM Peduli Sesama",
     description:
-      "Promo kemerdekaan terbesar! Dapatkan bagian dari total hadiah senilai 80,8jt rupiah untuk servis kaki-kaki.",
+      "Voucher Special TJM Peduli Sesama hadir untuk kamu yang ingin servis mobil lebih hemat sambil berdonasi. Dengan harga Rp 1.190.000, kamu bisa merawat mobil dengan mekanik profesional sekaligus berpartisipasi dalam program sosial TJM. ",
     thumbnail: "/promo/promo3.webp",
-    videoUrl: "https://www.instagram.com/reel/DMx1_qSyS6T/", // URL diperbarui
+    videoUrl: "https://www.instagram.com/p/DOEKum8krUD/", // URL diperbarui
   },
 ];
