@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @theme {
   --font-jakarta: var(--font-jakarta);
   --font-teko: var(--font-teko);
@@ -81,4 +81,29 @@
 
 .animate-swipe {
   animation: swipe 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar untuk webkit browsers (Chrome, Safari) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #222; /* Warna latar track scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #555; /* Warna thumb scrollbar */
+  border-radius: 4px;
+  border: 2px solid #222; /* Padding di sekitar thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #777; /* Warna thumb saat hover */
+}
+
+/* Custom scrollbar untuk Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #222; /* thumb color track color */
 }

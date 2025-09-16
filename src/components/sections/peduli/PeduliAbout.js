@@ -1,8 +1,8 @@
 // src/components/sections/peduli/PeduliAbout.js
-import { Car, Heart, Handshake } from 'lucide-react';
-import SectionHeader from '@/components/SectionHeader';
-import Link from 'next/link';
-import Image from 'next/image'; // Impor komponen Image
+import { Car, Heart, Handshake } from "lucide-react";
+import SectionHeader from "@/components/SectionHeader";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function PeduliAbout() {
   return (
@@ -23,12 +23,12 @@ export default function PeduliAbout() {
           </Link>
         </div>
 
-        {/* GAMBAR PLACEHOLDER DITAMBAHKAN DI SINI */}
+        {/* Mengganti placeholder dengan gambar yang relevan dari proyek */}
         <div className="max-w-3xl mx-auto mt-16">
-          <div className="relative aspect-video bg-red-900">
+          <div className="relative aspect-video">
             <Image
-              src="https://placehold.co/800x450/111/FFFFFF?text=Video+TJM+Peduli"
-              alt="Ilustrasi TJM Peduli"
+              src="/peduli/peduli5.webp" // Gambar relevan dengan program peduli
+              alt="Kegiatan TJM Peduli"
               fill
               className="object-cover"
             />
