@@ -1,23 +1,23 @@
 export const promoData = [
   {
-    title: "PROMO SPEKTA SEPTEMBER EKSTRA",
+    title: '260 BONUS GIVEAWAY KHUSUS PELANGGAN SETIA',
     description:
-      "Dapatkan 25 promo gratis senilai total Rp 5 juta! Nikmati berbagai layanan perawatan mobil lengkap, mulai dari diskon 50% Nano Ceramic Coating, gratis inspeksi 65 titik, hingga tebus murah Service AC Rp 197 ribu.",
-    thumbnail: "/promo/promo4.webp",
-    videoUrl: "https://www.instagram.com/p/DOGnd0REebL/", // URL diperbarui
+      'Pelanggan setia yang pernah service dapat 260 bonus giveaway senilai 102 juta rupiah, termasuk nano ceramic coating, service AC gratis, detailing interior/eksterior, jamur kaca, dan promo lainnya.',
+    thumbnail: 'https://i.imgur.com/6Jcf1MA.png',
+    videoUrl: 'https://www.instagram.com/p/DPWOo-NEetI/', // URL diperbarui
   },
   {
-    title: "PROMO SEPTEMBER EKSTRA TJM AC",
+    title: 'TSUNAMI PROMO SHOCKTOBER BY TJM AUTO CARE',
     description:
-      "Dapatkan 20 promo gratis senilai total Rp 4,5 juta untuk setiap service AC. Manfaatkan berbagai penawaran menarik, mulai dari voucher diskon 50% Nano Ceramic Coating, gratis Nano Burn Headlamp, hingga inspeksi gratis 65 titik dan inspeksi kaki-kaki 25 titik.",
-    thumbnail: "/promo/promo5.webp",
-    videoUrl: "https://www.instagram.com/p/DOfop7ykebI/", // URL diperbarui
+      'Tsunami Promo Shocktober by TJM Auto Care, TJM Auto Care bagi-bagi 260 bonus pengerjaan gratis senilai 102 juta rupiah. Promo terbesar service kaki-kaki sepanjang sejarah.',
+    thumbnail: 'https://i.imgur.com/OhMWRgP.png',
+    videoUrl: 'https://www.instagram.com/p/DOfop7ykebI/', // URL diperbarui
   },
   {
-    title: "Voucher TJM Peduli Sesama",
+    title: 'Voucher TJM Peduli Sesama',
     description:
-      "Voucher Special TJM Peduli Sesama hadir untuk kamu yang ingin servis mobil lebih hemat sambil berdonasi. Dengan harga Rp 1.190.000, kamu bisa merawat mobil dengan mekanik profesional sekaligus berpartisipasi dalam program sosial TJM. ",
-    thumbnail: "/promo/promo3.webp",
-    videoUrl: "https://www.instagram.com/p/DOEKum8krUD/", // URL diperbarui
+      'Voucher Special TJM Peduli Sesama hadir untuk kamu yang ingin servis mobil lebih hemat sambil berdonasi. Dengan harga Rp 1.190.000, kamu bisa merawat mobil dengan mekanik profesional sekaligus berpartisipasi dalam program sosial TJM. ',
+    thumbnail: '/promo/promo3.webp',
+    videoUrl: 'https://www.instagram.com/p/DOEKum8krUD/', // URL diperbarui
   },
 ];

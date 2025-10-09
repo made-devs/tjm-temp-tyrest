@@ -157,7 +157,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Komplit + AC',
         description:
           'Solusi lengkap mencakup 27 item pengerjaan, mulai dari tune-up 65 komponen, servis kaki-kaki 25 titik, hingga servis dan pembersihan AC.',
-        image: 'https://i.imgur.com/MDDAasV.png',
+        image: 'https://i.imgur.com/MElDzNi.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -186,7 +186,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Komplit + Rust Protection',
         description:
           'Perawatan kaki-kaki komplit dipadukan dengan restorasi kolong dan aplikasi lapisan anti karat berteknologi tinggi.',
-        image: 'https://i.imgur.com/JfdodPE.png',
+        image: 'https://i.imgur.com/2PpQutl.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -215,7 +215,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Komplit + Engine Pro Tune Up',
         description:
           'Kombinasi sempurna antara servis kaki-kaki 25 titik dengan tune-up mesin 65 komponen.',
-        image: 'https://i.imgur.com/ZHTy54C.png',
+        image: 'https://i.imgur.com/So4KJRN.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -244,7 +244,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Komplit + Full Auto Detailing',
         description:
           'Paket perawatan total yang menggabungkan servis kaki-kaki komplit dengan detailing eksterior 3-langkah.',
-        image: 'https://i.imgur.com/vRUBwn5.png',
+        image: 'https://i.imgur.com/CPaOMIW.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -285,7 +285,7 @@ export const servicesData = [
         title: 'Super Komplit 1',
         description:
           'Paket servis terlengkap yang mencakup tune-up 65 komponen, servis kaki-kaki, ganti oli Shell, rubberized undercoat, dan servis rem komplit untuk performa dan proteksi menyeluruh.',
-        image: 'https://i.imgur.com/cAfOdfV.png',
+        image: 'https://i.imgur.com/HGHqEUJ.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -315,7 +315,7 @@ export const servicesData = [
         title: 'Super Komplit 2',
         description:
           'Semua layanan dari Super Komplit 1 ditambah dengan Full Detailing interior & eksterior, glass coating, dan Nano Ceramic Coating 3 lapis untuk tampilan mobil seperti baru.',
-        image: 'https://i.imgur.com/QSlbk8B.png',
+        image: 'https://i.imgur.com/JbaCFqf.jpeg',
         details: [
           {
             title: 'Nano Ceramic Coating 3 Layer',
@@ -349,7 +349,7 @@ export const servicesData = [
         title: 'Combo All in 1',
         description:
           'Paket ultimate yang menggabungkan semua layanan terbaik: tune-up, servis kaki-kaki, full detailing, nano ceramic coating, dan rekondisi per/spring untuk kondisi mobil yang sempurna luar dan dalam.',
-        image: 'https://i.imgur.com/POXKHNM.png',
+        image: 'https://i.imgur.com/CPefCHL.jpeg',
         details: [
           {
             title: 'Full Detailing + Nano Ceramic Coating',
@@ -393,7 +393,7 @@ export const servicesData = [
         title: 'Custom Suspension Hemat',
         description:
           'Paket ekonomis untuk mendapatkan tampilan ceper (lowering) melalui custom suspensi dan cutting per, sudah termasuk inspeksi kaki-kaki dan tune up 65 komponen.',
-        image: 'https://i.imgur.com/tzKLRrz.png',
+        image: 'https://i.imgur.com/e0ZVPJE.jpeg',
         details: [
           {
             title: 'Custom Suspensi (Ceper)',
@@ -423,7 +423,7 @@ export const servicesData = [
         title: 'Custom Suspension + Custom Spring',
         description:
           'Solusi kustomisasi tinggi/ceper mobil sesuai keinginan (harian/extreme) dengan custom spring, termasuk painting shockbreaker, tune up, dan spooring balancing.',
-        image: 'https://i.imgur.com/iSqXjXY.png',
+        image: 'https://i.imgur.com/2Oz0SRo.jpeg',
         details: [
           {
             title: 'Custom Spring / Per 4 Roda',
@@ -456,7 +456,7 @@ export const servicesData = [
         title: 'Combo Suspension + Custom Coil Over',
         description:
           'Paket suspensi ultimate dengan custom coil over yang bisa diatur tinggi dan cepernya, dipadukan dengan custom spring, tune up, spooring, dan inspeksi AC.',
-        image: 'https://i.imgur.com/v8ezXrg.png',
+        image: 'https://i.imgur.com/1AAq6y0.jpeg',
         details: [
           {
             title: 'Custom Coil Over',
@@ -499,7 +499,7 @@ export const servicesData = [
         title: 'Tune Up Diesel Komplit',
         description:
           'Perawatan esensial untuk mesin diesel, meliputi tune up 65 komponen, general check up kaki-kaki & AC, serta service purging untuk membersihkan sistem bahan bakar.',
-        image: 'https://i.imgur.com/yIFOPHI.png',
+        image: 'https://i.imgur.com/5LRkj4q.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -529,7 +529,7 @@ export const servicesData = [
         title: 'Tune Up Diesel Super Komplit',
         description:
           'Lebih dari sekadar tune up, paket ini mencakup kalibrasi injector & common rail untuk pembakaran sempurna, irit BBM, dan tenaga yang lebih buas.',
-        image: 'https://i.imgur.com/HUn2LHq.png',
+        image: 'https://i.imgur.com/gje0dom.jpeg',
         details: [
           {
             title: 'Service Kalibrasi Injector',
@@ -560,7 +560,7 @@ export const servicesData = [
         title: 'Tune Up Diesel Ultimate',
         description:
           'Paket perawatan diesel terlengkap dengan tambahan ganti oli mesin Shell HX 7, filter oli, dan transfusi darah untuk performa mesin yang paling puncak.',
-        image: 'https://i.imgur.com/gBHdaci.png',
+        image: 'https://i.imgur.com/Rjqjt1e.jpeg',
         details: [
           {
             title: 'Oli Mesin Shell HX 7 / Bardahl Diesel',
@@ -591,7 +591,7 @@ export const servicesData = [
         title: 'Pasti Puas 1 Diesel',
         description:
           'Kombinasi servis kaki-kaki komplit dengan tune up diesel super komplit. Solusi total untuk performa mesin dan kenyamanan berkendara.',
-        image: 'https://i.imgur.com/kISTutH.png',
+        image: 'https://i.imgur.com/dfDqwQc.jpeg',
         details: [
           {
             title: 'Service Kaki-Kaki Komplit',
@@ -622,7 +622,7 @@ export const servicesData = [
         title: 'Pasti Puas 2 Diesel',
         description:
           'Gabungan servis kaki-kaki komplit dan tune up diesel komplit, ditambah ganti oli Shell, transfusi darah, dan engine flush untuk kesehatan mesin jangka panjang.',
-        image: 'https://i.imgur.com/Gr0QYql.png',
+        image: 'https://i.imgur.com/V33LrVi.jpeg',
         details: [
           {
             title: 'Service Kaki-Kaki Komplit',
@@ -654,7 +654,7 @@ export const servicesData = [
         title: 'Pasti Puas 3 Diesel',
         description:
           'Perawatan premium yang menggabungkan tune up diesel super komplit dengan full detailing, glass coating, dan nano ceramic coating 3 lapis.',
-        image: 'https://i.imgur.com/LEaiAMp.png',
+        image: 'https://i.imgur.com/GTiUK9h.jpeg',
         details: [
           {
             title: 'Nano Ceramic Coating 3 Layer',
@@ -687,7 +687,7 @@ export const servicesData = [
         title: 'Pasti Puas 4 Diesel',
         description:
           'Paket paling ultimate: servis kaki-kaki komplit, tune up diesel ultimate, ganti oli, full detailing, dan nano ceramic coating 3 lapis. Kondisi mobil kembali seperti baru.',
-        image: 'https://i.imgur.com/sHZE4DP.png',
+        image: 'https://i.imgur.com/qqRjtvw.jpeg',
         details: [
           {
             title: 'Service Kaki-Kaki Komplit',
@@ -733,7 +733,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Super Hemat',
         description:
           'Paket servis kaki-kaki esensial yang mencakup 17 item pengerjaan, termasuk servis link stabilizer, ball joint, tie rod, dan general check up 25 titik.',
-        image: 'https://i.imgur.com/zPeuknD.png',
+        image: 'https://i.imgur.com/uqcyd3F.jpeg',
         details: [
           {
             title: 'Service Link Stabilizer',
@@ -764,7 +764,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Komplit',
         description:
           'Perawatan kaki-kaki menyeluruh dengan tambahan tune up 65 komponen, gurah mesin, injector cleaning, dan rubberized undercoat untuk proteksi ekstra.',
-        image: 'https://i.imgur.com/cuj60X2.png',
+        image: 'https://i.imgur.com/GvrY6ki.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -793,7 +793,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Super Komplit',
         description:
           'Semua layanan dari paket Komplit ditambah dengan rekondisi CV joint, inspeksi AC, dan rekondisi per/spring untuk kenyamanan suspensi yang maksimal.',
-        image: 'https://i.imgur.com/F0savm6.png',
+        image: 'https://i.imgur.com/g0bGkJo.jpeg',
         details: [
           {
             title: 'Rekondisi CV Joint / Joint Kopel',
@@ -823,7 +823,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Ultimate',
         description:
           'Paket paling lengkap yang mencakup semua layanan dari Super Komplit ditambah dengan service + ganti oli shock breaker dan rekondisi idle arm.',
-        image: 'https://i.imgur.com/8zMxP1e.png',
+        image: 'https://i.imgur.com/Jv7Mx0E.jpeg',
         details: [
           {
             title: 'Service + Ganti Oli Shock Breaker',
@@ -865,7 +865,7 @@ export const servicesData = [
         title: 'Overhaul Engine',
         description:
           'Paket esensial untuk restorasi mesin, mencakup turun 1/2 mesin, sandblasting karat, pembersihan oil sludge, dan servis komponen internal seperti crankshaft dan silinder head.',
-        image: 'https://i.imgur.com/1JQxDIu.png',
+        image: 'https://i.imgur.com/Eg6TUkr.jpeg',
         details: [
           {
             title: 'Turun 1/2 Mesin',
@@ -895,7 +895,7 @@ export const servicesData = [
         title: 'Overhaul Engine Komplit',
         description:
           'Semua layanan dari paket Overhaul Engine, ditambah dengan ganti oli Shell HX 7, oil treatment, engine flush, dan catalytic cleaner untuk pembersihan dan proteksi menyeluruh.',
-        image: 'https://i.imgur.com/ew2IeON.png',
+        image: 'https://i.imgur.com/jrpnX3f.jpeg',
         details: [
           {
             title: 'Oli Shell HX 7 / Bardahl',
@@ -928,7 +928,7 @@ export const servicesData = [
         title: 'Super Overhaul Engine',
         description:
           'Paket paling premium yang mencakup semua layanan dari paket Komplit, ditambah servis bearing crankshaft, connecting rod, washer crankshaft, dan rust remover area kaki-kaki.',
-        image: 'https://i.imgur.com/DG9z1TR.png',
+        image: 'https://i.imgur.com/OF3Pqnb.jpeg',
         details: [
           {
             title: 'Service Bearing Crankshaft',
@@ -971,7 +971,7 @@ export const servicesData = [
         title: 'Kaki-Kaki Racksteer Hemat',
         description:
           'Perawatan terlengkap dan bergaransi, mencakup 21 item pengerjaan termasuk service rekondisi & setel ulang racksteer (EPS), tune up, gurah mesin, dan inspeksi kaki-kaki 25 titik.',
-        image: 'https://i.imgur.com/i2D6YLu.png',
+        image: 'https://i.imgur.com/FgKZnof.jpeg',
         details: [
           {
             title: 'Service Racksteer (EPS)',
@@ -1012,7 +1012,7 @@ export const servicesData = [
         title: 'Paket Special 1',
         description:
           'Perawatan premium yang mencakup tune up 65 komponen, gurah mesin, injector cleaning, catalytic cleaner, dan servis fuel system lengkap dengan penggantian oli Shell HX 8.',
-        image: 'https://i.imgur.com/Q4G7rpP.png',
+        image: 'https://i.imgur.com/XpF9v7W.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -1044,7 +1044,7 @@ export const servicesData = [
         title: 'Paket Special 2',
         description:
           'Paket yang berfokus pada keamanan, meliputi tune up 65 komponen, gurah mesin/injector cleaning, servis purging diesel, dan pengecekan serta servis sistem pengereman.',
-        image: 'https://i.imgur.com/TRax4CT.png',
+        image: 'https://i.imgur.com/teQJFur.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -1087,7 +1087,7 @@ export const servicesData = [
         title: 'Steering Komplit',
         description:
           'Servis kaki-kaki dan rekondisi steering terlengkap, mencakup 20 item pengerjaan termasuk tune up, gurah mesin, dan pengecekan sensor-sensor kelistrikan.',
-        image: 'https://i.imgur.com/GpBwT2l.png',
+        image: 'https://i.imgur.com/jidnpzM.jpeg',
         details: [
           {
             title: 'Rekondisi Joint Steer & Column Steer',
@@ -1117,7 +1117,7 @@ export const servicesData = [
         title: 'Combo Kaki-Kaki + Steering Super Komplit',
         description:
           'Kombinasi servis kaki-kaki dan steering dengan tambahan service racksteer, rekondisi cross joint, dan rubberized undercoat untuk perlindungan maksimal.',
-        image: 'https://i.imgur.com/DOQuJAT.png',
+        image: 'https://i.imgur.com/cfMDPKc.jpeg',
         details: [
           {
             title: 'Service Racksteer Rekondisi + Stel Ulang',
@@ -1146,7 +1146,7 @@ export const servicesData = [
         title: 'Combo Kaki-Kaki + Steering Ultimate',
         description:
           'Paket terlengkap yang menggabungkan semua layanan dari paket Super Komplit ditambah dengan service shockbreaker, rekondisi CV joint, dan rekondisi per/spring.',
-        image: 'https://i.imgur.com/FG9gxVB.png',
+        image: 'https://i.imgur.com/eF4hAcS.jpeg',
         details: [
           {
             title: 'Service Shockbreaker dan Ganti Oli',
@@ -1189,7 +1189,7 @@ export const servicesData = [
         title: 'Super Hemat 1',
         description:
           'Paket terlengkap & terhemat, mencakup 15 item pengerjaan termasuk tune up, gurah mesin, ganti oli Shell HX 7, dan general check up kaki-kaki 25 titik.',
-        image: 'https://i.imgur.com/n18zKaQ.png',
+        image: 'https://i.imgur.com/i8sucn8.jpeg',
         details: [
           {
             title: 'Tune Up 65 Komponen',
@@ -1220,7 +1220,7 @@ export const servicesData = [
         title: 'Super Hemat 2',
         description:
           'Semua layanan dari Super Hemat 1 dengan tambahan service AC All In + AC Cleaner untuk memastikan kesejukan kabin yang maksimal.',
-        image: 'https://i.imgur.com/HU3tYJz.png',
+        image: 'https://i.imgur.com/3kfLc0c.jpeg',
         details: [
           {
             title: 'Service AC All In + AC Cleaner',
@@ -1251,7 +1251,7 @@ export const servicesData = [
         title: 'Super Hemat 3',
         description:
           'Paket Super Hemat dengan fokus pada sistem bahan bakar, mencakup kuras tangki dan service fuel pump untuk efisiensi pembakaran yang lebih baik.',
-        image: 'https://i.imgur.com/fDdpDEU.png',
+        image: 'https://i.imgur.com/IQTDrf2.jpeg',
         details: [
           {
             title: 'Kuras Tangki + Service Fuel Pump',
@@ -1282,7 +1282,7 @@ export const servicesData = [
         title: 'Combo Super Hemat + Auto Detailing',
         description:
           'Kombinasi perawatan mesin dan kaki-kaki dari paket Super Hemat dengan tambahan auto detailing seperti glass treatment, waxing, dan nano burn coating headlamp.',
-        image: 'https://i.imgur.com/NzJZZvN.png',
+        image: 'https://i.imgur.com/HQV7VyO.jpeg',
         details: [
           {
             title: 'Glass Treatment Jamur Kaca',
@@ -1326,7 +1326,7 @@ export const servicesData = [
         title: 'PAKET SUPER DINGIN',
         description:
           'Solusi lengkap untuk AC mobil yang lebih dingin dan segar.',
-        image: '/services/ac1.webp',
+        image: 'https://i.imgur.com/vRDRiA6.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1344,7 +1344,7 @@ export const servicesData = [
         title: 'PAKET SUPER DINGIN KOMPLIT',
         description:
           'Solusi perawatan AC dan kaki-kaki dengan garansi 30 hari.',
-        image: '/services/ac2.webp',
+        image: 'https://i.imgur.com/NUqdp8W.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1362,7 +1362,7 @@ export const servicesData = [
         title: 'PAKET SUPER MENGGIGIL KOMPLIT',
         description:
           'Tingkatkan performa AC Anda dengan 22 titik servis dan gratis spooring 3D.',
-        image: '/services/ac3.webp',
+        image: 'https://i.imgur.com/7nxFEDe.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1380,7 +1380,7 @@ export const servicesData = [
         title: 'PAKET SUPER BEKU KOMPLIT',
         description:
           'Solusi terlengkap untuk AC super dingin dan kaki-kaki prima.',
-        image: '/services/ac4.webp',
+        image: 'https://i.imgur.com/ichPEr0.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1410,7 +1410,7 @@ export const servicesData = [
         title: 'PAKET BASIC EKSTERIOR EXPRESS DETAILING',
         description:
           'Paket detailing eksterior cepat untuk mengembalikan kilau mobil Anda secara efisien.',
-        image: '/services/detailing1.webp',
+        image: 'https://i.imgur.com/nRs3GNz.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1429,7 +1429,7 @@ export const servicesData = [
         title: 'PAKET BASIC INTERIOR EXPRESS DETAILING',
         description:
           'Pembersihan interior menyeluruh tanpa bongkar jok untuk interior yang bersih dan segar.',
-        image: '/services/detailing2.webp',
+        image: 'https://i.imgur.com/DJJ9MVb.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1448,7 +1448,7 @@ export const servicesData = [
         title: 'PAKET CUCI SNOW JOK MOBIL',
         description:
           'Fokus pada kebersihan jok mobil Anda untuk hasil bersih maksimal dan wangi.',
-        image: '/services/detailing3.webp',
+        image: 'https://i.imgur.com/tFv8Pr6.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1467,7 +1467,7 @@ export const servicesData = [
         title: 'PAKET ENGINE DETAILING',
         description:
           'Perawatan ruang mesin secara detail untuk melindungi dan mengkilapkan hingga ke sudut tersulit.',
-        image: '/services/detailing4.webp',
+        image: 'https://i.imgur.com/h0RBkJr.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1485,7 +1485,7 @@ export const servicesData = [
         title: 'PAKET KINCLONG EKSTERIOR',
         description:
           'Paket detailing eksterior lengkap untuk hasil maksimal dengan 4 Step Polish.',
-        image: '/services/detailing5.webp',
+        image: 'https://i.imgur.com/NSp6IDo.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1504,7 +1504,7 @@ export const servicesData = [
         title: 'PAKET KINCLONG INTERIOR',
         description:
           'Pembersihan interior super lengkap dengan bongkar jok total untuk menjangkau semua area.',
-        image: '/services/detailing6.webp',
+        image: 'https://i.imgur.com/kSPsWVQ.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1523,7 +1523,7 @@ export const servicesData = [
         title: 'PAKET KOMPLIT DETAILING 1',
         description:
           'Paket kombinasi perawatan interior (tanpa bongkar jok) dan eksterior lengkap.',
-        image: '/services/detailing7.webp',
+        image: 'https://i.imgur.com/8vWyNh2.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1542,7 +1542,7 @@ export const servicesData = [
         title: 'PAKET KOMPLIT DETAILING 2',
         description:
           'Paket detailing terlengkap yang menggabungkan perawatan eksterior dan interior dengan bongkar jok total.',
-        image: '/services/detailing8.webp',
+        image: 'https://i.imgur.com/VivRtz4.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1561,7 +1561,7 @@ export const servicesData = [
         title: 'PAKET NANO BURN COATING HEADLAMP',
         description:
           'Mengembalikan kondisi headlamp yang pudar dan kuning menjadi seperti baru.',
-        image: '/services/detailing9.webp',
+        image: 'https://i.imgur.com/PCOKXye.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1591,7 +1591,7 @@ export const servicesData = [
         title: 'PAKET NANO CERAMIC COATING 1',
         description:
           'Paket perlindungan cat dasar dengan 3 layer Nano Ceramic Coating untuk kilau maksimal.',
-        image: '/services/nano1.webp',
+        image: 'https://i.imgur.com/0fWHtJP.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1609,7 +1609,7 @@ export const servicesData = [
         title: 'PAKET NANO CERAMIC COATING 2',
         description:
           'Paket perlindungan tingkat lanjut ditambah dengan bongkar jok total untuk hasil lebih detail.',
-        image: '/services/nano2.webp',
+        image: 'https://i.imgur.com/0woLjQd.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1627,7 +1627,7 @@ export const servicesData = [
         title: 'PAKET SUPER KOMPLIT NANO CERAMIC COATING',
         description:
           'Paket proteksi dan detailing paling lengkap untuk kesempurnaan tampilan kendaraan Anda.',
-        image: '/services/nano3.webp',
+        image: 'https://i.imgur.com/BnsTZeA.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1657,7 +1657,7 @@ export const servicesData = [
         title: 'PAKET SUPER HEMAT 1',
         description:
           'Paket cuci steril uap komplit untuk kebersihan menyeluruh dari interior hingga eksterior.',
-        image: '/services/karat1.webp',
+        image: 'https://i.imgur.com/NK2tAUE.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1675,7 +1675,7 @@ export const servicesData = [
         title: 'PAKET SUPER HEMAT 2',
         description:
           'Layanan steamer uap lebih lengkap dengan bongkar jok untuk hasil maksimal.',
-        image: '/services/karat2.webp',
+        image: 'https://i.imgur.com/wYuUk2p.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1693,7 +1693,7 @@ export const servicesData = [
         title: 'PAKET COMBO PASTI HEMAT',
         description:
           'Paket lengkap untuk perlindungan kolong mobil dengan teknologi Rust Prevention.',
-        image: '/services/karat3.webp',
+        image: 'https://i.imgur.com/wSAHStc.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1711,7 +1711,7 @@ export const servicesData = [
         title: 'PAKET TRIPLE COMBO 1',
         description:
           'Paket ultimate yang menggabungkan Anti Karat, Restorasi Kolong, dan Undercarriage Detailing.',
-        image: '/services/karat4.webp',
+        image: 'https://i.imgur.com/Xrwzox6.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1729,7 +1729,7 @@ export const servicesData = [
         title: 'PAKET TRIPLE COMBO 2',
         description:
           'Kombinasi lengkap antara Undercarriage, Restorasi Kolong, dan Full Detailing.',
-        image: '/services/karat5.webp',
+        image: 'https://i.imgur.com/6BgfKWn.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
@@ -1747,7 +1747,7 @@ export const servicesData = [
         title: 'PAKET TRIPLE COMBO 3',
         description:
           'Paket paling premium yang menggabungkan Anti Karat, Restorasi Kolong, dan Nano Ceramic Coating.',
-        image: '/services/karat6.webp',
+        image: 'https://i.imgur.com/kXcPJsQ.jpeg',
         details: [
           {
             title: 'Detail Pengerjaan',
