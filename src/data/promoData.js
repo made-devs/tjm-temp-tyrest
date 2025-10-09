@@ -11,7 +11,7 @@ export const promoData = [
     description:
       'Tsunami Promo Shocktober by TJM Auto Care, TJM Auto Care bagi-bagi 260 bonus pengerjaan gratis senilai 102 juta rupiah. Promo terbesar service kaki-kaki sepanjang sejarah.',
     thumbnail: 'https://i.imgur.com/OhMWRgP.png',
-    videoUrl: 'https://www.instagram.com/p/DOfop7ykebI/', // URL diperbarui
+    videoUrl: 'hhttps://www.instagram.com/p/DPWOIIBEfJM/', // URL diperbarui
   },
   {
     title: 'Voucher TJM Peduli Sesama',
