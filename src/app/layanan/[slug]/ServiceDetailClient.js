@@ -87,6 +87,26 @@ export default function ServiceDetailClient({ service }) {
             // Tampilkan layout varian jika ada
             <div>
               <div className="max-w-6xl mx-auto">
+                {/* Toggle Pilihan Varian - Slider di atas untuk mobile */}
+                <div className="md:hidden mb-8 border-t border-gray-800 pt-8">
+                  <div className="overflow-x-auto scrollbar-hide">
+                    <div className="flex gap-4 pb-2">
+                      {service.variants.map((variant) => (
+                        <button
+                          key={variant.slug}
+                          onClick={() => handleVariantChange(variant)}
+                          className={`font-jakarta font-bold text-sm px-6 py-3 whitespace-nowrap transition-colors duration-300 ${
+                            activeVariant.slug === variant.slug
+                              ? 'bg-red-600 text-white'
+                              : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                          }`}
+                        >
+                          {variant.title}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   {/* Kolom Kiri: Gambar Varian dengan transisi */}
                   <div
@@ -162,21 +182,25 @@ export default function ServiceDetailClient({ service }) {
                   </div>
                 </div>
               </div>
-              {/* Toggle Pilihan Varian */}
-              <div className="mt-12 border-t border-gray-800 pt-8 flex flex-wrap justify-center gap-4">
-                {service.variants.map((variant) => (
-                  <button
-                    key={variant.slug}
-                    onClick={() => handleVariantChange(variant)}
-                    className={`font-jakarta font-bold text-sm px-6 py-3 transition-colors duration-300 ${
-                      activeVariant.slug === variant.slug
-                        ? 'bg-red-600 text-white'
-                        : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
-                    }`}
-                  >
-                    {variant.title}
-                  </button>
-                ))}
+              {/* Toggle Pilihan Varian - Slider di bawah untuk desktop */}
+              <div className="hidden md:block mt-12 border-t border-gray-800 pt-8">
+                <div className="overflow-x-auto scrollbar-hide">
+                  <div className="flex gap-4 pb-2">
+                    {service.variants.map((variant) => (
+                      <button
+                        key={variant.slug}
+                        onClick={() => handleVariantChange(variant)}
+                        className={`font-jakarta font-bold text-sm px-6 py-3 whitespace-nowrap transition-colors duration-300 ${
+                          activeVariant.slug === variant.slug
+                            ? 'bg-red-600 text-white'
+                            : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                        }`}
+                      >
+                        {variant.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           ) : (

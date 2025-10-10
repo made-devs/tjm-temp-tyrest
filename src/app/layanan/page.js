@@ -12,33 +12,51 @@ import SectionHeader from '@/components/SectionHeader';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ServiceCard = ({ service }) => (
-  <div className="relative h-[450px] overflow-hidden border border-transparent transition-all duration-500 ease-in-out group hover:border-red-500 hover:shadow-[0_0_25px_rgba(239,68,68,0.6)]">
-    <Image
-      src={service.image}
-      alt={service.title}
-      fill
-      className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black from-15% to-transparent" />
-    <div className="absolute bottom-0 left-0 w-full p-6 text-white">
-      <div className="transition-transform duration-500 ease-in-out group-hover:-translate-y-8">
-        <h3 className="font-teko text-3xl font-medium uppercase">
-          {service.title}
-        </h3>
-        <p className="font-jakarta text-sm text-gray-300 mt-1">
-          {service.description}
-        </p>
+const ServiceCard = ({ service }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div
+      className="relative aspect-square overflow-hidden border border-transparent transition-all duration-500 ease-in-out group hover:border-red-500 hover:shadow-[0_0_25px_rgba(239,68,68,0.6)]"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      <Image
+        src={service.image}
+        alt={service.title}
+        fill
+        className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black from-15% to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full p-6 text-white">
+        <div
+          className={`transition-transform duration-500 ease-in-out ${
+            isExpanded ? '-translate-y-8' : ''
+          } md:group-hover:-translate-y-8`}
+        >
+          <h3 className="font-teko text-3xl font-medium uppercase">
+            {service.title}
+          </h3>
+          <p className="font-jakarta text-sm text-gray-300 mt-1">
+            {service.description}
+          </p>
+        </div>
+        <Link
+          href={service.href}
+          onClick={(e) => e.stopPropagation()}
+          className={`absolute left-6 bottom-6 flex items-center gap-2 font-jakarta text-sm font-bold text-red-500 
+          ${
+            isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }
+          md:opacity-0 md:translate-y-4
+          transition-all duration-500 ease-in-out 
+          md:group-hover:opacity-100 md:group-hover:translate-y-0`}
+        >
+          Lihat Detail <ArrowRight size={16} />
+        </Link>
       </div>
-      <Link
-        href={service.href}
-        className="absolute left-6 bottom-6 flex items-center gap-2 font-jakarta text-sm font-bold text-red-500 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0"
-      >
-        Lihat Detail <ArrowRight size={16} />
-      </Link>
     </div>
-  </div>
-);
+  );
+};
 
 export default function ServicesPage() {
   const pageRef = useRef(null);
@@ -98,20 +116,24 @@ export default function ServicesPage() {
           </div>
 
           {/* Navigasi Tab */}
-          <div className="flex justify-center flex-wrap gap-4 mb-12">
-            {serviceGroups.map((group, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`font-jakarta font-bold text-sm px-6 py-3 transition-colors duration-300 ${
-                  activeTab === index
-                    ? 'bg-red-600 text-white'
-                    : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
-                }`}
-              >
-                {group.brand}
-              </button>
-            ))}
+          <div className="mb-12">
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex gap-4 pb-2 md:justify-center">
+                {serviceGroups.map((group, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveTab(index)}
+                    className={`font-jakarta font-bold text-sm px-6 py-3 whitespace-nowrap transition-colors duration-300 ${
+                      activeTab === index
+                        ? 'bg-red-600 text-white'
+                        : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                    }`}
+                  >
+                    {group.brand}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
