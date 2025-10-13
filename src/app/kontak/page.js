@@ -257,6 +257,11 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Formulir Kontak Baru */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <ContactForm />
+      </Suspense>
+
       {/* Konten Kontak & Carousel Lokasi */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -271,11 +276,6 @@ export default function ContactPage() {
           <div className="page-element">
             <LocationCarousel />
           </div>
-
-          {/* Formulir Kontak Baru */}
-          <Suspense fallback={<div>Loading...</div>}>
-            <ContactForm />
-          </Suspense>
 
           {/* FAQ Section */}
           <div className="page-element max-w-4xl mx-auto mt-24">
