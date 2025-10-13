@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -35,6 +35,7 @@ export default function PromoPage() {
 
   // State untuk kategori
   const [activeCategory, setActiveCategory] = useState(0);
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const activeItems = promoCategories[activeCategory].items;
 
@@ -84,6 +85,25 @@ export default function PromoPage() {
     setSelectedIndex(0);
     if (emblaApi) emblaApi.scrollTo(0);
   };
+
+  // Handle image click untuk lightbox
+  const handleImageClick = (item) => {
+    setLightboxImage(item);
+  };
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
+  // Close on ESC key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
 
   return (
     <main ref={pageRef} className="bg-black text-white">
@@ -172,12 +192,15 @@ export default function PromoPage() {
                           key={`${item.title}-${idx}`}
                           className="embla__slide flex-[0_0_33.333%] min-w-0 px-4"
                         >
-                          <div className="relative aspect-[4/5] w-full">
+                          <div
+                            className="relative aspect-[4/5] w-full cursor-pointer"
+                            onClick={() => handleImageClick(item)}
+                          >
                             <Image
                               src={item.image}
                               alt={item.title}
                               fill
-                              className="object-cover rounded-lg shadow-xl"
+                              className="object-cover rounded-lg shadow-xl transition-transform hover:scale-105"
                               priority={idx < 3}
                             />
                           </div>
@@ -215,6 +238,37 @@ export default function PromoPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Popup */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 text-white bg-red-600 hover:bg-red-700 p-2 rounded-full transition z-50"
+          >
+            <X size={32} />
+          </button>
+          <div
+            className="relative w-full h-[90vh] max-w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxImage.image}
+              alt={lightboxImage.title}
+              fill
+              className="object-contain"
+              priority
+              onError={(e) => {
+                console.error('Image failed to load:', lightboxImage.image);
+                e.target.src = '/placeholder.webp'; // Fallback
+              }}
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }

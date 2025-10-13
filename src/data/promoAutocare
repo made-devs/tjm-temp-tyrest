@@ -132,29 +132,236 @@ export const promoCategories = [
   {
     label: 'TJM AC Mobil',
     items: [
-      // { title: '...', image: '/promo/acmobil/...' },
-      // Tambahkan data promo TJM AC Mobil di sini
+      {
+        title: 'Gratis Cek AC Mobil',
+        image: '/promo/autocare/ac1.webp',
+      },
+      {
+        title: 'Gratis Fogging AC',
+        image: '/promo/autocare/ac2.webp',
+      },
+      {
+        title: 'Gratis Isi Freon AC',
+        image: '/promo/autocare/ac3.webp',
+      },
+      {
+        title: 'Gratis Cleaning AC',
+        image: '/promo/autocare/ac4.webp',
+      },
+      {
+        title: 'Gratis Perbaikan Kompresor AC',
+        image: '/promo/autocare/ac5.webp',
+      },
+      {
+        title: 'Gratis Ganti Filter AC',
+        image: '/promo/autocare/ac6.webp',
+      },
+      {
+        title: 'Gratis Tune Up AC',
+        image: '/promo/autocare/ac7.webp',
+      },
+      {
+        title: 'Gratis Ozone Treatment AC',
+        image: '/promo/autocare/ac8.webp',
+      },
+      {
+        title: 'Gratis Nano Coating AC',
+        image: '/promo/autocare/ac9.webp',
+      },
+      {
+        title: 'Gratis Konsultasi AC',
+        image: '/promo/autocare/ac10.webp',
+      },
+      {
+        title: 'Gratis Voucher AC Service',
+        image: '/promo/autocare/ac11.webp',
+      },
+      {
+        title: 'Gratis Inspeksi AC',
+        image: '/promo/autocare/ac12.webp',
+      },
+      {
+        title: 'Gratis Repair AC',
+        image: '/promo/autocare/ac13.webp',
+      },
+      {
+        title: 'Gratis Maintenance AC',
+        image: '/promo/autocare/ac14.webp',
+      },
+      {
+        title: 'Gratis Upgrade AC',
+        image: '/promo/autocare/ac15.webp',
+      },
+      {
+        title: 'Gratis Diagnostic AC',
+        image: '/promo/autocare/ac16.webp',
+      },
+      {
+        title: 'Gratis Shaking Machine AC',
+        image: '/promo/autocare/ac17.webp',
+      },
+      {
+        title: 'Gratis Cooling Test AC',
+        image: '/promo/autocare/ac18.webp',
+      },
+      {
+        title: 'Gratis Leak Test AC',
+        image: '/promo/autocare/ac19.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/ac20.webp',
+      },
     ],
   },
   {
     label: 'TJM Undercarriage',
-    items: [
-      // { title: '...', image: '/promo/undercarriage/...' },
-      // Tambahkan data promo TJM Undercarriage di sini
-    ],
+    items: [],
   },
   {
     label: 'TJM Express',
     items: [
-      // { title: '...', image: '/promo/express/...' },
-      // Tambahkan data promo TJM Express di sini
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express1.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express2.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express3.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express4.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express5.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express7.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express8.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express9.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express10.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express11.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express12.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express13.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express14.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express15.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express16.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express17.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express18.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express19.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express20.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express21.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/express22.webp',
+      },
     ],
   },
   {
     label: 'TJM Auto Detailing',
     items: [
-      // { title: '...', image: '/promo/autodetailing/...' },
-      // Tambahkan data promo TJM Auto Detailing di sini
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail1.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail1.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail2.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail3.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail4.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail5.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail6.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail7.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail8.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail9.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail10.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail11.webp',
+      },
+      {
+        title: 'Gratis Promo AC Package',
+        image: '/promo/autocare/detail12.webp',
+      },
     ],
   },
 ];
