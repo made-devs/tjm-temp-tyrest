@@ -229,6 +229,19 @@ export default function PromoPage() {
                     />
                   ))}
                 </div>
+                {/* WhatsApp Button */}
+                <div className="mt-8">
+                  <Link
+                    href={`https://wa.me/6285169576890?text=${encodeURIComponent(
+                      `Halo, saya tertarik dengan promo dari ${promoCategories[activeCategory].label}. Bisa berikan informasi lebih lanjut tentang penawaran spesial Anda?`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-red-600 text-white font-jakarta font-bold text-base px-8 py-3  transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1 shadow-lg"
+                  >
+                    Hubungi via WhatsApp
+                  </Link>
+                </div>
               </>
             ) : (
               <div className="text-gray-400 py-12">
