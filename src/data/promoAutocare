@@ -1,0 +1,160 @@
+import { promoAutocare } from './promoAutocare';
+
+// Silakan isi array berikut sesuai dengan data promo masing-masing kategori
+// Untuk contoh, saya masukkan TJM Auto Care (promoAutocare) dan kategori lain masih kosong
+
+export const promoCategories = [
+  {
+    label: 'TJM Auto Care',
+    items: [
+      {
+        title: 'Gratis Antar Kendaraan',
+        image: '/promo/autocare/auto1.webp',
+      },
+      {
+        title: 'Gratis Carwash + Vacuum Interior',
+        image: '/promo/autocare/auto2.webp',
+      },
+      {
+        title: 'Gratis Cek AC',
+        image: '/promo/autocare/auto3.webp',
+      },
+      {
+        title: 'Gratis Cek Engine Scanner',
+        image: '/promo/autocare/auto4.webp',
+      },
+      {
+        title: 'Gratis Cek Kaki Kaki',
+        image: '/promo/autocare/auto5.webp',
+      },
+      {
+        title: 'Gratis Cek Kerat',
+        image: '/promo/autocare/auto6.webp',
+      },
+      {
+        title: 'Gratis Cek Oil dan Fluida',
+        image: '/promo/autocare/auto7.webp',
+      },
+      {
+        title: 'Gratis Engine Detailing',
+        image: '/promo/autocare/auto8.webp',
+      },
+      {
+        title: 'Gratis Fogging AC Mobil',
+        image: '/promo/autocare/auto9.webp',
+      },
+      {
+        title: 'Gratis Inspeksi Angin',
+        image: '/promo/autocare/auto10.webp',
+      },
+      {
+        title: 'Gratis Interior atau Eksterior',
+        image: '/promo/autocare/auto11.webp',
+      },
+      {
+        title: 'Gratis Jamur Kaca',
+        image: '/promo/autocare/auto12.webp',
+      },
+      {
+        title: 'Gratis Konsultasi PastiCuan',
+        image: '/promo/autocare/auto13.webp',
+      },
+      {
+        title: 'Gratis Nano Burn',
+        image: '/promo/autocare/auto14.webp',
+      },
+      {
+        title: 'Gratis Ozone Treatment',
+        image: '/promo/autocare/auto15.webp',
+      },
+      {
+        title: 'Gratis Rat Bugs Repellent',
+        image: '/promo/autocare/auto16.webp',
+      },
+      {
+        title: 'Gratis Sticker Membership',
+        image: '/promo/autocare/auto17.webp',
+      },
+      {
+        title: 'Gratis Tune Up',
+        image: '/promo/autocare/auto18.webp',
+      },
+      {
+        title: 'Gratis Undercoat',
+        image: '/promo/autocare/auto19.webp',
+      },
+      {
+        title: 'Gratis Voucher AC',
+        image: '/promo/autocare/auto20.webp',
+      },
+      {
+        title: 'Gratis Voucher Anti Karat',
+        image: '/promo/autocare/auto21.webp',
+      },
+      {
+        title: 'Gratis Voucher Caffee',
+        image: '/promo/autocare/auto22.webp',
+      },
+      {
+        title: 'Gratis Voucher Coating',
+        image: '/promo/autocare/auto23.webp',
+      },
+      {
+        title: 'Gratis Voucher Full Detailing',
+        image: '/promo/autocare/auto24.webp',
+      },
+      {
+        title: 'Gratis Voucher Member',
+        image: '/promo/autocare/auto25.webp',
+      },
+      {
+        title: 'Gratis Voucher Potongan Harga',
+        image: '/promo/autocare/auto26.webp',
+      },
+      {
+        title: 'Gratis Voucher Sparepart',
+        image: '/promo/autocare/auto27.webp',
+      },
+      {
+        title: 'Gratis Voucher Tune Up',
+        image: '/promo/autocare/auto28.webp',
+      },
+      {
+        title: 'Gratis Wheel Dressing',
+        image: '/promo/autocare/auto29.webp',
+      },
+      {
+        title: 'Promo Diskon Service Kaki Kaki',
+        image: '/promo/autocare/auto30.webp',
+      },
+    ],
+  },
+  {
+    label: 'TJM AC Mobil',
+    items: [
+      // { title: '...', image: '/promo/acmobil/...' },
+      // Tambahkan data promo TJM AC Mobil di sini
+    ],
+  },
+  {
+    label: 'TJM Undercarriage',
+    items: [
+      // { title: '...', image: '/promo/undercarriage/...' },
+      // Tambahkan data promo TJM Undercarriage di sini
+    ],
+  },
+  {
+    label: 'TJM Express',
+    items: [
+      // { title: '...', image: '/promo/express/...' },
+      // Tambahkan data promo TJM Express di sini
+    ],
+  },
+  {
+    label: 'TJM Auto Detailing',
+    items: [
+      // { title: '...', image: '/promo/autodetailing/...' },
+      // Tambahkan data promo TJM Auto Detailing di sini
+    ],
+  },
+];
