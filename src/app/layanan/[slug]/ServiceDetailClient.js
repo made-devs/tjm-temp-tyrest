@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star, Loader2, Cog, ChevronRight } from 'lucide-react'; // Impor ChevronRight
+import { Star, Loader2, Cog, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -17,6 +17,7 @@ export default function ServiceDetailClient({ service }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const mainRef = useRef(null);
+  const whatsappNumber = '6285169576890';
 
   // Animasi saat komponen pertama kali dimuat
   useGSAP(
@@ -48,6 +49,23 @@ export default function ServiceDetailClient({ service }) {
       setIsLoadingImage(true);
     }
   }, [activeVariant, service]);
+
+  // Handler untuk generate WhatsApp link
+  const generateWhatsAppLink = () => {
+    let message = `Halo TJM Auto Care!\n\n`;
+    message += `Saya ingin memesan paket:\n`;
+    message += `*${activeVariant ? activeVariant.title : service.title}*\n\n`;
+
+    if (activeVariant?.description) {
+      message += `Deskripsi: ${activeVariant.description}\n\n`;
+    }
+
+    message += `Mohon informasi lebih lanjut dan harga terbaik.\n`;
+    message += `Terima kasih!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    return `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+  };
 
   // JSX untuk tampilan
   return (
@@ -190,12 +208,14 @@ export default function ServiceDetailClient({ service }) {
                         </div>
                       ))}
                     </div>
-                    <Link
-                      href={`/kontak?paket=${activeVariant.slug}`}
+                    <a
+                      href={generateWhatsAppLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-block w-full text-center bg-red-600 text-white font-jakarta font-bold text-base px-10 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
                     >
                       Pesan Paket Ini
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -210,12 +230,16 @@ export default function ServiceDetailClient({ service }) {
                 <p className="font-jakarta text-gray-400 mt-4 leading-relaxed">
                   {service.details}
                 </p>
-                <Link
-                  href={`/kontak?paket=${service.slug}`}
+                <a
+                  href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                    `Halo TJM Auto Care!\n\nSaya ingin memesan paket:\n*${service.title}*\n\nMohon informasi lebih lanjut dan harga terbaik.\nTerima kasih!`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block mt-8 bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
                 >
                   Jadwalkan Servis Ini
-                </Link>
+                </a>
               </div>
               <div className="lg:col-span-1">
                 {/* ... (Layanan Lainnya) ... */}

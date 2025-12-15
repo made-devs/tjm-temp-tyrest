@@ -1,4 +1,4 @@
-import { promoAutocare } from './promoAutocare';
+import { promoAutocare } from './promoAutocare.js';
 
 // Silakan isi array berikut sesuai dengan data promo masing-masing kategori
 // Untuk contoh, saya masukkan TJM Auto Care (promoAutocare) dan kategori lain masih kosong
