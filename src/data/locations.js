@@ -36,11 +36,11 @@ export const workshopLocations = [
     id: 'bdg',
     city: 'Bandung',
     address:
-      'Jl. Moch. Ramdan No.102, Ciateul, Kec. Regol, Kota Bandung, Jawa Barat 40252',
+      'Jl. Terusan Cibaduyut No.88, Cangkuang Kulon, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40239',
     hours: '08:30 - 18:30 WIB',
     photo: '/bengkel/bengkel4.webp', // Path diubah
     mapUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.611634970754!2d107.60705037591171!3d-6.936932893063062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9bed58d5815%3A0x6c7bb05400a26eb2!2sTJM%20AUTO%20CARE%20BANDUNG!5e0!3m2!1sen!2sid!4v1755163312094!5m2!1sen!2sid',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.352389879616!2d107.58882357584342!3d-6.967689593032876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e994ab724c59%3A0x6e8afd6ed3d4dae9!2sTJM%20AutoCare%20Bandung%20Kota!5e0!3m2!1sid!2sid!4v1765892662378!5m2!1sid!2sid',
   },
   {
     id: 'smg',
@@ -113,6 +113,16 @@ export const workshopLocations = [
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.945362441011!2d98.6681491!3d3.599991499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031319ac5076701%3A0xecec1643f2d4f97f!2sTJM%20Auto%20Care%20Medan%202!5e0!3m2!1sen!2sid!4v1755166069204!5m2!1sen!2sid',
   },
   {
+    id: 'pkb',
+    city: 'Pekanbaru',
+    address:
+      'Jl. Soekarno - Hatta No.94, Sidomulyo Tim., Kec. Marpoyan Damai, Kota Pekanbaru, Riau 28292',
+    hours: '08:30 - 18:30 WIB',
+    photo: '/bengkel/bengkel17.webp', // Path diubah
+    mapUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.945362441011!2d98.6681491!3d3.599991499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031319ac5076701%3A0xecec1643f2d4f97f!2sTJM%20Auto%20Care%20Medan%202!5e0!3m2!1sen!2sid!4v1755166069204!5m2!1sen!2sid',
+  },
+  {
     id: 'plm',
     city: 'Palembang',
     address:
@@ -123,6 +133,16 @@ export const workshopLocations = [
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.603858823332!2d104.70439027589072!3d-2.9296322970466897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b75000a385839%3A0xb3ba7ac0dba9b07f!2sTJM%20Auto%20Care%20Palembang!5e0!3m2!1sen!2sid!4v1755166141372!5m2!1sen!2sid',
   },
   {
+    id: 'lpg',
+    city: 'Lampung',
+    address:
+      'Jl. Yos Sudarso No.77, Sukaraja, Kec. Bumi Waras, Kota Bandar Lampung, Lampung 35226',
+    hours: '08:30 - 18:30 WIB',
+    photo: '/bengkel/bengkel18.webp', // Path diubah
+    mapUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.8220039587513!2d105.2837514!3d-5.443976699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40db7d9d0a51b9%3A0xdcb83ca6e104c47c!2sTJM%20AUTOCARE%20LAMPUNG!5e0!3m2!1sen!2sid!4v1765894297395!5m2!1sen!2sid',
+  },
+  {
     id: 'mks',
     city: 'Makassar',
     address:
@@ -130,7 +150,7 @@ export const workshopLocations = [
     hours: '08:30 - 18:30 WIB',
     photo: '/bengkel/bengkel13.webp', // Path diubah
     mapUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.060788343603!2d106.8020353153597!3d-6.255627695471445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f16d7d7a5847%3A0x194e3a3d58e827a3!2sBlok%20M%20Square!5e0!3m2!1sen!2sid!4v1678886655443!5m2!1sen!2sid',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.9297615536607!2d119.42900514813235!3d-5.115022536140898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefd6fc6d64901%3A0x8ba41fb32c380365!2sTJM%20AUTOCARE%20MAKASSAR!5e0!3m2!1sen!2sid!4v1765894066659!5m2!1sen!2sid',
   },
   {
     id: 'blp',
@@ -141,6 +161,26 @@ export const workshopLocations = [
     photo: '/bengkel/bengkel14.webp', // Path diubah
     mapUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8706782124855!2d116.93458400000002!3d-1.248797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df145acc6f9bb7f%3A0x4be7f0cc35b7f0c!2sTJM%20Auto%20Care%20Balikpapan!5e0!3m2!1sen!2sid!4v1755166659902!5m2!1sen!2sid',
+  },
+  {
+    id: 'smd',
+    city: 'Samarinda',
+    address:
+      'Jl. A. Wahab Syahranie No.199, Sempaja Sel., Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75131',
+    hours: '08:30 - 18:30 WIB',
+    photo: '/bengkel/bengkel14.webp', // Path diubah
+    mapUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6943423942!2d117.14208540000001!3d-0.45168369999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df679003ea3547d%3A0xafa10c40efea2049!2sTJM%20Auto%20Care%20Samarinda!5e0!3m2!1sid!2sid!4v1765894249208!5m2!1sid!2sid',
+  },
+  {
+    id: 'bjm',
+    city: 'Banjarmasin',
+    address:
+      'Jl. Pulau Laut No.1, Antasan Besar, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan 70114',
+    hours: '08:30 - 18:30 WIB',
+    photo: '/bengkel/bengkel19.webp', // Path diubah
+    mapUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.1374193344327!2d114.5896867!3d-3.3161885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de42331875a725f%3A0x2142e77563934aae!2sTJM%20AUTOCARE%20BANJARMASIN!5e0!3m2!1sen!2sid!4v1765893916104!5m2!1sen!2sid',
   },
   {
     id: 'bli',
