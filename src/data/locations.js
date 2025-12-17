@@ -168,7 +168,7 @@ export const workshopLocations = [
     address:
       'Jl. A. Wahab Syahranie No.199, Sempaja Sel., Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75131',
     hours: '08:30 - 18:30 WIB',
-    photo: '/bengkel/bengkel14.webp', // Path diubah
+    photo: '/bengkel/bengkel20.webp', // Path diubah
     mapUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6943423942!2d117.14208540000001!3d-0.45168369999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df679003ea3547d%3A0xafa10c40efea2049!2sTJM%20Auto%20Care%20Samarinda!5e0!3m2!1sid!2sid!4v1765894249208!5m2!1sid!2sid',
   },
