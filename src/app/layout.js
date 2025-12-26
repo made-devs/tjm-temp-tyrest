@@ -3,6 +3,7 @@ import { Teko, Plus_Jakarta_Sans } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SmoothScrolling from '../components/SmoothScrolling';
+import { Analytics } from '@vercel/analytics/next';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -30,13 +31,9 @@ export default function RootLayout({ children }) {
       >
         <SmoothScrolling />
         <Navbar />
-        {/* Tambahkan padding atas di sini */}
-        <main className="pt-[72px]">
-          {' '}
-          {/* Sesuaikan angka ini jika tinggi navbar berubah */}
-          {children}
-        </main>
+        <main className="pt-[72px]">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
