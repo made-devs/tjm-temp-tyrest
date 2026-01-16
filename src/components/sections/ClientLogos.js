@@ -1,63 +1,57 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// Daftarkan plugin ScrollTrigger sekali saja saat modul di-load
-gsap.registerPlugin(ScrollTrigger);
+import Marquee from 'react-fast-marquee';
 
 const logos = [
+  'thei',
+  'motozone',
+  'undercarriage',
+  'detailing',
+  'naga',
   'logo-blissful',
   'logo-express',
   'logo-lawfirm',
-  'logo-pasticuan',
   'logo-vip',
+  '77performance',
 ];
 
 export default function ClientLogos() {
-  const containerRef = useRef(null);
-
-  useGSAP(
-    () => {
-      // Animasikan setiap logo saat section masuk ke viewport
-      gsap.from('.client-logo', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%', // Mulai animasi saat 80% bagian atas container terlihat
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        ease: 'power2.out',
-        stagger: 0.15, // Beri jeda antar animasi logo
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
-    <section className="bg-black py-16" ref={containerRef}>
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8">
+    <section className="bg-black py-20 relative overflow-hidden">
+      {/* Container header optional */}
+      <div className="container mx-auto px-4 mb-10 text-center">
+        <p className="text-white/40 text-sm font-medium tracking-[0.2em] uppercase">
+          Subsidiaries of TJM Group
+        </p>
+      </div>
+
+      <div className="relative flex w-full">
+        {/* Gradient Overlay Kiri & Kanan untuk efek fade yang halus */}
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 md:w-40 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 md:w-40 bg-gradient-to-l from-black via-black/80 to-transparent" />
+
+        <Marquee
+          gradient={false}
+          speed={40}
+          pauseOnHover={true}
+          autoFill={true} // Memastikan marquee terisi penuh walau logo sedikit
+        >
           {logos.map((logoName) => (
             <div
               key={logoName}
-              className="client-logo relative h-12 w-40"
-              // State awal diatur via GSAP, jadi tidak perlu inline style
+              className="relative mx-8 md:mx-14 h-14 w-32 md:h-16 md:w-40 transition-all duration-300 cursor-pointer"
             >
               <Image
                 src={`/logo/${logoName}.webp`}
                 alt={`Logo ${logoName}`}
                 fill
-                className="object-contain opacity-75 transition-opacity duration-300 hover:opacity-100"
+                sizes="(max-width: 768px) 128px, 160px"
+                className="object-contain"
               />
             </div>
           ))}
-        </div>
+        </Marquee>
       </div>
     </section>
   );

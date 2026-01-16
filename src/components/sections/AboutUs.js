@@ -165,12 +165,6 @@ export default function AboutUs() {
                 modern, kami memastikan setiap kendaraan mendapatkan penanganan
                 presisi dan hasil yang memuaskan.
               </p>
-              <Link
-                href="/tentang-kami"
-                className="inline-block mt-8 bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
-              >
-                Selengkapnya
-              </Link>
             </div>
           </div>
         </div>
@@ -179,7 +173,7 @@ export default function AboutUs() {
         <div className="stats-grid grid grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
           <StatItem value="100.000+" label="Pelanggan Puas" icon={Users} />
           <StatItem value="15+" label="Tahun Pengalaman" icon={Calendar} />
-          <StatItem value="26" label="Cabang di Indonesia" icon={MapPin} />
+          <StatItem value="28" label="Cabang di Indonesia" icon={MapPin} />
           <StatItem value="50+" label="Jenis Layanan" icon={Wrench} />
         </div>
       </div>
