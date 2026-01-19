@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { X, ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react';
-import { galleryTabs, galleryImages } from '@/data/galleryData'; // Impor data baru
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import SectionHeader from '@/components/SectionHeader';
+import { useState, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { X, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
+import { galleryTabs, galleryImages } from "@/data/galleryData"; // Impor data baru
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function GalleryPage() {
   const [activeTab, setActiveTab] = useState(galleryTabs[0].id);
@@ -16,7 +16,7 @@ export default function GalleryPage() {
   const mainRef = useRef(null);
 
   const filteredImages = galleryImages.filter(
-    (image) => image.category === activeTab
+    (image) => image.category === activeTab,
   );
 
   const openLightbox = (index) => {
@@ -32,21 +32,21 @@ export default function GalleryPage() {
 
   const goToPrev = () => {
     setCurrentLightboxIndex(
-      (prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length
+      (prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length,
     );
   };
 
   useGSAP(
     () => {
-      gsap.from('.gallery-item', {
+      gsap.from(".gallery-item", {
         opacity: 0,
         scale: 0.9,
         duration: 0.5,
-        ease: 'power3.out',
+        ease: "power3.out",
         stagger: 0.05,
       });
     },
-    { scope: mainRef, dependencies: [activeTab] }
+    { scope: mainRef, dependencies: [activeTab] },
   );
 
   return (
@@ -94,8 +94,8 @@ export default function GalleryPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`font-jakarta font-bold text-xs md:text-sm px-4 py-2.5 transition-colors duration-300 ${
                   activeTab === tab.id
-                    ? 'bg-red-600 text-white'
-                    : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                    ? "bg-red-600 text-white"
+                    : "bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800"
                 }`}
               >
                 {tab.name}
@@ -118,11 +118,6 @@ export default function GalleryPage() {
                   height={800}
                   className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-white font-jakarta text-center p-4">
-                    {item.alt}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
