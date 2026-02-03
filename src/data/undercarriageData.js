@@ -2,16 +2,16 @@ export const undercarriageData = [
   {
     slug: 'paket-combo-pasti-hemat',
     href: '/layanan/paket-combo-pasti-hemat',
-    title: 'Paket Combo Pasti Hemat',
+    title: 'Paket Combo Pasti Hemat (Spesialis Kaki-Kaki & Anti Karat)',
     description:
-      'Paket combo lengkap anti karat dan restorasi kolong dengan detailing kolong mobil, carwash kolong, scrape karat, perlindungan rust, engine detailing, dan inspeksi lengkap dengan harga promo terjangkau.',
+      'Solusi bengkel kaki-kaki mobil dan anti karat dalam satu paket. Mengatasi bunyi gluduk-gluduk dengan inspeksi 25 titik, scrape karat, dan perlindungan rust protection bergaransi.',
     image: '/services/paketcombo1.webp',
     details:
-      'Solusi perlindungan kolong dan anti karat profesional dengan paket combo pasti hemat, mencakup detailing kolong mobil, pembersihan dan proteksi rust, scrape karat, serta layanan inspeksi dan maintenance lengkap dengan teknologi terkini.',
+      'TJM Auto Care menghadirkan paket Combo Pasti Hemat sebagai solusi total bengkel kaki-kaki dan perlindungan kolong mobil. Paket ini menggabungkan pengecekan detail sistem suspensi untuk menghilangkan bunyi gluduk serta proteksi anti karat untuk menjaga integritas sasis kendaraan Anda.',
     variants: [
       {
         slug: 'paket-combo-anti-karat-basic',
-        title: 'Paket Combo Anti Karat + Restorasi Kolong',
+        title: 'Paket Combo Kaki-Kaki + Restorasi Kolong',
         description:
           'Paket combo dasar dengan detailing kolong mobil, carwash kolong, scrape karat kolong, anti karat rust protection area kolong-doortrim-inner fender, engine detailing, dan inspeksi lengkap.',
         image: '/services/undercarriage/undercarriage1.webp',
@@ -34,7 +34,7 @@ export const undercarriageData = [
           {
             title: 'Inspeksi Kaki-Kaki 25 Titik & AC 20 Titik',
             description:
-              'Pemeriksaan menyeluruh komponen kaki-kaki dan sistem AC untuk keamanan optimal.',
+              'Pemeriksaan menyeluruh komponen kaki-kaki (shockbreaker, rack steer, tie rod) dan sistem AC untuk keamanan optimal.',
           },
           {
             title: 'Fogging AC Mobil',
@@ -48,7 +48,7 @@ export const undercarriageData = [
   {
     slug: 'paket-super-hemat-undercarriage',
     href: '/layanan/paket-super-hemat-undercarriage',
-    title: 'Paket Super Hemat',
+    title: 'Paket Super Hemat (Service Kaki-Kaki & Sterilisasi)',
     description:
       'Paket super hemat dengan vaporizer steamer UAP komplit untuk pembersihan dan sterilisasi interior, eksterior, AC mobil, dan engine bay dengan teknologi steam terkini.',
     image: '/services/undercarriage/undercarriage2.webp',
@@ -131,12 +131,12 @@ export const undercarriageData = [
   {
     slug: 'paket-triple-combo-undercarriage',
     href: '/layanan/paket-triple-combo-undercarriage',
-    title: 'Paket Triple Combo',
+    title: 'Paket Triple Combo (Bengkel Spesialis Kaki-Kaki & Anti Karat)',
     description:
-      'Paket triple combo lengkap dengan anti karat, restorasi kolong, dan undercarriage detailing carwash untuk hasil pembersihan dan perlindungan maksimal.',
+      'Perawatan kasta tertinggi untuk kaki-kaki mobil Anda. Restorasi kolong total, anti karat premium, undercarriage detailing, hingga nano ceramic coating untuk proteksi maksimal.',
     image: '/services/undercarriage/undercarriage5.webp',
     details:
-      'Solusi pembersihan dan perlindungan triple combo mencakup undercarriage detailing carwash, scrape karat, rust protection, vaporizer steam UAP, engine detailing, interior dan eksterior detailing lengkap dengan teknologi terkini untuk hasil sempurna.',
+      'Paket Triple Combo adalah layanan flagship di bengkel spesialis kaki-kaki TJM Auto Care. Mencakup perbaikan mendalam, pembersihan uap vaporizer, hingga perlindungan keramik sasis untuk memastikan mobil senyap, nyaman, dan bebas karat dalam jangka panjang.',
     variants: [
       {
         slug: 'paket-triple-combo-1',

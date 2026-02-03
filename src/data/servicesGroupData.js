@@ -39,7 +39,8 @@ export const serviceGroups = [
         slug: "paket-kaki-kaki",
         href: "/layanan/paket-kaki-kaki",
         title: "Paket Kaki-Kaki",
-        description: "93 layanan kaki-kaki mobil terlengkap & termurah.",
+        description:
+          "Solusi bunyi gluduk-gluduk & perbaikan kaki-kaki mobil bergaransi.",
         image: "/services/autocare/kaki1.webp",
       },
       {

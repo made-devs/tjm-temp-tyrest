@@ -1,36 +1,36 @@
 // Tandai komponen ini sebagai Client Component
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Star, Loader2, Cog, ChevronRight } from 'lucide-react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Star, Loader2, Cog, ChevronRight } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 // --- Client Component untuk Tampilan Detail ---
 export default function ServiceDetailClient({ service }) {
   const [activeVariant, setActiveVariant] = useState(
-    service?.variants ? service.variants[0] : null
+    service?.variants ? service.variants[0] : null,
   );
   const [isLoadingImage, setIsLoadingImage] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const mainRef = useRef(null);
-  const whatsappNumber = '6285169576890';
+  const whatsappNumber = "6285169576890";
 
   // Animasi saat komponen pertama kali dimuat
   useGSAP(
     () => {
-      gsap.from('.page-element', {
+      gsap.from(".page-element", {
         opacity: 0,
         y: 30,
         duration: 0.8,
-        ease: 'power2.out',
+        ease: "power2.out",
         stagger: 0.2,
       });
     },
-    { scope: mainRef }
+    { scope: mainRef },
   );
 
   // Handler untuk mengganti varian dengan animasi
@@ -116,8 +116,8 @@ export default function ServiceDetailClient({ service }) {
                           onClick={() => handleVariantChange(variant)}
                           className={`font-jakarta font-bold text-sm px-6 py-3 whitespace-nowrap transition-colors duration-300 ${
                             activeVariant.slug === variant.slug
-                              ? 'bg-red-600 text-white'
-                              : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                              ? "bg-red-600 text-white"
+                              : "bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800"
                           }`}
                         >
                           {variant.title}
@@ -133,8 +133,8 @@ export default function ServiceDetailClient({ service }) {
                         onClick={() => handleVariantChange(variant)}
                         className={`font-jakarta font-bold text-sm px-6 py-3 whitespace-nowrap transition-colors duration-300 ${
                           activeVariant.slug === variant.slug
-                            ? 'bg-red-600 text-white'
-                            : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                            ? "bg-red-600 text-white"
+                            : "bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800"
                         }`}
                       >
                         {variant.title}
@@ -147,8 +147,8 @@ export default function ServiceDetailClient({ service }) {
                   <div
                     className={`relative aspect-square transition-all duration-300 ${
                       isTransitioning
-                        ? 'opacity-0 blur-sm'
-                        : 'opacity-100 blur-0'
+                        ? "opacity-0 blur-sm"
+                        : "opacity-100 blur-0"
                     }`}
                   >
                     <div className="relative aspect-square bg-gray-900">
@@ -163,7 +163,7 @@ export default function ServiceDetailClient({ service }) {
                         alt={activeVariant.title}
                         fill
                         className={`object-cover transition-opacity duration-500 ${
-                          isLoadingImage ? 'opacity-0' : 'opacity-100'
+                          isLoadingImage ? "opacity-0" : "opacity-100"
                         }`}
                         onLoad={() => setIsLoadingImage(false)}
                       />
@@ -173,15 +173,15 @@ export default function ServiceDetailClient({ service }) {
                   <div
                     className={`transition-all duration-300 ${
                       isTransitioning
-                        ? 'opacity-0 blur-sm'
-                        : 'opacity-100 blur-0'
+                        ? "opacity-0 blur-sm"
+                        : "opacity-100 blur-0"
                     }`}
                   >
                     <div className="flex items-center gap-2">
                       <Cog
                         size={16}
                         className="text-red-500 animate-spin"
-                        style={{ animationDuration: '5s' }}
+                        style={{ animationDuration: "5s" }}
                       />
                       <p className="font-jakarta text-sm font-bold uppercase tracking-widest text-red-500">
                         VARIAN PAKET
@@ -232,7 +232,7 @@ export default function ServiceDetailClient({ service }) {
                 </p>
                 <a
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-                    `Halo TJM Auto Care!\n\nSaya ingin memesan paket:\n*${service.title}*\n\nMohon informasi lebih lanjut dan harga terbaik.\nTerima kasih!`
+                    `Halo TJM Auto Care!\n\nSaya ingin memesan paket:\n*${service.title}*\n\nMohon informasi lebih lanjut dan harga terbaik.\nTerima kasih!`,
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -248,6 +248,91 @@ export default function ServiceDetailClient({ service }) {
           )}
         </div>
       </section>
+
+      <ServiceFAQ slug={service.slug} />
     </main>
   );
 }
+
+const ServiceFAQ = ({ slug }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  // FAQ hanya tampil untuk kategori kaki-kaki
+  if (!slug.includes("kaki-kaki") && !slug.includes("undercarriage"))
+    return null;
+
+  const faqs = [
+    {
+      question: "Di mana bengkel kaki-kaki mobil terdekat yang bagus?",
+      answer:
+        "TJM Auto Care adalah spesialis bengkel kaki-kaki mobil yang memiliki cabang di berbagai kota seperti Jakarta, Tangerang, dan Bekasi. Kami menawarkan pengecekan yang detil dan garansi resmi.",
+    },
+    {
+      question: "Apa saja gejala kaki-kaki mobil rusak?",
+      answer:
+        "Gejala umum meliputi bunyi gluduk-gluduk saat melewati jalan rusak, setir bergetar, ban aus tidak rata, serta mobil terasa limbung pada kecepatan tinggi.",
+    },
+    {
+      question: "Berapa biaya perbaikan kaki-kaki mobil?",
+      answer:
+        "Biaya perbaikan bervariasi tergantung jenis kerusakan. Kami menyediakan paket servis kaki-kaki mulai dari rekondisi shockbreaker hingga penggantian rack steer dengan harga kompetitif.",
+    },
+  ];
+
+  return (
+    <section className="py-16 bg-black border-t border-gray-800">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold font-teko uppercase tracking-wider text-white">
+            Pertanyaan Umum{" "}
+            <span className="text-red-600">Seputar Kaki-Kaki</span>
+          </h2>
+          <div className="w-20 h-1 bg-red-600 mx-auto mt-2"></div>
+        </div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="border border-gray-800 rounded-xl bg-[#111] shadow-sm overflow-hidden transition-all duration-300"
+            >
+              <button
+                className="w-full text-left p-5 focus:outline-none flex justify-between items-center hover:bg-gray-900 transition-colors"
+                onClick={() =>
+                  setActiveIndex(activeIndex === index ? null : index)
+                }
+              >
+                <span className="font-bold text-gray-200 pr-4">
+                  {faq.question}
+                </span>
+                <span
+                  className={`text-red-600 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""}`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${activeIndex === index ? "max-h-96" : "max-h-0"}`}
+              >
+                <div className="p-5 border-t border-gray-800 text-gray-400 leading-relaxed bg-[#0a0a0a]">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

@@ -1,54 +1,36 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Calendar, ChevronRight, Clock } from 'lucide-react';
+import { client } from "@/lib/contentful";
+import Link from "next/link";
+import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 
-// Fungsi untuk mengambil semua data post dari file markdown
-const getPosts = () => {
-  const postsDirectory = path.join(process.cwd(), 'posts');
-  // Filter untuk memastikan hanya file .md yang dibaca
-  const fileNames = fs
-    .readdirSync(postsDirectory)
-    .filter((file) => file.endsWith('.md'));
-
-  const allPostsData = fileNames.map((fileName) => {
-    // Hapus .md dari nama file untuk jadi slug
-    const slug = fileName.replace(/\.md$/, '');
-
-    // Baca file markdown sebagai string
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    // Gunakan gray-matter untuk mem-parsing metadata post
-    const matterResult = matter(fileContents);
-
-    return {
-      slug,
-      ...matterResult.data,
-    };
-  });
-
-  // Urutkan post berdasarkan tanggal, dari yang terbaru
-  return allPostsData.sort((a, b) => {
-    if (new Date(a.date) < new Date(b.date)) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+export const metadata = {
+  title: "Blog & Artikel Perawatan Kaki-Kaki Mobil | TJM Auto Care",
+  description:
+    "Baca tips dan artikel terbaru seputar bengkel kaki-kaki, perawatan mobil, dan informasi promo dari TJM Auto Care.",
 };
 
-export default function BlogPage() {
-  const posts = getPosts();
+async function getPosts() {
+  try {
+    const response = await client.getEntries({
+      content_type: "tjmBlog",
+      order: "-fields.date", // Urutkan dari tanggal terbaru
+    });
+    return response.items;
+  } catch (error) {
+    console.error("Error fetching posts from Contentful:", error);
+    return [];
+  }
+}
+
+export default async function BlogPage() {
+  const posts = await getPosts();
 
   return (
     <main className="bg-black text-white">
       {/* Hero Section */}
       <section className="relative h-[30vh] flex items-center justify-center text-center text-white p-8">
         <Image
-          src="/hero.webp" // Ganti dengan gambar header yang sesuai
+          src="/hero.webp"
           alt="Blog TJM Auto Care"
           fill
           className="object-cover z-0"
@@ -73,46 +55,53 @@ export default function BlogPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group block bg-[#111] border border-gray-800 hover:border-red-500/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-red-500/20"
-              >
-                <div className="relative aspect-video bg-gray-900 overflow-hidden">
-                  {/* Tampilkan gambar hanya jika post.cover_image ada */}
-                  {post.cover_image && (
-                    <Image
-                      src={post.cover_image}
-                      alt={post.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"
-                    />
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-xs text-gray-400 font-jakarta">
-                    <Calendar size={14} />
-                    <span>
-                      {new Date(post.date).toLocaleDateString('id-ID', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </span>
+            {posts.length > 0 ? (
+              posts.map((post) => (
+                <Link
+                  key={post.sys.id}
+                  href={`/blog/${post.fields.slug}`}
+                  className="group block bg-[#111] border border-gray-800 hover:border-red-500/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-red-500/20"
+                >
+                  <div className="relative aspect-video bg-gray-900 overflow-hidden">
+                    {post.fields.featuredImage && (
+                      <Image
+                        src={`https:${post.fields.featuredImage.fields.file.url}`}
+                        alt={post.fields.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"
+                      />
+                    )}
                   </div>
-                  <h3 className="font-teko text-2xl font-medium uppercase mt-3 group-hover:text-red-500 transition-colors duration-300">
-                    {post.title}
-                  </h3>
-                  <p className="font-jakarta text-sm text-gray-400 mt-2 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="font-jakarta text-sm font-bold text-red-500 mt-4 inline-block">
-                    Baca Selengkapnya →
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-xs text-gray-400 font-jakarta">
+                      <span>
+                        {new Date(post.fields.date).toLocaleDateString(
+                          "id-ID",
+                          {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          },
+                        )}
+                      </span>
+                    </div>
+                    <h3 className="font-teko text-2xl font-medium uppercase mt-3 group-hover:text-red-500 transition-colors duration-300 line-clamp-2">
+                      {post.fields.title}
+                    </h3>
+                    <p className="font-jakarta text-sm text-gray-400 mt-2 leading-relaxed line-clamp-3">
+                      {post.fields.summary}
+                    </p>
+                    <div className="font-jakarta text-sm font-bold text-red-500 mt-4 inline-block">
+                      Baca Selengkapnya →
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-400">Belum ada artikel tersedia.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>

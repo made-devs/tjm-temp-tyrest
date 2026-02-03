@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function Hero() {
   const heroContentRef = useRef(null);
 
   useGSAP(
     () => {
-      gsap.from('.hero-element', {
+      gsap.from(".hero-element", {
         opacity: 0,
-        filter: 'blur(10px)',
+        filter: "blur(10px)",
         scale: 0.9,
         y: 20,
         duration: 0.8,
-        ease: 'power2.out',
+        ease: "power2.out",
         stagger: 0.2,
       });
     },
-    { scope: heroContentRef }
+    { scope: heroContentRef },
   );
 
   return (
@@ -29,9 +29,10 @@ export default function Hero() {
       <Image
         src="/hero.webp"
         alt="Mekanik TJM Auto Care sedang bekerja"
+        priority
         fill
         className="object-cover z-0"
-        priority
+        sizes="100vw"
       />
       <div className="absolute inset-0 bg-black/60 z-10" />
 
@@ -51,18 +52,31 @@ export default function Hero() {
             </h1>
 
             <p className="hero-element font-jakarta text-gray-300 mt-4 max-w-lg">
-              Dari Kaki-Kaki, Suspensi, Rack Steer, Anti Karat, Detailing &
-              Coating, Quick Service hingga mesin Diesel, kami menangani setiap
-              masalah dengan detail dan keahlian. Percayakan kendaraan Anda pada
-              mekanik berpengalaman kami.
+              Spesialis {""}
+              <Link
+                href="/layanan/paket-kaki-kaki"
+                className="text-red-500 hover:text-white transition-colors duration-300 font-bold underline decoration-red-500/50"
+              >
+                Bengkel Kaki-Kaki
+              </Link>
+              , Suspensi, Rack Steer, Anti Karat, Detailing & Coating, Quick
+              Service hingga mesin Diesel, kami menangani setiap masalah dengan
+              detail dan keahlian. Percayakan kendaraan Anda pada mekanik
+              berpengalaman kami.
             </p>
 
-            <div className="hero-element mt-8">
+            <div className="hero-element mt-8 flex flex-wrap gap-4">
               <Link
-                href="/layanan"
+                href="/layanan/paket-kaki-kaki"
                 className="inline-block bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
               >
-                Lihat Layanan Kami
+                Spesialis Kaki-Kaki
+              </Link>
+              <Link
+                href="/layanan"
+                className="inline-block border border-white text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:-translate-y-1"
+              >
+                Semua Layanan
               </Link>
             </div>
           </div>

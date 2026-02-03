@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useRef, useEffect, useCallback, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link'; // Import Link component
+import { useRef, useEffect, useCallback, useState } from "react";
+import Image from "next/image";
+import Link from "next/link"; // Import Link component
 import {
   Cog,
   ArrowRight,
   ChevronLeft,
   ChevronRight,
   MoveRight,
-} from 'lucide-react';
-import useEmblaCarousel from 'embla-carousel-react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { servicesData } from '@/data/servicesData';
+} from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { servicesData } from "@/data/servicesData";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,11 +22,11 @@ gsap.registerPlugin(ScrollTrigger);
 const useIsMobile = (breakpoint = 1024) => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const checkScreenSize = () => setIsMobile(window.innerWidth < breakpoint);
       checkScreenSize();
-      window.addEventListener('resize', checkScreenSize);
-      return () => window.removeEventListener('resize', checkScreenSize);
+      window.addEventListener("resize", checkScreenSize);
+      return () => window.removeEventListener("resize", checkScreenSize);
     }
   }, [breakpoint]);
   return isMobile;
@@ -63,7 +63,7 @@ const ServiceCard = ({ service }) => (
 
 export default function Services() {
   const sectionRef = useRef(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
 
   const [activeIndex, setActiveIndex] = useState(null);
   const isMobile = useIsMobile();
@@ -73,11 +73,11 @@ export default function Services() {
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
+    [emblaApi],
   );
   const scrollNext = useCallback(
     () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
+    [emblaApi],
   );
 
   const handleCardClick = (index) => {
@@ -90,30 +90,30 @@ export default function Services() {
       setPrevBtnDisabled(!emblaApi.canScrollPrev());
       setNextBtnDisabled(!emblaApi.canScrollNext());
     };
-    emblaApi.on('select', onSelect);
+    emblaApi.on("select", onSelect);
     onSelect();
-    return () => emblaApi.off('select', onSelect);
+    return () => emblaApi.off("select", onSelect);
   }, [emblaApi]);
 
   useGSAP(
     () => {
-      gsap.from('.service-header-element', {
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
+      gsap.from(".service-header-element", {
+        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
         opacity: 0,
         y: 30,
         stagger: 0.15,
         duration: 0.6,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
-      gsap.from('.services-slider', {
-        scrollTrigger: { trigger: '.services-slider', start: 'top 85%' },
+      gsap.from(".services-slider", {
+        scrollTrigger: { trigger: ".services-slider", start: "top 85%" },
         opacity: 0,
         y: 50,
         duration: 0.8,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -130,7 +130,7 @@ export default function Services() {
             <Cog
               size={20}
               className="text-red-500 animate-spin"
-              style={{ animationDuration: '5s' }}
+              style={{ animationDuration: "5s" }}
             />
             <p className="font-jakarta text-sm font-bold uppercase tracking-widest text-red-500">
               Paket Layanan TJM
@@ -138,12 +138,14 @@ export default function Services() {
           </div>
           <div className="service-header-element flex justify-center items-center gap-4 mt-2">
             <h2 className="font-teko text-5xl font-medium uppercase">
-              Pilihan Paket Servis <span className="text-red-500">Terbaik</span>
+              Bengkel Kaki-Kaki Mobil{" "}
+              <span className="text-red-500">Spesialis & Bergaransi</span>
             </h2>
           </div>
           <p className="service-header-element font-jakarta text-gray-400 max-w-2xl mx-auto mt-2">
-            Kami menawarkan berbagai paket layanan yang dirancang untuk memenuhi
-            semua kebutuhan perawatan mobil Anda.
+            Pusat perbaikan kaki-kaki mobil profesional. Ahli dalam rekondisi
+            rack steer, shockbreaker, dan tie rod untuk kenyamanan berkendara
+            maksimal tanpa bunyi gluduk-gluduk.
           </p>
         </div>
       </div>
@@ -165,7 +167,7 @@ export default function Services() {
                 {servicesData.map((service, index) => (
                   <div
                     className={`embla__slide group py-4 ${
-                      index === activeIndex ? 'is-active' : ''
+                      index === activeIndex ? "is-active" : ""
                     }`}
                     key={index}
                     onClick={() => isMobile && handleCardClick(index)}
