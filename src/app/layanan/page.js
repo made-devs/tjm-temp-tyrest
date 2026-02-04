@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useRef, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight, ChevronRight } from 'lucide-react';
-import { serviceGroups } from '@/data/servicesGroupData'; // Perbaikan import
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionHeader from '@/components/SectionHeader';
+import { useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { serviceGroups } from "@/data/servicesGroupData"; // Perbaikan import
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SectionHeader from "@/components/SectionHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,7 +30,7 @@ const ServiceCard = ({ service }) => {
       <div className="absolute bottom-0 left-0 w-full p-6 text-white">
         <div
           className={`transition-transform duration-500 ease-in-out ${
-            isExpanded ? '-translate-y-8' : ''
+            isExpanded ? "-translate-y-8" : ""
           } md:group-hover:-translate-y-8`}
         >
           <h3 className="font-teko text-3xl font-medium uppercase">
@@ -45,7 +45,7 @@ const ServiceCard = ({ service }) => {
           onClick={(e) => e.stopPropagation()}
           className={`absolute left-6 bottom-6 flex items-center gap-2 font-jakarta text-sm font-bold text-red-500 
           ${
-            isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            isExpanded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }
           md:opacity-0 md:translate-y-4
           transition-all duration-500 ease-in-out 
@@ -66,16 +66,16 @@ export default function ServicesPage() {
 
   useGSAP(
     () => {
-      gsap.from('.service-card-wrapper', {
+      gsap.from(".service-card-wrapper", {
         key: activeTab, // Animasikan ulang saat tab berubah
         opacity: 0,
         y: 50,
         stagger: 0.1,
         duration: 0.8,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     },
-    { scope: pageRef, dependencies: [activeTab] } // Re-run a
+    { scope: pageRef, dependencies: [activeTab] }, // Re-run a
   );
 
   return (
@@ -84,15 +84,16 @@ export default function ServicesPage() {
       <section className="relative h-[30vh] flex items-center justify-center text-center text-white p-8">
         <Image
           src="/services/service5.webp"
-          alt="Layanan TJM Auto Care"
+          alt="Layanan Bengkel Kaki-Kaki TJM Auto Care"
           fill
           className="object-cover z-0"
           priority
         />
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20">
-          <h1 className="font-teko text-4xl md:text-5xl font-medium uppercase">
-            Layanan
+          <h1 className="font-teko text-4xl md:text-5xl font-medium uppercase leading-tight">
+            Layanan Bengkel <br />{" "}
+            <span className="text-red-500">Kaki-Kaki & Umum</span>
           </h1>
           <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2">
             <Link href="/" className="text-gray-300 hover:text-red-500">
@@ -125,8 +126,8 @@ export default function ServicesPage() {
                     onClick={() => setActiveTab(index)}
                     className={`font-jakarta font-bold text-sm px-6 py-3 whitespace-nowrap transition-colors duration-300 ${
                       activeTab === index
-                        ? 'bg-red-600 text-white'
-                        : 'bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800'
+                        ? "bg-red-600 text-white"
+                        : "bg-[#111] border border-gray-800 text-gray-300 hover:bg-gray-800"
                     }`}
                   >
                     {group.brand}

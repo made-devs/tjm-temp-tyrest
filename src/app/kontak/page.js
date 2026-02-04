@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useRef, useState, useEffect, Suspense } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useRef, useState, useEffect, Suspense } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Phone,
   Mail,
@@ -10,29 +10,29 @@ import {
   Clock,
   ChevronDown,
   MessageSquare,
-} from 'lucide-react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import LocationCarousel from '@/components/LocationCarousel';
-import { servicesData } from '@/data/servicesData';
-import { useSearchParams } from 'next/navigation';
-import SectionHeader from '@/components/SectionHeader';
+} from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import LocationCarousel from "@/components/LocationCarousel";
+import { servicesData } from "@/data/servicesData";
+import { useSearchParams } from "next/navigation";
+import SectionHeader from "@/components/SectionHeader";
 
 const faqData = [
   {
-    question: 'Apakah bisa booking servis via telepon?',
+    question: "Apakah bisa booking servis via telepon?",
     answer:
-      'Tentu saja. Anda bisa menghubungi kami di nomor yang tertera untuk membuat janji temu agar tidak perlu mengantri.',
+      "Tentu saja. Anda bisa menghubungi kami di nomor yang tertera untuk membuat janji temu agar tidak perlu mengantri.",
   },
   {
-    question: 'Berapa lama pengerjaan nano ceramic coating?',
+    question: "Berapa lama pengerjaan nano ceramic coating?",
     answer:
-      'Estimasi pengerjaan untuk paket nano ceramic coating lengkap biasanya memakan waktu 2-3 hari kerja, tergantung kondisi awal kendaraan.',
+      "Estimasi pengerjaan untuk paket nano ceramic coating lengkap biasanya memakan waktu 2-3 hari kerja, tergantung kondisi awal kendaraan.",
   },
   {
-    question: 'Apakah ada garansi untuk layanan coating?',
+    question: "Apakah ada garansi untuk layanan coating?",
     answer:
-      'Ya, kami memberikan garansi resmi hingga 2 tahun untuk layanan nano ceramic coating, dengan syarat dan ketentuan perawatan rutin.',
+      "Ya, kami memberikan garansi resmi hingga 2 tahun untuk layanan nano ceramic coating, dengan syarat dan ketentuan perawatan rutin.",
   },
 ];
 
@@ -40,10 +40,10 @@ const faqData = [
 function ContactForm() {
   const formRef = useRef(null);
   const [formData, setFormData] = useState({
-    name: '',
-    carType: '',
-    selectedPackage: '',
-    message: '',
+    name: "",
+    carType: "",
+    selectedPackage: "",
+    message: "",
   });
 
   const searchParams = useSearchParams();
@@ -55,20 +55,20 @@ function ContactForm() {
         opacity: 0,
         y: 40,
         duration: 0.8,
-        ease: 'power3.out',
+        ease: "power3.out",
       });
     },
-    { scope: formRef }
+    { scope: formRef },
   );
 
   useEffect(() => {
-    const selectedPkgSlug = searchParams.get('paket');
+    const selectedPkgSlug = searchParams.get("paket");
     if (selectedPkgSlug) {
       let matchedPackage = null;
       servicesData.forEach((service) => {
         if (service.variants) {
           const foundVariant = service.variants.find(
-            (variant) => variant.slug === selectedPkgSlug
+            (variant) => variant.slug === selectedPkgSlug,
           );
           if (foundVariant) {
             matchedPackage = foundVariant;
@@ -92,16 +92,16 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const adminPhoneNumber = '6285169576890';
+    const adminPhoneNumber = "6285169576890";
     const waMessage = `Halo TJM Auto Care, saya ${formData.name}.
 Tipe Mobil: ${formData.carType}.
-Saya tertarik dengan paket: ${formData.selectedPackage || 'Belum memilih'}.
+Saya tertarik dengan paket: ${formData.selectedPackage || "Belum memilih"}.
 
 Pesan: 
 ${formData.message}`;
     const encodedMessage = encodeURIComponent(waMessage);
     const whatsappUrl = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
@@ -220,15 +220,15 @@ export default function ContactPage() {
   useGSAP(
     () => {
       // Animasi ini sekarang hanya menargetkan elemen di luar form
-      gsap.from('.page-element', {
+      gsap.from(".page-element", {
         opacity: 0,
         y: 40,
         duration: 0.8,
-        ease: 'power3.out',
+        ease: "power3.out",
         stagger: 0.15,
       });
     },
-    { scope: mainRef }
+    { scope: mainRef },
   );
 
   return (
@@ -298,14 +298,14 @@ export default function ContactPage() {
                     <ChevronDown
                       className={`transform transition-transform duration-300 ${
                         openFaq === index
-                          ? 'rotate-180 text-red-500'
-                          : 'text-white'
+                          ? "rotate-180 text-red-500"
+                          : "text-white"
                       }`}
                     />
                   </button>
                   <div
                     className={`transition-all duration-300 ease-in-out ${
-                      openFaq === index ? 'max-h-40' : 'max-h-0'
+                      openFaq === index ? "max-h-40" : "max-h-0"
                     }`}
                   >
                     <p className="font-jakarta text-gray-400 p-5 pt-0">

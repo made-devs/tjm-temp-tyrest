@@ -1,36 +1,36 @@
-'use client';
+"use client";
 
-import { useRef, useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionHeader from '@/components/SectionHeader';
-import { promoCategories } from '@/data/promoAutocare';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import { useRef, useState, useEffect, useCallback } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SectionHeader from "@/components/SectionHeader";
+import { promoCategories } from "@/data/promoAutocare";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function PromoPage() {
   const pageRef = useRef(null);
   const autoplayRef = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true }),
   );
 
   useGSAP(
     () => {
-      gsap.from('.promo-card', {
+      gsap.from(".promo-card", {
         opacity: 0,
         y: 50,
         stagger: 0.1,
         duration: 0.8,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     },
-    { scope: pageRef }
+    { scope: pageRef },
   );
 
   // State untuk kategori
@@ -43,9 +43,9 @@ export default function PromoPage() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
-      align: 'start',
+      align: "start",
     },
-    [autoplayRef.current]
+    [autoplayRef.current],
   );
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -63,7 +63,7 @@ export default function PromoPage() {
     (index) => {
       if (emblaApi) emblaApi.scrollTo(index);
     },
-    [emblaApi]
+    [emblaApi],
   );
 
   const onSelect = useCallback(() => {
@@ -75,8 +75,8 @@ export default function PromoPage() {
     if (!emblaApi) return;
     onSelect();
     setScrollSnaps(emblaApi.scrollSnapList());
-    emblaApi.on('select', onSelect);
-    emblaApi.on('reInit', onSelect);
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
   // Reset carousel jika ganti kategori
@@ -99,10 +99,10 @@ export default function PromoPage() {
   // Close on ESC key
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === "Escape") closeLightbox();
     };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
   return (
@@ -160,8 +160,8 @@ export default function PromoPage() {
                 className={`px-4 py-2 rounded-full font-jakarta text-sm whitespace-nowrap border transition-all duration-200
                   ${
                     activeCategory === idx
-                      ? 'bg-red-600 text-white border-red-600'
-                      : 'bg-[#181818] text-gray-300 border-gray-700 hover:bg-red-900 hover:text-white'
+                      ? "bg-red-600 text-white border-red-600"
+                      : "bg-[#181818] text-gray-300 border-gray-700 hover:bg-red-900 hover:text-white"
                   }
                 `}
               >
@@ -223,8 +223,8 @@ export default function PromoPage() {
                       onClick={() => scrollTo(idx)}
                       className={`h-3 rounded-full transition-all duration-300 ${
                         selectedIndex === idx
-                          ? 'bg-red-600 w-10'
-                          : 'bg-gray-500 hover:bg-gray-400 w-3'
+                          ? "bg-red-600 w-10"
+                          : "bg-gray-500 hover:bg-gray-400 w-3"
                       }`}
                     />
                   ))}
@@ -233,7 +233,7 @@ export default function PromoPage() {
                 <div className="mt-8">
                   <Link
                     href={`https://wa.me/6285169576890?text=${encodeURIComponent(
-                      `Halo, saya tertarik dengan promo dari ${promoCategories[activeCategory].label}. Bisa berikan informasi lebih lanjut tentang penawaran spesial Anda?`
+                      `Halo, saya tertarik dengan promo dari ${promoCategories[activeCategory].label}. Bisa berikan informasi lebih lanjut tentang penawaran spesial Anda?`,
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -275,8 +275,8 @@ export default function PromoPage() {
               className="object-contain"
               priority
               onError={(e) => {
-                console.error('Image failed to load:', lightboxImage.image);
-                e.target.src = '/placeholder.webp'; // Fallback
+                console.error("Image failed to load:", lightboxImage.image);
+                e.target.src = "/placeholder.webp"; // Fallback
               }}
             />
           </div>

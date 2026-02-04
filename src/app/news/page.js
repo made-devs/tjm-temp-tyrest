@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Calendar, ChevronRight, ArrowUpRight } from 'lucide-react';
-import { newsData } from '@/data/newsData'; // Impor data berita yang baru
+import Link from "next/link";
+import Image from "next/image";
+import { Calendar, ChevronRight, ArrowUpRight } from "lucide-react";
+import { newsData } from "@/data/newsData"; // Impor data berita yang baru
 
 // Komponen ini tidak perlu lagi menjadi client component
 export default function NewsPage() {
@@ -78,3 +78,18 @@ export default function NewsPage() {
     </main>
   );
 }
+
+export const metadata = {
+  title: "Berita & Pengumuman | TJM Auto Care",
+  description:
+    "Berita terbaru, pengumuman cabang, dan update layanan dari TJM Auto Care.",
+  keywords: [
+    "berita tjm auto care",
+    "pengumuman bengkel",
+    "update layanan bengkel",
+    "news tjm",
+  ],
+  alternates: {
+    canonical: "https://tjmautocare.id/news",
+  },
+};

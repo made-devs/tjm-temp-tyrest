@@ -10,40 +10,35 @@ function getServiceData(slug) {
 
 // Generate Dynamic Metadata
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const service = servicesData.find((s) => s.slug === slug);
-
-  if (!service) {
-    return {
-      title: "Layanan | TJM Auto Care",
-      description: "Layanan perawatan mobil profesional dari TJM Auto Care.",
-    };
-  }
-
-  const cities = workshopLocations
-    .map((loc) => loc.city)
-    .slice(0, 5)
-    .join(", ");
-
-  if (slug.includes("kaki-kaki") || slug.includes("undercarriage")) {
-    return {
-      title: `Bengkel Kaki Kaki Mobil Terdekat di ${workshopLocations[0].city} & Seluruh Indonesia | TJM Auto Care`,
-      description: `Spesialis perbaikan kaki-kaki mobil di ${cities}, dan kota lainnya. Garansi servis shockbreaker, rack steer, dan tie rod. Hubungi kami sekarang!`,
-      keywords: [
-        "bengkel kaki kaki terdekat",
-        "spesialis kaki kaki mobil",
-        ...workshopLocations.map(
-          (loc) => `bengkel kaki kaki ${loc.city.toLowerCase()}`,
-        ),
-      ],
-    };
-  }
-
+  const { slug } = params;
+  const readable = slug.replace(/-/g, " ");
+  const title = `Layanan ${readable} | TJM Auto Care`;
   return {
-    title: `${service.title}`,
-    description:
-      service.description ||
-      `Layanan ${service.title} terbaik untuk performa mobil Anda.`,
+    title,
+    description: `Detail layanan ${readable} di TJM Auto Care — perbaikan dan servis kaki-kaki mobil profesional.`,
+    keywords: [
+      readable,
+      "bengkel kaki-kaki",
+      `service ${readable}`,
+      "TJM Auto Care",
+    ],
+    openGraph: {
+      title,
+      description: `Layanan ${readable} — TJM Auto Care`,
+      url: `https://tjmautocare.id/layanan/${slug}`,
+      type: "article",
+      images: [
+        {
+          url: `https://tjmautocare.id/og/layanan-${slug}.webp`,
+          width: 1200,
+          height: 630,
+          alt: `${readable} - TJM Auto Care`,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://tjmautocare.id/layanan/${slug}`,
+    },
   };
 }
 

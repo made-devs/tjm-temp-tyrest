@@ -22,7 +22,7 @@ const teko = Teko({
 export const metadata = {
   title: {
     default: "TJM Auto Care | Bengkel Kaki-Kaki & Perawatan Mobil Spesialis",
-    template: "%s | TJM Auto Care",
+    template: "%s",
   },
   description:
     "TJM Auto Care adalah bengkel spesialis kaki-kaki mobil, rack steer, shockbreaker, dan perawatan otomotif profesional dengan garansi terbaik di Indonesia.",
@@ -34,8 +34,36 @@ export const metadata = {
     "tjm auto care",
     "bengkel mobil terdekat",
   ],
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
   themeColor: "#000000",
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "TJM Auto Care",
+  url: "https://tjmautocare.id",
+  logo: "https://tjmautocare.id/logo/logotjm.webp",
+  description: "Bengkel spesialis kaki-kaki mobil terpercaya di Indonesia",
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=100069959570435",
+    "https://www.instagram.com/tjmautocare/",
+    "https://www.tiktok.com/@tjmautocare",
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+6285169576890",
+      contactType: "customer service",
+      areaServed: "ID",
+      availableLanguage: ["Indonesian", "English"],
+    },
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -58,6 +86,13 @@ export default function RootLayout({ children }) {
         <Footer />
         <Analytics />
         <SpeedInsights />
+        {/* JSON-LD Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
       </body>
     </html>
   );

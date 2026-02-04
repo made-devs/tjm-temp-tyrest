@@ -18,7 +18,7 @@ const navLinks = [
       { name: "TJM Peduli", href: "/peduli" },
       { name: "News", href: "/news" },
       { name: "Partnership", href: "/partnership" },
-      { name: "TJM Group", href: "/group" },
+      // { name: "TJM Group", href: "/group" },
     ],
   },
 ];
@@ -149,7 +149,7 @@ export default function Navbar() {
                 <AnimatedNavLink key={link.name} href={link.href}>
                   {link.name}
                 </AnimatedNavLink>
-              )
+              ),
             )}
           </nav>
 
@@ -237,7 +237,7 @@ export default function Navbar() {
                   >
                     {link.name}
                   </Link>
-                )
+                ),
               )}
               <Link
                 href="/kontak"

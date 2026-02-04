@@ -6,7 +6,31 @@ import { ChevronRight } from "lucide-react";
 export const metadata = {
   title: "Blog & Artikel Perawatan Kaki-Kaki Mobil | TJM Auto Care",
   description:
-    "Baca tips dan artikel terbaru seputar bengkel kaki-kaki, perawatan mobil, dan informasi promo dari TJM Auto Care.",
+    "Baca tips dan artikel terbaru seputar bengkel kaki-kaki, perawatan suspensi, dan panduan service mobil.",
+  keywords: [
+    "artikel kaki kaki mobil",
+    "tips perawatan kaki kaki",
+    "blog bengkel mobil",
+    "cara merawat suspensi mobil",
+    "TJM Auto Care",
+  ],
+  openGraph: {
+    title: "Blog & Artikel Perawatan Kaki-Kaki Mobil",
+    description: "Baca tips dan artikel terbaru seputar bengkel kaki-kaki...",
+    url: "https://tjmautocare.id/blog",
+    type: "website",
+    images: [
+      {
+        url: "https://tjmautocare.id/og-image-blog.webp",
+        width: 1200,
+        height: 630,
+        alt: "Blog TJM Auto Care",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "https://tjmautocare.id/blog",
+  },
 };
 
 async function getPosts() {

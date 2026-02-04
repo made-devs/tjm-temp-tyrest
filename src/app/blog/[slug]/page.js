@@ -88,22 +88,32 @@ async function getPost(slug) {
 
 // Generate Metadata untuk SEO
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const post = await getPost(slug);
-
-  if (!post) {
-    return {
-      title: "Artikel Tidak Ditemukan | TJM Auto Care",
-    };
-  }
-
+  const { slug } = params;
+  const title = `${slug.replace(/-/g, " ")} | TJM Auto Care Blog`;
   return {
-    title: `${post.fields.title} | Blog TJM Auto Care`,
-    description: post.fields.summary,
+    title,
+    description: `Artikel: ${slug.replace(/-/g, " ")} — panduan dan tips perawatan mobil.`,
+    keywords: [
+      slug.replace(/-/g, " "),
+      "artikel kaki kaki mobil",
+      "tips perawatan",
+    ],
     openGraph: {
-      images: post.fields.featuredImage
-        ? [`https:${post.fields.featuredImage.fields.file.url}`]
-        : [],
+      title,
+      description: `Artikel: ${slug.replace(/-/g, " ")} — TJM Auto Care`,
+      url: `https://tjmautocare.id/blog/${slug}`,
+      type: "article",
+      images: [
+        {
+          url: `https://tjmautocare.id/og/blog-${slug}.webp`,
+          width: 1200,
+          height: 630,
+          alt: `${slug.replace(/-/g, " ")} - TJM Blog`,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://tjmautocare.id/blog/${slug}`,
     },
   };
 }
@@ -120,7 +130,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }) {
+export default async function BlogPost({ params }) {
   const { slug } = await params;
   const post = await getPost(slug);
 

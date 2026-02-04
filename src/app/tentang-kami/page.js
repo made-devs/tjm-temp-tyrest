@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ShieldCheck, Eye, Handshake, ChevronRight } from 'lucide-react'; // Impor ChevronRight
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import AboutUs from '../../components/sections/AboutUs';
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ShieldCheck, Eye, Handshake, ChevronRight } from "lucide-react"; // Impor ChevronRight
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import AboutUs from "../../components/sections/AboutUs";
 
 // Komponen untuk Halaman Tentang Kami
 export default function TentangKamiPage() {
@@ -15,15 +15,15 @@ export default function TentangKamiPage() {
   // Animasi saat komponen pertama kali dimuat
   useGSAP(
     () => {
-      gsap.from('.page-element', {
+      gsap.from(".page-element", {
         opacity: 0,
         y: 30,
         duration: 0.8,
-        ease: 'power2.out',
+        ease: "power2.out",
         stagger: 0.2,
       });
     },
-    { scope: mainRef }
+    { scope: mainRef },
   );
 
   return (
