@@ -88,7 +88,7 @@ async function getPost(slug) {
 
 // Generate Metadata untuk SEO
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const title = `${slug.replace(/-/g, " ")} | TJM Auto Care Blog`;
   return {
     title,
