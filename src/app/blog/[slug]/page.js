@@ -6,6 +6,12 @@ import { ChevronRight, Calendar, ArrowLeft } from "lucide-react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 
+// TAMBAHAN: data layanan + komponen rekomendasi
+import { servicesData } from "@/data/servicesData";
+import RecommendationCard from "@/components/blog/RecommendationCard";
+
+export const revalidate = 300;
+
 // Konfigurasi styling untuk Rich Text Contentful agar sesuai tema
 const renderOptions = {
   renderNode: {
@@ -44,20 +50,27 @@ const renderOptions = {
         href={node.data.uri}
         className="text-red-500 hover:text-red-400 underline decoration-red-500/30 underline-offset-4 transition-colors"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="nofollow noopener noreferrer"
       >
         {children}
       </a>
     ),
     // Render gambar di dalam konten artikel
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const { title, file } = node.data.target.fields;
+      const fields = node?.data?.target?.fields;
+      const title = fields?.title || "Blog Image";
+      const file = fields?.file;
+      const url = file?.url ? `https:${file.url}` : null;
+
+      if (!url) return null;
+
       return (
         <div className="my-8 relative aspect-video w-full rounded-lg overflow-hidden border border-gray-800">
           <Image
-            src={`https:${file.url}`}
-            alt={title || "Blog Image"}
+            src={url}
+            alt={title}
             fill
+            sizes="(max-width: 768px) 100vw, 768px"
             className="object-cover"
           />
         </div>
@@ -75,45 +88,195 @@ const renderOptions = {
 async function getPost(slug) {
   try {
     const response = await client.getEntries({
-      content_type: "tjmBlog", // Pastikan sesuai Content Model ID
+      content_type: "tjmBlog",
       "fields.slug": slug,
       limit: 1,
     });
-    return response.items[0];
+    return response.items?.[0] ?? null;
   } catch (error) {
     console.error("Error fetching post:", error);
     return null;
   }
 }
 
-// Generate Metadata untuk SEO
+// Helper: ambil plain text dari rich text Contentful (kasar, tapi cukup untuk keyword scoring)
+function richTextToPlain(value) {
+  try {
+    if (!value) return "";
+    return JSON.stringify(value);
+  } catch {
+    return "";
+  }
+}
+
+// HELPER: rekomendasi paket servis berdasarkan konten blog
+function findRelatedServices({ title, summary, content }) {
+  const searchText =
+    `${title || ""} ${summary || ""} ${richTextToPlain(content)}`.toLowerCase();
+
+  const keywords = [
+    // kaki-kaki / suspensi
+    "kaki kaki",
+    "kaki-kaki",
+    "suspensi",
+    "limbung",
+    "bunyi",
+    "gluduk",
+    "bantingan",
+    "lower arm",
+    "bushing",
+    "bushing arm",
+    "ball joint",
+    "tie rod",
+    "long tie rod",
+    "link stabilizer",
+    "bearing",
+    "chamber",
+    "caster",
+
+    // steering / rack steer
+    "steering",
+    "setir",
+    "rack steer",
+    "racksteer",
+    "power steering",
+    "eps",
+
+    // shockbreaker
+    "shock",
+    "shockbreaker",
+    "shock absorber",
+    "bocor",
+
+    // rem / safety
+    "rem",
+    "kampas",
+    "disc",
+    "discbrake",
+    "bleeding",
+    "minyak rem",
+
+    // mesin / tune up
+    "tune up",
+    "gurah",
+    "injector",
+    "injektor",
+    "overhaul",
+    "oli",
+    "radiator",
+    "overheat",
+
+    // AC (kadang paket combo)
+    "ac",
+    "freon",
+    "evaporator",
+    "kondensor",
+  ];
+
+  // token umum (buat menangkap variasi kata)
+  const tokens = searchText
+    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
+    .split(/\s+/)
+    .map((t) => t.trim())
+    .filter((t) => t.length >= 4); // minimal 4 karakter biar nggak noise
+
+  const scored = (servicesData || []).map((service) => {
+    let score = 0;
+
+    const variantText = (service.variants || [])
+      .map((v) => {
+        const detailText = (v.details || [])
+          .map((d) => `${d?.title || ""} ${d?.description || ""}`)
+          .join(" ");
+        return `${v.title || ""} ${v.description || ""} ${detailText}`;
+      })
+      .join(" ");
+
+    const serviceText =
+      `${service.title || ""} ${service.description || ""} ${service.details || ""} ${service.slug || ""} ${variantText}`.toLowerCase();
+
+    // keyword intersection (bobot tinggi)
+    keywords.forEach((kw) => {
+      if (searchText.includes(kw) && serviceText.includes(kw)) score += 12;
+    });
+
+    // token overlap (bobot ringan)
+    // tambah poin kalau token blog sering muncul di serviceText
+    let tokenHits = 0;
+    for (const t of tokens) {
+      if (serviceText.includes(t)) tokenHits += 1;
+      if (tokenHits >= 12) break;
+    }
+    score += Math.min(tokenHits, 12); // limit
+
+    // boost kalau service memang core untuk kaki-kaki
+    const slug = (service.slug || "").toLowerCase();
+    if (searchText.includes("kaki") && slug.includes("kaki")) score += 8;
+    if (searchText.includes("rack") && slug.includes("rack")) score += 6;
+    if (searchText.includes("shock") && slug.includes("shock")) score += 6;
+    if (searchText.includes("steering") && slug.includes("steering"))
+      score += 6;
+
+    return { service, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+
+  const matches = scored.filter((x) => x.score > 0).map((x) => x.service);
+
+  // fallback aman: paket paling relevan (kaki-kaki/steering/shock)
+  if (matches.length === 0) {
+    const fallbackSlugs = new Set([
+      "paket-kaki-kaki",
+      "paket-steering",
+      "paket-shockbreaker",
+      "paket-racksteer-ultimate",
+      "paket-kaki-kaki-racksteer",
+    ]);
+
+    const fallback = (servicesData || []).filter((s) =>
+      fallbackSlugs.has(s.slug),
+    );
+    return fallback.slice(0, 3);
+  }
+
+  // hindari duplikat slug
+  const unique = [];
+  const seen = new Set();
+  for (const s of matches) {
+    if (!s?.slug || seen.has(s.slug)) continue;
+    seen.add(s.slug);
+    unique.push(s);
+    if (unique.length >= 3) break;
+  }
+
+  return unique;
+}
+
+// Generate Metadata untuk SEO (lebih akurat: pakai judul & summary Contentful)
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const title = `${slug.replace(/-/g, " ")} | TJM Auto Care Blog`;
+  const post = await getPost(slug);
+  if (!post) {
+    return {
+      title: "Artikel Tidak Ditemukan | TJM Auto Care",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const { title, summary } = post.fields;
+
   return {
-    title,
-    description: `Artikel: ${slug.replace(/-/g, " ")} — panduan dan tips perawatan mobil.`,
-    keywords: [
-      slug.replace(/-/g, " "),
-      "artikel kaki kaki mobil",
-      "tips perawatan",
-    ],
+    title: `${title} | TJM Auto Care Blog`,
+    description:
+      summary || "Artikel dan tips perawatan mobil dari TJM Auto Care.",
+    alternates: { canonical: `https://tjmautocare.id/blog/${slug}` },
     openGraph: {
-      title,
-      description: `Artikel: ${slug.replace(/-/g, " ")} — TJM Auto Care`,
+      title: `${title} | TJM Auto Care Blog`,
+      description:
+        summary || "Artikel dan tips perawatan mobil dari TJM Auto Care.",
       url: `https://tjmautocare.id/blog/${slug}`,
       type: "article",
-      images: [
-        {
-          url: `https://tjmautocare.id/og/blog-${slug}.webp`,
-          width: 1200,
-          height: 630,
-          alt: `${slug.replace(/-/g, " ")} - TJM Blog`,
-        },
-      ],
-    },
-    alternates: {
-      canonical: `https://tjmautocare.id/blog/${slug}`,
     },
   };
 }
@@ -125,30 +288,31 @@ export async function generateStaticParams() {
     select: "fields.slug",
   });
 
-  return response.items.map((post) => ({
-    slug: post.fields.slug,
-  }));
+  return (response.items || [])
+    .map((post) => post?.fields?.slug)
+    .filter(Boolean)
+    .map((slug) => ({ slug }));
 }
 
 export default async function BlogPost({ params }) {
   const { slug } = await params;
   const post = await getPost(slug);
-
-  if (!post) {
-    notFound();
-  }
+  if (!post) notFound();
 
   const { title, date, featuredImage, content, summary } = post.fields;
+
+  const recommendations = findRelatedServices({ title, summary, content });
 
   return (
     <main className="bg-black text-white min-h-screen pb-20">
       {/* Header / Hero Section Khusus Artikel */}
       <section className="relative h-[50vh] min-h-[400px] w-full">
-        {featuredImage && (
+        {featuredImage?.fields?.file?.url && (
           <Image
             src={`https:${featuredImage.fields.file.url}`}
             alt={title}
             fill
+            sizes="100vw"
             className="object-cover opacity-60"
             priority
           />
@@ -156,7 +320,7 @@ export default async function BlogPost({ params }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 pb-12">
-          <div className="container mx-auto max-w-4xl">
+          <div className="container mx-auto max-w-6xl">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 font-jakarta text-sm text-gray-400 mb-6">
               <Link href="/" className="hover:text-red-500 transition-colors">
@@ -170,60 +334,138 @@ export default async function BlogPost({ params }) {
                 Blog
               </Link>
               <ChevronRight size={14} />
-              <span className="text-white truncate max-w-[200px]">{title}</span>
+              <span className="text-white truncate max-w-[240px]">{title}</span>
             </div>
 
-            <h1 className="font-teko text-4xl md:text-6xl font-medium uppercase leading-tight mb-4 text-white drop-shadow-lg">
+            <h1 className="font-teko text-4xl md:text-6xl font-medium uppercase leading-tight mb-4 text-white drop-shadow-lg max-w-4xl">
               {title}
             </h1>
 
             <div className="flex flex-wrap items-center gap-6 text-sm md:text-base text-gray-300 font-jakarta">
-              <div className="flex items-center gap-2">
-                <Calendar size={18} className="text-red-500" />
-                <span>
-                  {new Date(date).toLocaleDateString("id-ID", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </span>
-              </div>
+              {date && (
+                <div className="flex items-center gap-2">
+                  <Calendar size={18} className="text-red-500" />
+                  <span>
+                    {new Date(date).toLocaleDateString("id-ID", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Konten Artikel */}
-      <article className="container mx-auto px-4 max-w-4xl -mt-8 relative z-10">
-        <div className="bg-[#111] border border-gray-800 p-6 md:p-12 rounded-t-xl shadow-2xl shadow-black">
-          {/* Summary / Lead Paragraph */}
-          {summary && (
-            <p className="text-xl md:text-2xl font-jakarta text-gray-200 mb-10 leading-relaxed font-light border-b border-gray-800 pb-10">
-              {summary}
-            </p>
-          )}
+      {/* Body: konten + sidebar rekomendasi */}
+      <section className="container mx-auto px-4 max-w-6xl -mt-8 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Main article */}
+          <article className="w-full lg:w-3/4">
+            <div className="bg-[#111] border border-gray-800 p-6 md:p-12 rounded-t-xl shadow-2xl shadow-black">
+              {summary && (
+                <p className="text-xl md:text-2xl font-jakarta text-gray-200 mb-10 leading-relaxed font-light border-b border-gray-800 pb-10">
+                  {summary}
+                </p>
+              )}
 
-          {/* Main Content Rendered from Rich Text */}
-          <div className="rich-text-content">
-            {documentToReactComponents(content, renderOptions)}
-          </div>
+              <div className="rich-text-content">
+                {documentToReactComponents(content, renderOptions)}
+              </div>
 
-          {/* Tombol Back */}
-          <div className="mt-16 pt-8 border-t border-gray-800 flex justify-between items-center">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-white hover:text-red-500 transition-colors font-jakarta font-medium group"
-            >
-              <ArrowLeft
-                size={20}
-                className="group-hover:-translate-x-1 transition-transform"
-              />
-              Kembali ke Daftar Artikel
-            </Link>
-          </div>
+              {/* Rekomendasi (mobile) */}
+              {recommendations?.length > 0 && (
+                <div className="mt-14 pt-10 border-t border-gray-800 lg:hidden">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="font-teko text-3xl uppercase text-white">
+                      Solusi Untukmu
+                    </h3>
+                    <Link
+                      href="/layanan"
+                      className="text-sm font-jakarta font-bold text-red-500 hover:text-red-400"
+                    >
+                      Lihat Semua →
+                    </Link>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {recommendations.map((s, idx) => (
+                      <RecommendationCard
+                        key={s.slug}
+                        service={s}
+                        isTopPick={idx === 0}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Tombol Back */}
+              <div className="mt-16 pt-8 border-t border-gray-800 flex justify-between items-center">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 text-white hover:text-red-500 transition-colors font-jakarta font-medium group"
+                >
+                  <ArrowLeft
+                    size={20}
+                    className="group-hover:-translate-x-1 transition-transform"
+                  />
+                  Kembali ke Daftar Artikel
+                </Link>
+              </div>
+            </div>
+          </article>
+
+          {/* Sidebar (desktop) */}
+          <aside className="hidden lg:block w-full lg:w-1/4">
+            <div className="sticky top-28 space-y-6">
+              {recommendations?.length > 0 && (
+                <div className="bg-[#0f0f0f] border border-gray-800 rounded-xl p-5">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="font-teko text-2xl uppercase text-white">
+                      Solusi Untukmu
+                    </h4>
+                    <Link
+                      href="/layanan"
+                      className="text-xs font-jakarta font-bold text-red-500 hover:text-red-400"
+                    >
+                      Semua →
+                    </Link>
+                  </div>
+
+                  <div className="flex flex-col gap-4">
+                    {recommendations.map((s, idx) => (
+                      <RecommendationCard
+                        key={s.slug}
+                        service={s}
+                        isTopPick={idx === 0}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-[#0f0f0f] border border-gray-800 rounded-xl p-5">
+                <p className="font-jakarta text-sm text-gray-300">
+                  Masih bingung pilih paket?
+                </p>
+                <p className="font-jakarta text-xs text-gray-500 mt-1">
+                  Konsultasi dan booking lewat halaman kontak.
+                </p>
+                <Link
+                  href="/kontak"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-red-500 hover:bg-red-400 text-black font-jakarta font-bold text-sm px-4 py-2 transition-colors"
+                >
+                  Konsultasi / Booking
+                </Link>
+              </div>
+            </div>
+          </aside>
         </div>
-      </article>
+      </section>
     </main>
   );
 }
