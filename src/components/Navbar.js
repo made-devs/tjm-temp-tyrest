@@ -11,6 +11,7 @@ const navLinks = [
   { name: "Layanan", href: "/layanan" },
   { name: "Promo", href: "/promo" },
   { name: "Galeri", href: "/galeri" },
+  { name: "Blog", href: "/blog" },
   {
     name: "Tentang TJM",
     children: [

@@ -2,6 +2,7 @@ import { servicesData } from "@/data/servicesData";
 import { workshopLocations } from "@/data/locations";
 import { notFound } from "next/navigation";
 import ServiceDetailClient from "./ServiceDetailClient";
+import ServiceAvailability from "@/components/ServiceAvailability";
 
 // Fungsi untuk mendapatkan data service berdasarkan slug
 function getServiceData(slug) {
@@ -51,6 +52,10 @@ export default async function ServiceDetailPage({ params }) {
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id";
+  const contactPhone =
+    process.env.NEXT_PUBLIC_CONTACT_PHONE || "+6285169576890";
+
   // Schema Markup JSON-LD (Service)
   const jsonLd = {
     "@context": "https://schema.org",
@@ -60,8 +65,8 @@ export default async function ServiceDetailPage({ params }) {
     provider: {
       "@type": "AutoRepair",
       name: "TJM Auto Care",
-      image: "https://tjmautocare.com/logo.png",
-      telephone: "+628123456789",
+      image: `${siteUrl}/logo/logotjm.webp`,
+      telephone: contactPhone,
       address: {
         "@type": "PostalAddress",
         streetAddress: workshopLocations[0].address,
@@ -89,28 +94,23 @@ export default async function ServiceDetailPage({ params }) {
     },
   };
 
-  // Breadcrumb Schema (Step: Breadcrumb Schema)
+  // Breadcrumb Schema
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://tjmautocare.com",
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
       {
         "@type": "ListItem",
         position: 2,
         name: "Layanan",
-        item: "https://tjmautocare.com/layanan",
+        item: `${siteUrl}/layanan`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: service.title,
-        item: `https://tjmautocare.com/layanan/${slug}`,
+        item: `${siteUrl}/layanan/${slug}`,
       },
     ],
   };
@@ -163,7 +163,11 @@ export default async function ServiceDetailPage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
+
       <ServiceDetailClient service={service} />
+
+      {/* Tambahkan Section Availability di sini (Sebelum Footer) */}
+      <ServiceAvailability currentServiceName={service.title} />
     </>
   );
 }
