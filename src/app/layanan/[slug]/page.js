@@ -12,33 +12,73 @@ function getServiceData(slug) {
 // Generate Dynamic Metadata
 export async function generateMetadata({ params }) {
   const { slug } = params;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id";
+  const service = getServiceData(slug);
   const readable = slug.replace(/-/g, " ");
-  const title = `Layanan ${readable} | TJM Auto Care`;
+
+  let title = service?.title
+    ? `${service.title} | TJM Auto Care`
+    : `Layanan ${readable} | TJM Auto Care`;
+  let description = service?.description
+    ? service.description
+    : `Detail layanan ${readable} di TJM Auto Care — perbaikan dan servis kaki-kaki mobil profesional.`;
+  let keywords = [
+    readable,
+    "service kaki kaki mobil",
+    "bengkel kaki kaki mobil",
+    "perbaikan kaki kaki mobil",
+    "rekondisi kaki kaki mobil",
+    "TJM Auto Care",
+  ];
+
+  if (slug === "paket-kaki-kaki") {
+    title =
+      "Service Kaki-Kaki Mobil Bergaransi | Paket Kaki-Kaki | TJM Auto Care";
+    description =
+      "Service kaki-kaki mobil untuk bunyi gluduk, setir getar, mobil limbung: shockbreaker, rack steer, tie rod, bushing arm. 93 item pengecekan detail, cocok untuk cek sebelum Mudik.";
+    keywords = [
+      "service kaki kaki mobil",
+      "bengkel kaki kaki mobil",
+      "paket kaki kaki mobil",
+      "rekondisi kaki kaki mobil",
+      "bunyi gluduk kaki kaki",
+      "setir getar",
+      "mobil limbung",
+      "rack steer",
+      "tie rod",
+      "bushing arm",
+      "shockbreaker",
+      "cek mobil sebelum mudik",
+      "TJM Auto Care",
+    ];
+  }
+
+  const url = `${siteUrl}/layanan/${slug}`;
+  let ogImageUrl = service?.image
+    ? `${siteUrl}${service.image}`
+    : `${siteUrl}/logo/logotjm.webp`;
+
+  if (slug === "paket-kaki-kaki") {
+    ogImageUrl = `${siteUrl}/galeri/combokaki1.webp`;
+  }
   return {
     title,
-    description: `Detail layanan ${readable} di TJM Auto Care — perbaikan dan servis kaki-kaki mobil profesional.`,
-    keywords: [
-      readable,
-      "bengkel kaki-kaki",
-      `service ${readable}`,
-      "TJM Auto Care",
-    ],
+    description,
+    keywords,
     openGraph: {
       title,
-      description: `Layanan ${readable} — TJM Auto Care`,
-      url: `https://tjmautocare.id/layanan/${slug}`,
-      type: "article",
+      description,
+      url,
+      type: "website",
       images: [
         {
-          url: `https://tjmautocare.id/og/layanan-${slug}.webp`,
-          width: 1200,
-          height: 630,
-          alt: `${readable} - TJM Auto Care`,
+          url: ogImageUrl,
+          alt: `${service?.title || readable} - TJM Auto Care`,
         },
       ],
     },
     alternates: {
-      canonical: `https://tjmautocare.id/layanan/${slug}`,
+      canonical: url,
     },
   };
 }
@@ -125,23 +165,23 @@ export default async function ServiceDetailPage({ params }) {
         name: `Di mana bengkel kaki-kaki mobil terdekat yang bagus?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `TJM Auto Care adalah spesialis bengkel kaki-kaki mobil yang memiliki cabang di berbagai kota seperti Jakarta, Tangerang, dan Bekasi. Kami menawarkan pengecekan yang detil dan garansi.`,
+          text: `TJM Auto Care adalah spesialis bengkel kaki-kaki mobil dengan layanan dan cabang di beberapa area/kota. Kami menyediakan pengecekan detail, rekomendasi tindakan yang transparan, dan garansi pengerjaan sesuai paket/pekerjaan.`,
         },
       },
       {
         "@type": "Question",
-        name: `Apa saja gejala kaki-kaki mobil rusak?`,
+        name: `Apa saja gejala kaki-kaki mobil rusak (dan kapan harus dicek sebelum Mudik)?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Gejala umum meliputi bunyi gluduk-gluduk saat melewati jalan rusak, setir bergetar, ban aus tidak rata, serta mobil terasa limbung pada kecepatan tinggi.`,
+          text: `Gejala umum meliputi bunyi gluduk saat jalan rusak/Polisi tidur, setir bergetar, ban aus tidak rata, mobil terasa limbung, atau arah mobil terasa "lari". Disarankan cek kaki-kaki sebelum perjalanan jauh/Mudik agar lebih aman dan nyaman.`,
         },
       },
       {
         "@type": "Question",
-        name: `Berapa biaya perbaikan kaki-kaki mobil?`,
+        name: `Berapa biaya service kaki-kaki mobil?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Biaya perbaikan bervariasi tergantung jenis kerusakan. Kami menyediakan paket servis kaki-kaki mulai dari rekondisi shockbreaker hingga penggantian rack steer dengan harga kompetitif.`,
+          text: `Biaya service kaki-kaki mobil tergantung hasil pengecekan, kondisi part, dan tindakan (rekondisi/penggantian). TJM Auto Care menyediakan paket dan opsi tindakan sesuai kebutuhan—Anda bisa konsultasi via WhatsApp untuk estimasi setelah pengecekan awal.`,
         },
       },
     ],

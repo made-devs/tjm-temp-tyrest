@@ -11,6 +11,7 @@ import SectionHeader from "@/components/SectionHeader";
 import { promoCategories } from "@/data/promoAutocare";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -231,16 +232,19 @@ export default function PromoPage() {
                 </div>
                 {/* WhatsApp Button */}
                 <div className="mt-8">
-                  <Link
+                  <TrackedWhatsAppLink
                     href={`https://wa.me/6285169576890?text=${encodeURIComponent(
                       `Halo, saya tertarik dengan promo dari ${promoCategories[activeCategory].label}. Bisa berikan informasi lebih lanjut tentang penawaran spesial Anda?`,
                     )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    eventProps={{
+                      page: "promo",
+                      placement: "category_whatsapp_cta",
+                      promo_category: promoCategories?.[activeCategory]?.label,
+                    }}
                     className="inline-block bg-red-600 text-white font-jakarta font-bold text-base px-8 py-3  transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1 shadow-lg"
                   >
                     Hubungi via WhatsApp
-                  </Link>
+                  </TrackedWhatsAppLink>
                 </div>
               </>
             ) : (

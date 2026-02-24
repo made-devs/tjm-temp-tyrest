@@ -25,6 +25,76 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.tjmautocare.id" }],
+        destination: "https://tjmautocare.id/:path*",
+        permanent: true,
+      },
+      // Legacy city routes (previously at root) -> current /kota/[slug]
+      {
+        source: "/bogor/:path*",
+        destination: "/kota/bogor/:path*",
+        permanent: true,
+      },
+      {
+        source: "/bandung/:path*",
+        destination: "/kota/bandung/:path*",
+        permanent: true,
+      },
+      {
+        source: "/semarang/:path*",
+        destination: "/kota/semarang/:path*",
+        permanent: true,
+      },
+      {
+        source: "/surabaya/:path*",
+        destination: "/kota/surabaya/:path*",
+        permanent: true,
+      },
+      {
+        source: "/bali/:path*",
+        destination: "/kota/bali/:path*",
+        permanent: true,
+      },
+
+      // Legacy service slugs -> current service pages
+      {
+        source: "/layanan/paket-detailing/:path*",
+        destination: "/layanan/paket-detailing-series/:path*",
+        permanent: true,
+      },
+      {
+        source: "/layanan/paket-racksteer-hemat/:path*",
+        destination: "/layanan/paket-kaki-kaki-racksteer/:path*",
+        permanent: true,
+      },
+      {
+        source: "/layanan/paket-overhaul-engine/:path*",
+        destination: "/layanan/paket-overhaul/:path*",
+        permanent: true,
+      },
+      {
+        source: "/layanan/paket-anti-karat/:path*",
+        destination: "/layanan/paket-combo-pasti-hemat/:path*",
+        permanent: true,
+      },
+      {
+        source: "/layanan/paket-ac-mobil/:path*",
+        destination: "/layanan/paket-ac-series/:path*",
+        permanent: true,
+      },
+
+      // Legacy group page
+      {
+        source: "/group/:path*",
+        destination: "/partnership/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

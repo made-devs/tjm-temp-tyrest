@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { promoData } from '@/data/promoData';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 // Daftarkan plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -160,14 +161,18 @@ const PromoModal = ({ promo, startIndex = 0, onClose }) => {
             )}
 
             <div className="mt-5 flex flex-col gap-3">
-              <a
+              <TrackedWhatsAppLink
                 href={waUrl}
-                target="_blank"
                 rel="noreferrer"
+                eventProps={{
+                  page: 'home',
+                  placement: 'promo_modal_whatsapp_cta',
+                  promo_title: promo?.title,
+                }}
                 className="w-full text-center font-jakarta font-semibold bg-red-600 hover:bg-red-700 transition-colors text-white py-3 rounded-md"
               >
                 Chat WhatsApp Admin
-              </a>
+              </TrackedWhatsAppLink>
               <p className="font-jakarta text-xs text-gray-500">
                 Foto {index + 1} / {images.length}
               </p>

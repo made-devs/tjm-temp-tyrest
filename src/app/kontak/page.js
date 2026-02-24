@@ -17,6 +17,7 @@ import LocationCarousel from "@/components/LocationCarousel";
 import { servicesData } from "@/data/servicesData";
 import { useSearchParams } from "next/navigation";
 import SectionHeader from "@/components/SectionHeader";
+import { track } from "@vercel/analytics";
 
 const faqData = [
   {
@@ -101,6 +102,17 @@ Pesan:
 ${formData.message}`;
     const encodedMessage = encodeURIComponent(waMessage);
     const whatsappUrl = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
+
+    try {
+      track("whatsapp_click", {
+        page: "kontak",
+        placement: "contact_form_submit",
+        has_selected_package: Boolean(formData.selectedPackage),
+      });
+    } catch {
+      // no-op
+    }
+
     window.open(whatsappUrl, "_blank");
   };
 

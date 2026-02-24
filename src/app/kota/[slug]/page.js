@@ -12,6 +12,7 @@ import {
   Tag,
   Wrench,
 } from "lucide-react";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 const BOOKING_WA = "6285169576890";
 // changed: unify SITE_URL fallback to .id (same as sitemap)
@@ -204,10 +205,14 @@ export default function KotaDetailPage({ params }) {
               </div>
 
               <div className="mt-8">
-                <a
+                <TrackedWhatsAppLink
                   href={buildWhatsAppLink(loc.city)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  eventProps={{
+                    page: "kota_detail",
+                    placement: "booking_primary_cta",
+                    city: loc.city,
+                    city_slug: slugify(loc.city),
+                  }}
                   className="group relative w-full flex items-center justify-center gap-3 bg-red-600 text-white font-teko text-xl py-4 rounded-xl overflow-hidden transition-all hover:bg-red-700 hover:shadow-[0_0_20px_rgba(220,38,38,0.5)]"
                 >
                   <span className="relative z-10 flex items-center gap-2 tracking-wide">
@@ -215,7 +220,7 @@ export default function KotaDetailPage({ params }) {
                     BOOKING SEKARANG
                   </span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                </a>
+                </TrackedWhatsAppLink>
                 <p className="text-center text-xs text-gray-500 mt-3">
                   Respon cepat via WhatsApp Official
                 </p>

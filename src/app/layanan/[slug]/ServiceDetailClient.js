@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Star, Loader2, Cog, ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 // --- Client Component untuk Tampilan Detail ---
 export default function ServiceDetailClient({ service }) {
@@ -208,14 +209,18 @@ export default function ServiceDetailClient({ service }) {
                         </div>
                       ))}
                     </div>
-                    <a
+                    <TrackedWhatsAppLink
                       href={generateWhatsAppLink()}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      eventProps={{
+                        page: "layanan_detail",
+                        placement: "variant_primary_cta",
+                        service_slug: service?.slug,
+                        variant_slug: activeVariant?.slug,
+                      }}
                       className="inline-block w-full text-center bg-red-600 text-white font-jakarta font-bold text-base px-10 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
                     >
                       Pesan Paket Ini
-                    </a>
+                    </TrackedWhatsAppLink>
                   </div>
                 </div>
               </div>
@@ -230,16 +235,19 @@ export default function ServiceDetailClient({ service }) {
                 <p className="font-jakarta text-gray-400 mt-4 leading-relaxed">
                   {service.details}
                 </p>
-                <a
+                <TrackedWhatsAppLink
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
                     `Halo TJM Auto Care!\n\nSaya ingin memesan paket:\n*${service.title}*\n\nMohon informasi lebih lanjut dan harga terbaik.\nTerima kasih!`,
                   )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  eventProps={{
+                    page: "layanan_detail",
+                    placement: "non_variant_primary_cta",
+                    service_slug: service?.slug,
+                  }}
                   className="inline-block mt-8 bg-red-600 text-white font-jakarta font-bold text-sm px-8 py-3 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-600 hover:-translate-y-1"
                 >
                   Jadwalkan Servis Ini
-                </a>
+                </TrackedWhatsAppLink>
               </div>
               <div className="lg:col-span-1">
                 {/* ... (Layanan Lainnya) ... */}
@@ -265,17 +273,18 @@ const ServiceFAQ = ({ slug }) => {
     {
       question: "Di mana bengkel kaki-kaki mobil terdekat yang bagus?",
       answer:
-        "TJM Auto Care adalah spesialis bengkel kaki-kaki mobil yang memiliki cabang di berbagai kota seperti Jakarta, Tangerang, dan Bekasi. Kami menawarkan pengecekan yang detil dan garansi resmi.",
+        "TJM Auto Care adalah spesialis bengkel kaki-kaki mobil. Kami menyediakan pengecekan detail, rekomendasi tindakan yang transparan, serta garansi pengerjaan sesuai paket/pekerjaan.",
     },
     {
-      question: "Apa saja gejala kaki-kaki mobil rusak?",
+      question:
+        "Apa saja gejala kaki-kaki mobil rusak (dan kapan harus dicek sebelum Mudik)?",
       answer:
-        "Gejala umum meliputi bunyi gluduk-gluduk saat melewati jalan rusak, setir bergetar, ban aus tidak rata, serta mobil terasa limbung pada kecepatan tinggi.",
+        'Gejala umum meliputi bunyi gluduk saat jalan rusak/Polisi tidur, setir bergetar, ban aus tidak rata, mobil terasa limbung, atau arah mobil terasa "lari". Disarankan cek kaki-kaki sebelum perjalanan jauh/Mudik agar lebih aman dan nyaman.',
     },
     {
-      question: "Berapa biaya perbaikan kaki-kaki mobil?",
+      question: "Berapa biaya service kaki-kaki mobil?",
       answer:
-        "Biaya perbaikan bervariasi tergantung jenis kerusakan. Kami menyediakan paket servis kaki-kaki mulai dari rekondisi shockbreaker hingga penggantian rack steer dengan harga kompetitif.",
+        "Biaya service kaki-kaki mobil tergantung hasil pengecekan, kondisi part, dan tindakan (rekondisi/penggantian). Kami menyediakan paket dan opsi tindakan sesuai kebutuhan—konsultasi via WhatsApp untuk estimasi setelah pengecekan awal.",
     },
   ];
 

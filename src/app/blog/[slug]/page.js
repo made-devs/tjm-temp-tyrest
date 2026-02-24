@@ -12,6 +12,25 @@ import RecommendationCard from "@/components/blog/RecommendationCard";
 
 export const revalidate = 300;
 
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id"
+).replace(/\/+$/, "");
+
+function isInternalHref(href) {
+  if (!href) return false;
+  const h = String(href).trim();
+  if (h.startsWith("/") || h.startsWith("#")) return true;
+  if (h.startsWith("mailto:") || h.startsWith("tel:")) return true;
+
+  // Treat both www and non-www as internal.
+  if (/^https?:\/\/(www\.)?tjmautocare\.id(\/|$)/i.test(h)) return true;
+
+  // Also treat configured SITE_URL as internal.
+  if (SITE_URL && h.startsWith(SITE_URL)) return true;
+
+  return false;
+}
+
 // Konfigurasi styling untuk Rich Text Contentful agar sesuai tema
 const renderOptions = {
   renderNode: {
@@ -45,16 +64,21 @@ const renderOptions = {
         {children}
       </blockquote>
     ),
-    [INLINES.HYPERLINK]: (node, children) => (
-      <a
-        href={node.data.uri}
-        className="text-red-500 hover:text-red-400 underline decoration-red-500/30 underline-offset-4 transition-colors"
-        target="_blank"
-        rel="nofollow noopener noreferrer"
-      >
-        {children}
-      </a>
-    ),
+    [INLINES.HYPERLINK]: (node, children) => {
+      const href = node?.data?.uri;
+      const internal = isInternalHref(href);
+
+      return (
+        <a
+          href={href}
+          className="text-red-500 hover:text-red-400 underline decoration-red-500/30 underline-offset-4 transition-colors"
+          target={internal ? undefined : "_blank"}
+          rel={internal ? undefined : "nofollow noopener noreferrer"}
+        >
+          {children}
+        </a>
+      );
+    },
     // Render gambar di dalam konten artikel
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const fields = node?.data?.target?.fields;
