@@ -27,12 +27,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.tjmautocare.id" }],
-        destination: "https://tjmautocare.id/:path*",
-        permanent: true,
-      },
       // Legacy city routes (previously at root) -> current /kota/[slug]
       {
         source: "/bogor/:path*",
