@@ -23,6 +23,7 @@ export default function ServiceDetailClient({ service }) {
   const heroTitle = isKakiKakiPage
     ? "Bengkel Kaki-Kaki Mobil Spesialis"
     : service.title;
+  const breadcrumbTitle = isKakiKakiPage ? "Paket Kaki-Kaki" : service.title;
 
   // Animasi saat komponen pertama kali dimuat
   useGSAP(
@@ -96,16 +97,24 @@ export default function ServiceDetailClient({ service }) {
               serta garansi pengerjaan.
             </p>
           )}
-          <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2">
-            <Link href="/" className="text-gray-300 hover:text-red-500">
+          <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2 max-w-full px-2">
+            <Link
+              href="/"
+              className="text-gray-300 hover:text-red-500 shrink-0 whitespace-nowrap"
+            >
               Home
             </Link>
-            <ChevronRight size={16} className="text-red-500" />
-            <Link href="/layanan" className="text-gray-300 hover:text-red-500">
+            <ChevronRight size={16} className="text-red-500 shrink-0" />
+            <Link
+              href="/layanan"
+              className="text-gray-300 hover:text-red-500 shrink-0 whitespace-nowrap"
+            >
               Layanan
             </Link>
-            <ChevronRight size={16} className="text-red-500" />
-            <span className="text-white">{service.title}</span>
+            <ChevronRight size={16} className="text-red-500 shrink-0" />
+            <span className="text-white max-w-[170px] truncate md:max-w-none">
+              {breadcrumbTitle}
+            </span>
           </div>
         </div>
       </section>
