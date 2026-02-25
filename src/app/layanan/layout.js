@@ -1,8 +1,11 @@
 export const metadata = {
-  title: "Layanan Bengkel Kaki-Kaki Mobil | TJM Auto Care",
+  title: "Layanan Bengkel Kaki-Kaki Mobil Terdekat | TJM Auto Care",
   description:
-    "Lihat daftar lengkap paket service kaki-kaki mobil, rack steer, shockbreaker, hingga tune up. Solusi bunyi gluduk-gluduk dengan harga transparan dan bergaransi.",
+    "Lihat daftar lengkap layanan bengkel kaki-kaki mobil: inspeksi, rack steer, shockbreaker, hingga paket perbaikan bergaransi. Tersedia di banyak kota TJM Auto Care.",
   keywords: [
+    "bengkel kaki kaki mobil",
+    "bengkel kaki kaki mobil terdekat",
+    "service kaki kaki mobil",
     "daftar harga service kaki kaki",
     "biaya ganti shockbreaker",
     "harga service rack steer",

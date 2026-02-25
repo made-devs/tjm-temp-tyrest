@@ -75,19 +75,27 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const loc = findLocationBySlug(params.slug);
+  const { slug } = await params;
+  const loc = findLocationBySlug(slug);
   if (!loc) return {};
 
   const canonical = `${SITE_URL}/kota/${slugify(loc.city)}`;
 
   return {
-    title: `TJM Auto Care ${loc.city} | Alamat, Jam, Booking`,
-    description: `Info cabang TJM Auto Care ${loc.city}: alamat, jam operasional (${loc.hours}), peta lokasi, dan booking via WhatsApp.`,
+    title: `Bengkel Kaki-Kaki Mobil ${loc.city} Terdekat | TJM Auto Care`,
+    description: `Bengkel kaki-kaki mobil TJM Auto Care ${loc.city}: alamat, jam operasional (${loc.hours}), peta lokasi, dan booking WhatsApp. Cocok untuk perbaikan kaki-kaki, rack steer, dan shockbreaker.`,
+    keywords: [
+      `bengkel kaki kaki mobil ${loc.city}`,
+      `bengkel mobil terdekat ${loc.city}`,
+      `service kaki kaki mobil ${loc.city}`,
+      `tjm auto care ${loc.city}`,
+      "bengkel kaki kaki mobil terdekat",
+    ],
     alternates: { canonical },
     openGraph: {
       url: canonical,
-      title: `TJM Auto Care ${loc.city}`,
-      description: `Cabang TJM Auto Care ${loc.city} — alamat, jam operasional, dan booking.`,
+      title: `Bengkel Kaki-Kaki Mobil ${loc.city} | TJM Auto Care`,
+      description: `Cabang TJM Auto Care ${loc.city} dengan layanan kaki-kaki mobil, alamat lengkap, jam operasional, dan booking cepat.`,
       images: [
         loc.photo
           ? loc.photo.startsWith("http")
@@ -99,8 +107,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function KotaDetailPage({ params }) {
-  const loc = findLocationBySlug(params.slug);
+export default async function KotaDetailPage({ params }) {
+  const { slug } = await params;
+  const loc = findLocationBySlug(slug);
   if (!loc) notFound();
 
   // gunakan fungsi baru untuk ambil 4 paket utama
@@ -123,6 +132,29 @@ export default function KotaDetailPage({ params }) {
       addressLocality: loc.city,
       addressCountry: "ID",
     },
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Di mana bengkel kaki-kaki mobil terdekat di ${loc.city}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Anda bisa booking di TJM Auto Care ${loc.city}. Cabang ini melayani pengecekan kaki-kaki, rack steer, tie rod, dan komponen suspensi dengan estimasi transparan.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Apakah TJM Auto Care ${loc.city} menerima cek kaki-kaki sebelum perjalanan jauh?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Ya. Kami melayani pengecekan kaki-kaki mobil sebelum perjalanan jauh untuk membantu memastikan kenyamanan dan keamanan berkendara.`,
+        },
+      },
+    ],
   };
 
   return (
@@ -169,7 +201,7 @@ export default function KotaDetailPage({ params }) {
           {/* Left Column: Workshop Details (sticky) */}
           <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24 self-start">
             {/* Main Info Card */}
-            <div className="bg-[#111] border border-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-white/10">
+            <div className="bg-[#111] border border-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
               <div className="flex flex-col gap-6">
                 {/* Address */}
                 <div className="flex gap-4">
@@ -303,6 +335,23 @@ export default function KotaDetailPage({ params }) {
                 mekanik spesialis dan tools modern standar TJM Pusat. Lokasi
                 strategis dan mudah diakses.
               </p>
+              <p className="text-sm text-gray-400 leading-relaxed font-jakarta mt-3">
+                Layanan yang paling dicari pelanggan di {loc.city} adalah{" "}
+                <Link
+                  href="/layanan/paket-kaki-kaki"
+                  className="text-red-400 hover:text-red-300"
+                >
+                  service kaki-kaki mobil
+                </Link>{" "}
+                dan{" "}
+                <Link
+                  href="/layanan/paket-combo-kaki-kaki"
+                  className="text-red-400 hover:text-red-300"
+                >
+                  paket combo kaki-kaki
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>
@@ -310,6 +359,10 @@ export default function KotaDetailPage({ params }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       </section>
 

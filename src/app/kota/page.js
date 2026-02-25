@@ -4,9 +4,26 @@ import { workshopLocations } from "@/data/locations";
 import { slugify } from "@/lib/slug";
 
 export const metadata = {
-  title: "Cabang TJM Auto Care | Daftar Kota",
+  title: "Bengkel Kaki-Kaki Mobil Terdekat | Cabang TJM Auto Care",
   description:
-    "Temukan cabang TJM Auto Care di kota Anda. Lihat alamat, jam operasional, dan booking via WhatsApp.",
+    "Temukan bengkel kaki-kaki mobil terdekat dari jaringan cabang TJM Auto Care. Lihat alamat, jam operasional, peta, dan booking via WhatsApp di kota Anda.",
+  keywords: [
+    "bengkel kaki kaki mobil terdekat",
+    "bengkel mobil terdekat",
+    "cabang tjm auto care",
+    "service kaki kaki mobil",
+    "tjm auto care",
+  ],
+  alternates: {
+    canonical: "https://tjmautocare.id/kota",
+  },
+  openGraph: {
+    title: "Bengkel Kaki-Kaki Mobil Terdekat | Cabang TJM Auto Care",
+    description:
+      "Cari cabang TJM Auto Care terdekat untuk service kaki-kaki mobil, cek alamat, jam operasional, dan booking.",
+    url: "https://tjmautocare.id/kota",
+    type: "website",
+  },
 };
 
 export default function KotaIndexPage() {
@@ -18,10 +35,22 @@ export default function KotaIndexPage() {
     <main className="bg-black text-white">
       <section className="container mx-auto px-4 py-14">
         <h1 className="font-teko text-4xl md:text-5xl uppercase">
-          Cabang TJM Auto Care
+          Bengkel Kaki-Kaki Mobil Terdekat
         </h1>
         <p className="mt-3 text-gray-300 max-w-2xl">
           Pilih kota untuk melihat detail cabang, peta, dan informasi booking.
+          Butuh layanan utama? Lihat paket{" "}
+          <Link
+            href="/layanan/paket-kaki-kaki"
+            className="text-red-400 hover:text-red-300"
+          >
+            service kaki-kaki mobil
+          </Link>{" "}
+          atau jelajahi{" "}
+          <Link href="/layanan" className="text-red-400 hover:text-red-300">
+            semua layanan TJM Auto Care
+          </Link>
+          .
         </p>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

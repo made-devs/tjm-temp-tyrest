@@ -19,6 +19,10 @@ export default function ServiceDetailClient({ service }) {
 
   const mainRef = useRef(null);
   const whatsappNumber = "6285169576890";
+  const isKakiKakiPage = service?.slug === "paket-kaki-kaki";
+  const heroTitle = isKakiKakiPage
+    ? "Bengkel Kaki-Kaki Mobil Spesialis"
+    : service.title;
 
   // Animasi saat komponen pertama kali dimuat
   useGSAP(
@@ -83,8 +87,15 @@ export default function ServiceDetailClient({ service }) {
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="relative z-20">
           <h1 className="font-teko text-4xl md:text-5xl font-medium uppercase">
-            {service.title}
+            {heroTitle}
           </h1>
+          {isKakiKakiPage && (
+            <p className="font-jakarta text-sm md:text-base text-gray-200 mt-2 max-w-2xl mx-auto">
+              Paket kaki-kaki super hemat mulai dari Rp949 ribu untuk bunyi
+              gluduk, setir getar, dan mobil limbung dengan pengecekan detail
+              serta garansi pengerjaan.
+            </p>
+          )}
           <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2">
             <Link href="/" className="text-gray-300 hover:text-red-500">
               Home

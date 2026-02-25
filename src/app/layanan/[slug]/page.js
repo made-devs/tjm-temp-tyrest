@@ -11,7 +11,7 @@ function getServiceData(slug) {
 
 // Generate Dynamic Metadata
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id";
   const service = getServiceData(slug);
   const readable = slug.replace(/-/g, " ");
@@ -33,12 +33,17 @@ export async function generateMetadata({ params }) {
 
   if (slug === "paket-kaki-kaki") {
     title =
-      "Service Kaki-Kaki Mobil Bergaransi | Paket Kaki-Kaki | TJM Auto Care";
+      "Bengkel Kaki-Kaki Mobil Super Hemat Mulai Rp 949 Ribu | TJM Auto Care";
     description =
-      "Service kaki-kaki mobil untuk bunyi gluduk, setir getar, mobil limbung: shockbreaker, rack steer, tie rod, bushing arm. 93 item pengecekan detail, cocok untuk cek sebelum Mudik.";
+      "Paket kaki-kaki mobil super hemat mulai Rp 949 ribu. Solusi bunyi gluduk, setir getar, dan mobil limbung dengan pengecekan 93 item serta garansi pengerjaan di cabang TJM Auto Care.";
     keywords = [
       "service kaki kaki mobil",
       "bengkel kaki kaki mobil",
+      "bengkel kaki kaki mobil terdekat",
+      "bengkel kaki mobil",
+      "harga service kaki kaki mobil",
+      "biaya service kaki kaki mobil",
+      "paket kaki kaki mobil murah",
       "paket kaki kaki mobil",
       "rekondisi kaki kaki mobil",
       "bunyi gluduk kaki kaki",
@@ -134,6 +139,19 @@ export default async function ServiceDetailPage({ params }) {
     },
   };
 
+  if (slug === "paket-kaki-kaki") {
+    jsonLd.offers = {
+      "@type": "Offer",
+      priceCurrency: "IDR",
+      price: "949000",
+      lowPrice: "949000",
+      availability: "https://schema.org/InStock",
+      url: `${siteUrl}/layanan/${slug}`,
+      description:
+        "Harga promo mulai dari Rp949 ribu. Harga final mengikuti hasil inspeksi, kondisi part, dan tipe kendaraan.",
+    };
+  }
+
   // Breadcrumb Schema
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -165,7 +183,7 @@ export default async function ServiceDetailPage({ params }) {
         name: `Di mana bengkel kaki-kaki mobil terdekat yang bagus?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `TJM Auto Care adalah spesialis bengkel kaki-kaki mobil dengan layanan dan cabang di beberapa area/kota. Kami menyediakan pengecekan detail, rekomendasi tindakan yang transparan, dan garansi pengerjaan sesuai paket/pekerjaan.`,
+          text: `TJM Auto Care adalah spesialis bengkel kaki-kaki mobil terdekat dengan cabang di banyak kota. Kami menyediakan pengecekan detail, rekomendasi tindakan yang transparan, dan garansi pengerjaan sesuai paket/pekerjaan.`,
         },
       },
       {
