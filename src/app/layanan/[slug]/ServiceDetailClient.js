@@ -92,7 +92,7 @@ export default function ServiceDetailClient({ service }) {
           </h1>
           {isKakiKakiPage && (
             <p className="font-jakarta text-sm md:text-base text-gray-200 mt-2 max-w-2xl mx-auto">
-              Paket kaki-kaki super hemat mulai dari Rp949 ribu untuk bunyi
+              Paket kaki-kaki super hemat mulai dari Rp 949 ribu untuk bunyi
               gluduk, setir getar, dan mobil limbung dengan pengecekan detail
               serta garansi pengerjaan.
             </p>
