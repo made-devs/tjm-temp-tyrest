@@ -68,7 +68,7 @@ const organizationSchema = {
 };
 
 export default function RootLayout({ children }) {
-  const measurementId = process.env.NEXT_PUBLIC_GA_ID;
+  const measurementId = process.env.NEXT_PUBLIC_GA_ID || "G-FN9E6HRRMH";
 
   return (
     <html lang="id" className="scroll-smooth">
@@ -78,6 +78,21 @@ export default function RootLayout({ children }) {
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
+        />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('js', new Date());
+              gtag('config', '${measurementId}', { send_page_view: false });
+            `,
+          }}
         />
       </head>
       <body
