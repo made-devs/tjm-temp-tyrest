@@ -3,6 +3,7 @@ import { Teko, Plus_Jakarta_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScrolling from "../components/SmoothScrolling";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -67,6 +68,8 @@ const organizationSchema = {
 };
 
 export default function RootLayout({ children }) {
+  const measurementId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang="id" className="scroll-smooth">
       <head>
@@ -80,6 +83,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${plusJakartaSans.variable} ${teko.variable} bg-black text-white font-jakarta antialiased overflow-x-hidden`}
       >
+        <GoogleAnalytics measurementId={measurementId} />
         <SmoothScrolling />
         <Navbar />
         <main className="pt-[72px]">{children}</main>
