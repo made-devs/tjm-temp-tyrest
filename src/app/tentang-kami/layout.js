@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Tentang Kami | TJM Auto Care",
+  title: "Tentang TJM Auto Care & Profil Bengkel Kaki-Kaki",
   description:
     "Tentang TJM Auto Care — visi, misi, tim, dan sejarah bengkel spesialis kaki-kaki mobil.",
   keywords: [

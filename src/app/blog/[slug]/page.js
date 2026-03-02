@@ -12,6 +12,16 @@ import RecommendationCard from "@/components/blog/RecommendationCard";
 
 export const revalidate = 300;
 
+const BLOG_TITLE_OVERRIDES = {
+  "bengkel-kaki-kaki-mobil-terdekat-cara-memilih":
+    "Bengkel Kaki-Kaki Terdekat: Cara Memilih | TJM Blog",
+  "ciri-kaki-kaki-mobil-rusak": "Ciri Kaki-Kaki Mobil Rusak | TJM Blog",
+  "service-kaki-kaki-mobil-gejala-penyebab-biaya":
+    "Service Kaki-Kaki: Gejala, Penyebab, Biaya | TJM Blog",
+  "tanda-kaki-kaki-mobil-rusak-dan-solusi":
+    "5 Tanda Kaki-Kaki Rusak & Solusi | TJM Blog",
+};
+
 const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id"
 ).replace(/\/+$/, "");
@@ -289,14 +299,16 @@ export async function generateMetadata({ params }) {
   }
 
   const { title, summary } = post.fields;
+  const seoTitle =
+    BLOG_TITLE_OVERRIDES[slug] || `${title} | TJM Auto Care Blog`;
 
   return {
-    title: `${title} | TJM Auto Care Blog`,
+    title: seoTitle,
     description:
       summary || "Artikel dan tips perawatan mobil dari TJM Auto Care.",
     alternates: { canonical: `https://tjmautocare.id/blog/${slug}` },
     openGraph: {
-      title: `${title} | TJM Auto Care Blog`,
+      title: seoTitle,
       description:
         summary || "Artikel dan tips perawatan mobil dari TJM Auto Care.",
       url: `https://tjmautocare.id/blog/${slug}`,

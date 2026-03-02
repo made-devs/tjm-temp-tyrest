@@ -15,6 +15,79 @@ function getTopVariantNames(service) {
   return service.variants.slice(0, 4).map((variant) => variant.title);
 }
 
+const METADATA_OVERRIDES = {
+  "paket-diesel": {
+    title: "Paket Diesel Tune Up & Injektor Mobil | TJM Auto Care",
+    description:
+      "Paket diesel TJM Auto Care untuk tune up, injector cleaner, dan perawatan mesin diesel agar performa tetap bertenaga serta efisien.",
+  },
+  "paket-kaki-kaki": {
+    title: "Bengkel Kaki-Kaki Mobil Mulai Rp 949 Ribu | TJM",
+    description:
+      "Paket kaki-kaki mobil mulai Rp 949 ribu untuk bunyi gluduk, setir getar, dan mobil limbung dengan inspeksi detail serta garansi pengerjaan.",
+  },
+  "paket-super-hemat": {
+    title: "Paket Super Hemat 1 Mulai 1,4 Juta | TJM Auto Care",
+    description:
+      "Paket Super Hemat 1 TJM Auto Care promo terbatas dengan tune up 65 komponen, gurah mesin, catalytic cleaning, service rem 4 roda, engine flush, dan inspeksi lengkap.",
+    keywords: [
+      "paket super hemat 1",
+      "paket super hemat tjm",
+      "promo service mobil",
+      "tune up 65 komponen",
+      "service rem 4 roda",
+      "service kaki kaki mobil",
+      "bengkel kaki kaki mobil",
+    ],
+  },
+  "paket-super-hemat-undercarriage": {
+    title:
+      "Paket Super Hemat Undercarriage Vaporizer UAP Mulai 299 Ribu | TJM Auto Care",
+    description:
+      "Paket Super Hemat Undercarriage TJM Auto Care dengan vaporizer steamer UAP komplit untuk sterilisasi interior, eksterior, AC mobil, kondensor, engine bay, plus inspeksi kaki-kaki dan AC.",
+    keywords: [
+      "paket super hemat undercarriage",
+      "vaporizer steamer uap komplit",
+      "cuci steril vaporizer uap",
+      "fogging ac mobil",
+      "inspeksi kaki kaki 25 titik",
+      "inspeksi ac mobil 20 titik",
+    ],
+  },
+  "paket-triple-combo-undercarriage": {
+    title: "Paket Triple Combo Kaki-Kaki & Anti Karat | TJM",
+    description:
+      "Paket Triple Combo TJM Auto Care untuk service kaki-kaki dan anti karat, termasuk restorasi kolong, detailing, dan proteksi undercarriage.",
+  },
+};
+
+const OFFER_OVERRIDES = {
+  "paket-kaki-kaki": {
+    priceCurrency: "IDR",
+    price: "949000",
+    lowPrice: "949000",
+    availability: "https://schema.org/InStock",
+    description:
+      "Harga promo mulai dari Rp949 ribu. Harga final mengikuti hasil inspeksi, kondisi part, dan tipe kendaraan.",
+  },
+  "paket-super-hemat": {
+    priceCurrency: "IDR",
+    price: "1400000",
+    lowPrice: "1400000",
+    availability: "https://schema.org/InStock",
+    description:
+      "Promo paket super hemat 1 dengan cakupan tune up, service rem, engine flush, dan inspeksi lengkap. Harga dapat menyesuaikan kondisi kendaraan.",
+  },
+  "paket-super-hemat-undercarriage": {
+    priceCurrency: "IDR",
+    price: "299000",
+    lowPrice: "299000",
+    availability: "https://schema.org/InStock",
+    description:
+      "Promo vaporizer steamer UAP komplit untuk sterilisasi interior-eksterior, AC, dan engine bay. Harga dapat menyesuaikan kondisi kendaraan.",
+  },
+};
+
 // Generate Dynamic Metadata
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -38,10 +111,9 @@ export async function generateMetadata({ params }) {
   ];
 
   if (slug === "paket-kaki-kaki") {
-    title =
-      "Bengkel Kaki-Kaki Mobil Super Hemat Mulai Rp 949 Ribu | TJM Auto Care";
+    title = "Bengkel Kaki-Kaki Mobil Mulai Rp 949 Ribu | TJM";
     description =
-      "Paket kaki-kaki mobil super hemat mulai Rp 949 ribu. Solusi bunyi gluduk, setir getar, dan mobil limbung dengan pengecekan 93 item serta garansi pengerjaan di cabang TJM Auto Care.";
+      "Paket kaki-kaki mobil mulai Rp 949 ribu. Solusi bunyi gluduk, setir getar, dan mobil limbung dengan pengecekan 93 item serta garansi pengerjaan di cabang TJM Auto Care.";
     keywords = [
       "service kaki kaki mobil",
       "bengkel kaki kaki mobil",
@@ -62,6 +134,14 @@ export async function generateMetadata({ params }) {
       "cek mobil sebelum mudik",
       "TJM Auto Care",
     ];
+  }
+
+  if (METADATA_OVERRIDES[slug]) {
+    title = METADATA_OVERRIDES[slug].title;
+    description = METADATA_OVERRIDES[slug].description;
+    if (METADATA_OVERRIDES[slug].keywords) {
+      keywords = METADATA_OVERRIDES[slug].keywords;
+    }
   }
 
   const url = `${siteUrl}/layanan/${slug}`;
@@ -145,16 +225,11 @@ export default async function ServiceDetailPage({ params }) {
     },
   };
 
-  if (slug === "paket-kaki-kaki") {
+  if (OFFER_OVERRIDES[slug]) {
     jsonLd.offers = {
       "@type": "Offer",
-      priceCurrency: "IDR",
-      price: "949000",
-      lowPrice: "949000",
-      availability: "https://schema.org/InStock",
+      ...OFFER_OVERRIDES[slug],
       url: `${siteUrl}/layanan/${slug}`,
-      description:
-        "Harga promo mulai dari Rp949 ribu. Harga final mengikuti hasil inspeksi, kondisi part, dan tipe kendaraan.",
     };
   }
 

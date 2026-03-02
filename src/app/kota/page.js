@@ -4,10 +4,12 @@ import { workshopLocations } from "@/data/locations";
 import { slugify } from "@/lib/slug";
 
 export const metadata = {
-  title: "Bengkel Kaki-Kaki Mobil Terdekat | Cabang TJM Auto Care",
+  title: "Kota Cabang Bengkel Kaki-Kaki Mobil | TJM Auto Care",
   description:
     "Temukan bengkel kaki-kaki mobil terdekat dari jaringan cabang TJM Auto Care. Lihat alamat, jam operasional, peta, dan booking via WhatsApp di kota Anda.",
   keywords: [
+    "kota cabang tjm auto care",
+    "kota bengkel kaki kaki mobil",
     "bengkel kaki kaki mobil terdekat",
     "bengkel mobil terdekat",
     "cabang tjm auto care",
@@ -18,7 +20,7 @@ export const metadata = {
     canonical: "https://tjmautocare.id/kota",
   },
   openGraph: {
-    title: "Bengkel Kaki-Kaki Mobil Terdekat | Cabang TJM Auto Care",
+    title: "Kota Cabang Bengkel Kaki-Kaki Mobil | TJM Auto Care",
     description:
       "Cari cabang TJM Auto Care terdekat untuk service kaki-kaki mobil, cek alamat, jam operasional, dan booking.",
     url: "https://tjmautocare.id/kota",

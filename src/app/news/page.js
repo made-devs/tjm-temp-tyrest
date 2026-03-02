@@ -80,10 +80,11 @@ export default function NewsPage() {
 }
 
 export const metadata = {
-  title: "Berita & Pengumuman | TJM Auto Care",
+  title: "News, Berita & Pengumuman | TJM Auto Care",
   description:
     "Berita terbaru, pengumuman cabang, dan update layanan dari TJM Auto Care.",
   keywords: [
+    "news tjm auto care",
     "berita tjm auto care",
     "pengumuman bengkel",
     "update layanan bengkel",
