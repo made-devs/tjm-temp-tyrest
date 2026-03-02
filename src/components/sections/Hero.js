@@ -1,29 +1,9 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 export default function Hero() {
-  const heroContentRef = useRef(null);
-
-  useGSAP(
-    () => {
-      gsap.from(".hero-element", {
-        opacity: 0,
-        filter: "blur(10px)",
-        scale: 0.9,
-        y: 20,
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: 0.2,
-      });
-    },
-    { scope: heroContentRef },
-  );
-
   return (
     <section className="relative h-[85vh] flex items-center text-white">
       <Image
@@ -43,10 +23,7 @@ export default function Hero() {
           - Konten kembali ke kanan di desktop (lg:justify-end).
         */}
         <div className="flex justify-start lg:justify-end lg:pr-[7rem]">
-          <div
-            ref={heroContentRef}
-            className="max-w-2xl text-left" // Teks selalu rata kiri.
-          >
+          <div className="max-w-2xl text-left">
             <h1 className="hero-element font-teko text-5xl sm:text-6xl lg:text-7xl font-medium uppercase leading-none mt-2">
               Solusi Dari semua <br /> permasalahan anda
             </h1>

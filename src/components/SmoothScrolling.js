@@ -1,31 +1,57 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import Lenis from 'lenis';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from "react";
 
 const SmoothScrolling = () => {
   useEffect(() => {
-    const lenis = new Lenis();
+    const enableSmoothScroll =
+      window.matchMedia("(min-width: 1024px)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    lenis.on('scroll', ScrollTrigger.update);
+    if (!enableSmoothScroll) return;
 
-    const ticker = (time) => {
-      lenis.raf(time * 1000);
+    let lenis = null;
+    let gsapInstance = null;
+    let ticker = null;
+    let destroyed = false;
+
+    const setupSmoothScroll = async () => {
+      const [{ default: Lenis }, { default: gsap }, { ScrollTrigger }] =
+        await Promise.all([
+          import("lenis"),
+          import("gsap"),
+          import("gsap/ScrollTrigger"),
+        ]);
+
+      if (destroyed) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      lenis = new Lenis();
+      gsapInstance = gsap;
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      ticker = (time) => {
+        lenis.raf(time * 1000);
+      };
+
+      gsap.ticker.add(ticker);
+      gsap.ticker.lagSmoothing(0);
     };
 
-    gsap.ticker.add(ticker);
-    gsap.ticker.lagSmoothing(0);
+    setupSmoothScroll();
 
-    // Cleanup function untuk mencegah memory leak
     return () => {
-      gsap.ticker.remove(ticker);
-      lenis.destroy();
+      destroyed = true;
+      if (gsapInstance && ticker) {
+        gsapInstance.ticker.remove(ticker);
+      }
+      lenis?.destroy();
     };
   }, []);
 
-  return null; // Komponen ini tidak merender UI apapun
+  return null;
 };
 
 export default SmoothScrolling;

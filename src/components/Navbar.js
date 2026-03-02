@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 // Data link navigasi baru dengan struktur dropdown
@@ -24,79 +23,40 @@ const navLinks = [
   },
 ];
 
-// Komponen link dengan animasi hover
-const AnimatedNavLink = ({ href, children, onClick }) => {
-  return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className="relative inline-block h-5 overflow-hidden font-jakarta text-sm font-medium text-gray-300"
-    >
-      <motion.div
-        className="flex flex-col"
-        whileHover={{ y: "-50%" }}
-        transition={{ duration: 0.3 }}
-      >
-        <span className="flex items-center h-5">{children}</span>
-        <span className="flex items-center h-5 text-red-500">{children}</span>
-      </motion.div>
-    </Link>
-  );
-};
+const NavLink = ({ href, children, onClick }) => (
+  <Link
+    href={href}
+    onClick={onClick}
+    className="font-jakarta text-sm font-medium text-gray-300 hover:text-red-500 transition-colors duration-200"
+  >
+    {children}
+  </Link>
+);
 
-// Komponen Dropdown untuk Desktop
 const DropdownMenu = ({ name, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <button className="relative flex items-center gap-1 font-jakarta text-sm font-medium text-gray-300">
-        <div className="relative h-5 overflow-hidden">
-          <motion.div
-            className="flex flex-col"
-            animate={{ y: isOpen ? "-50%" : "0%" }}
-            transition={{ duration: 0.3 }}
-          >
-            <span className="flex items-center h-5">{name}</span>
-            <span className="flex items-center h-5 text-red-500">{name}</span>
-          </motion.div>
-        </div>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <ChevronDown size={16} />
-        </motion.div>
+    <div className="relative group">
+      <button className="flex items-center gap-1 font-jakarta text-sm font-medium text-gray-300 group-hover:text-red-500 transition-colors duration-200">
+        <span>{name}</span>
+        <ChevronDown
+          size={16}
+          className="transition-transform duration-200 group-hover:rotate-180"
+        />
       </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-1/2 -translate-x-1/2 pt-2"
-          >
-            <ul className="w-48 bg-black border border-gray-800 shadow-lg">
-              {children.map((child) => (
-                <li key={child.name}>
-                  <Link
-                    href={child.href}
-                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-900 hover:text-red-500 transition-colors"
-                  >
-                    {child.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+        <ul className="w-48 bg-black border border-gray-800 shadow-lg">
+          {children.map((child) => (
+            <li key={child.name}>
+              <Link
+                href={child.href}
+                className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-900 hover:text-red-500 transition-colors"
+              >
+                {child.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
@@ -147,9 +107,9 @@ export default function Navbar() {
                   {link.children}
                 </DropdownMenu>
               ) : (
-                <AnimatedNavLink key={link.name} href={link.href}>
+                <NavLink key={link.name} href={link.href}>
                   {link.name}
-                </AnimatedNavLink>
+                </NavLink>
               ),
             )}
           </nav>
@@ -190,67 +150,60 @@ export default function Navbar() {
       </div>
 
       {/* Menu Mobile */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-black/90 backdrop-blur-sm"
-          >
-            <nav className="flex flex-col items-center gap-2 py-4">
-              {navLinks.map((link) =>
-                link.children ? (
-                  <div key={link.name} className="text-center w-full">
-                    <button
-                      onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                      className="flex items-center justify-center gap-1 text-gray-300 hover:text-red-500 py-2 w-full"
-                    >
-                      {link.name}
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform ${
-                          mobileDropdownOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    {mobileDropdownOpen && (
-                      <div className="flex flex-col items-center bg-gray-900/50 w-full">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.name}
-                            href={child.href}
-                            className="text-gray-400 hover:text-red-500 py-2 w-full"
-                            onClick={closeAllMenus}
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-gray-300 hover:text-red-500 py-2"
-                    onClick={closeAllMenus}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-black/90 backdrop-blur-sm">
+          <nav className="flex flex-col items-center gap-2 py-4">
+            {navLinks.map((link) =>
+              link.children ? (
+                <div key={link.name} className="text-center w-full">
+                  <button
+                    onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                    className="flex items-center justify-center gap-1 text-gray-300 hover:text-red-500 py-2 w-full"
                   >
                     {link.name}
-                  </Link>
-                ),
-              )}
-              <Link
-                href="/kontak"
-                className="text-gray-300 hover:text-red-500 py-2"
-                onClick={closeAllMenus}
-              >
-                Kontak
-              </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${
+                        mobileDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {mobileDropdownOpen && (
+                    <div className="flex flex-col items-center bg-gray-900/50 w-full">
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.name}
+                          href={child.href}
+                          className="text-gray-400 hover:text-red-500 py-2 w-full"
+                          onClick={closeAllMenus}
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-300 hover:text-red-500 py-2"
+                  onClick={closeAllMenus}
+                >
+                  {link.name}
+                </Link>
+              ),
+            )}
+            <Link
+              href="/kontak"
+              className="text-gray-300 hover:text-red-500 py-2"
+              onClick={closeAllMenus}
+            >
+              Kontak
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
