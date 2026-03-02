@@ -1,12 +1,18 @@
 import { servicesData } from "@/data/servicesData";
 import { workshopLocations } from "@/data/locations";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import ServiceDetailClient from "./ServiceDetailClient";
 import ServiceAvailability from "@/components/ServiceAvailability";
 
 // Fungsi untuk mendapatkan data service berdasarkan slug
 function getServiceData(slug) {
   return servicesData.find((s) => s.slug === slug);
+}
+
+function getTopVariantNames(service) {
+  if (!service?.variants?.length) return [];
+  return service.variants.slice(0, 4).map((variant) => variant.title);
 }
 
 // Generate Dynamic Metadata
@@ -205,6 +211,8 @@ export default async function ServiceDetailPage({ params }) {
     ],
   };
 
+  const topVariants = getTopVariantNames(service);
+
   return (
     <>
       <script
@@ -223,6 +231,56 @@ export default async function ServiceDetailPage({ params }) {
       )}
 
       <ServiceDetailClient service={service} />
+
+      <section className="bg-[#0b0b0b] border-t border-gray-800 py-14">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <h2 className="font-teko text-4xl md:text-5xl uppercase text-white">
+              {service.title}: Pilihan Paket Sesuai Target Performa
+            </h2>
+            <p className="mt-4 text-gray-300 leading-relaxed font-jakarta">
+              Layanan {service.title} di TJM Auto Care disusun untuk membantu
+              pemilik mobil mendapatkan tindakan yang lebih tepat berdasarkan
+              gejala dan kondisi kendaraan. Fokus kami bukan hanya menyelesaikan
+              keluhan sesaat, tetapi juga menjaga kenyamanan, stabilitas, dan
+              keamanan mobil untuk pemakaian harian maupun perjalanan jauh.
+            </p>
+            <p className="mt-3 text-gray-300 leading-relaxed font-jakarta">
+              Setiap varian paket memiliki cakupan kerja yang berbeda, sehingga
+              Anda bisa memilih opsi paling relevan dengan kebutuhan mobil dan
+              budget perawatan. Tim mekanik TJM akan membantu membaca hasil
+              inspeksi awal, lalu menyarankan tindakan yang efisien agar biaya
+              servis tetap terkontrol tanpa mengorbankan kualitas pengerjaan.
+            </p>
+            {topVariants.length > 0 && (
+              <>
+                <h3 className="mt-6 font-teko text-2xl uppercase text-red-500">
+                  Varian Populer pada Paket Ini
+                </h3>
+                <ul className="mt-3 space-y-2 text-gray-300 font-jakarta">
+                  {topVariants.map((variantName) => (
+                    <li key={variantName}>• {variantName}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <p className="mt-4 text-gray-300 leading-relaxed font-jakarta">
+              Jika Anda mencari bengkel kaki-kaki mobil terdekat atau paket
+              servis mobil dengan penanganan transparan, Anda bisa lanjut
+              booking melalui tombol WhatsApp pada halaman ini. Untuk
+              membandingkan opsi lain, kunjungi juga halaman{" "}
+              <Link href="/layanan" className="text-red-400 hover:text-red-300">
+                semua layanan
+              </Link>{" "}
+              atau cek cabang terdekat di{" "}
+              <Link href="/kota" className="text-red-400 hover:text-red-300">
+                halaman kota
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Tambahkan Section Availability di sini (Sebelum Footer) */}
       <ServiceAvailability currentServiceName={service.title} />

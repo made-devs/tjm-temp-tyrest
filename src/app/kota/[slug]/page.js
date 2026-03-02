@@ -437,6 +437,55 @@ export default async function KotaDetailPage({ params }) {
           </div>
         </div>
       </section>
+
+      <section className="py-16 bg-black border-t border-white/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <h2 className="font-teko text-4xl md:text-5xl uppercase">
+              Service Kaki-Kaki Mobil di {loc.city} yang Tepat Sasaran
+            </h2>
+            <p className="mt-4 text-gray-300 leading-relaxed font-jakarta">
+              Kebutuhan servis kaki-kaki mobil di {loc.city} umumnya berkaitan
+              dengan kondisi jalan harian, frekuensi pemakaian kendaraan, dan
+              usia komponen suspensi maupun steering. Di TJM Auto Care{" "}
+              {loc.city}, proses dimulai dari pengecekan menyeluruh agar gejala
+              seperti bunyi gluduk, setir terasa tidak stabil, atau mobil
+              limbung bisa ditangani dengan tindakan yang relevan.
+            </p>
+            <p className="mt-3 text-gray-300 leading-relaxed font-jakarta">
+              Kami menyediakan kombinasi paket untuk kebutuhan ringan sampai
+              komprehensif, termasuk inspeksi, rekondisi, dan penggantian part
+              sesuai kondisi aktual kendaraan. Pendekatan ini membantu pelanggan
+              mendapatkan hasil servis yang lebih presisi, bukan sekadar ganti
+              komponen tanpa diagnosis yang jelas.
+            </p>
+            <p className="mt-3 text-gray-300 leading-relaxed font-jakarta">
+              Jika Anda sedang mencari bengkel kaki-kaki mobil terdekat di{" "}
+              {loc.city}, Anda bisa mulai dari paket unggulan berikut:
+            </p>
+            <ul className="mt-4 space-y-2 text-gray-300 font-jakarta">
+              {kakiKakiServices.slice(0, 3).map((serviceItem) => (
+                <li key={serviceItem.category}>
+                  •{" "}
+                  <Link
+                    href={serviceItem.href}
+                    className="text-red-400 hover:text-red-300"
+                  >
+                    {serviceItem.category}
+                  </Link>{" "}
+                  — {serviceItem.description}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-gray-300 leading-relaxed font-jakarta">
+              Untuk jadwal cepat, klik tombol booking WhatsApp di halaman ini.
+              Tim cabang {loc.city} akan membantu konfirmasi kebutuhan awal,
+              estimasi waktu pengerjaan, dan rekomendasi paket yang paling
+              cocok.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -88,6 +88,45 @@ export default function KotaIndexPage() {
             );
           })}
         </div>
+
+        <section className="mt-14 rounded-2xl border border-white/10 bg-[#0f0f0f] p-6 md:p-8">
+          <h2 className="font-teko text-3xl md:text-4xl uppercase">
+            Kenapa Pilih TJM Auto Care di Kota Anda
+          </h2>
+          <p className="mt-4 text-gray-300 leading-relaxed">
+            Setiap cabang TJM Auto Care menjalankan standar servis yang sama,
+            mulai dari proses inspeksi, estimasi tindakan, hingga quality
+            control sebelum mobil diserahkan kembali ke pelanggan. Fokus utama
+            kami adalah menyelesaikan gejala yang paling sering terjadi seperti
+            bunyi gluduk pada kaki-kaki, setir bergetar, handling terasa
+            limbung, dan ban aus tidak merata.
+          </p>
+          <p className="mt-3 text-gray-300 leading-relaxed">
+            Jika Anda sedang mencari bengkel kaki-kaki mobil terdekat, halaman
+            kota ini membantu Anda menemukan cabang TJM terdekat lengkap dengan
+            alamat, jam operasional, dan peta. Anda juga bisa langsung lanjut ke
+            halaman layanan untuk menyesuaikan paket berdasarkan kebutuhan
+            kendaraan, kondisi jalan harian, dan budget perawatan.
+          </p>
+          <p className="mt-3 text-gray-300 leading-relaxed">
+            Untuk kebutuhan populer, Anda dapat mulai dari paket{" "}
+            <Link
+              href="/layanan/paket-kaki-kaki"
+              className="text-red-400 hover:text-red-300"
+            >
+              service kaki-kaki mobil
+            </Link>{" "}
+            atau paket{" "}
+            <Link
+              href="/layanan/paket-combo-kaki-kaki"
+              className="text-red-400 hover:text-red-300"
+            >
+              combo kaki-kaki
+            </Link>
+            . Tim kami akan membantu rekomendasi tindakan yang relevan agar
+            hasil servis tetap optimal untuk pemakaian jangka panjang.
+          </p>
+        </section>
       </section>
     </main>
   );
