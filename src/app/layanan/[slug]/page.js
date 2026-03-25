@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import ServiceDetailClient from "./ServiceDetailClient";
 import ServiceAvailability from "@/components/ServiceAvailability";
+import { slugify } from "@/lib/slug";
 
 // Fungsi untuk mendapatkan data service berdasarkan slug
 function getServiceData(slug) {
@@ -22,9 +23,10 @@ const METADATA_OVERRIDES = {
       "Paket diesel TJM Auto Care untuk tune up, injector cleaner, dan perawatan mesin diesel agar performa tetap bertenaga serta efisien.",
   },
   "paket-kaki-kaki": {
-    title: "Bengkel Kaki-Kaki Mobil Mulai Rp 949 Ribu | TJM",
+    title:
+      "Bengkel Kaki-Kaki Mobil Spesialis | Service Mulai Rp 949 Ribu | TJM",
     description:
-      "Paket kaki-kaki mobil mulai Rp 949 ribu untuk bunyi gluduk, setir getar, dan mobil limbung dengan inspeksi detail serta garansi pengerjaan.",
+      "Bengkel spesialis kaki-kaki mobil TJM melayani service kaki-kaki mobil, rekondisi rack steer, shockbreaker, tie rod, dan bushing arm mulai Rp 949 ribu dengan garansi pengerjaan.",
   },
   "paket-super-hemat": {
     title: "Paket Super Hemat 1 Mulai 1,4 Juta | TJM Auto Care",
@@ -88,6 +90,15 @@ const OFFER_OVERRIDES = {
   },
 };
 
+const PRIORITY_CITY_NAMES = [
+  "Surabaya",
+  "Jogja",
+  "Bekasi",
+  "Bandung",
+  "Samarinda",
+  "Bali",
+];
+
 // Generate Dynamic Metadata
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -111,12 +122,16 @@ export async function generateMetadata({ params }) {
   ];
 
   if (slug === "paket-kaki-kaki") {
-    title = "Bengkel Kaki-Kaki Mobil Mulai Rp 949 Ribu | TJM";
+    title =
+      "Bengkel Kaki-Kaki Mobil Spesialis | Service Mulai Rp 949 Ribu | TJM";
     description =
-      "Paket kaki-kaki mobil mulai Rp 949 ribu. Solusi bunyi gluduk, setir getar, dan mobil limbung dengan pengecekan 93 item serta garansi pengerjaan di cabang TJM Auto Care.";
+      "Bengkel spesialis kaki-kaki mobil dengan paket service mulai Rp 949 ribu. Solusi bunyi gluduk, setir getar, dan mobil limbung dengan 93 item pengecekan detail serta garansi pengerjaan di cabang TJM Auto Care.";
     keywords = [
       "service kaki kaki mobil",
       "bengkel kaki kaki mobil",
+      "bengkel kaki kaki",
+      "spesialis kaki kaki mobil",
+      "bengkel spesialis kaki kaki mobil",
       "bengkel kaki kaki mobil terdekat",
       "bengkel kaki mobil",
       "harga service kaki kaki mobil",
@@ -186,6 +201,11 @@ export default async function ServiceDetailPage({ params }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id";
   const contactPhone =
     process.env.NEXT_PUBLIC_CONTACT_PHONE || "+6285169576890";
+  const firstLocation = workshopLocations?.[0];
+  const postalCodeMatch = firstLocation?.address?.match(/\b\d{5}\b/);
+  const priorityCities = workshopLocations.filter((location) =>
+    PRIORITY_CITY_NAMES.includes(location.city),
+  );
 
   // Schema Markup JSON-LD (Service)
   const jsonLd = {
@@ -200,9 +220,9 @@ export default async function ServiceDetailPage({ params }) {
       telephone: contactPhone,
       address: {
         "@type": "PostalAddress",
-        streetAddress: workshopLocations[0].address,
-        addressLocality: workshopLocations[0].city,
-        postalCode: "12345",
+        streetAddress: firstLocation?.address,
+        addressLocality: firstLocation?.city,
+        ...(postalCodeMatch?.[0] ? { postalCode: postalCodeMatch[0] } : {}),
         addressCountry: "ID",
       },
     },
@@ -212,7 +232,7 @@ export default async function ServiceDetailPage({ params }) {
     })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Layanan Bengkel Kaki Kaki",
+      name: `Layanan ${service.title}`,
       itemListElement: service.variants?.map((v, index) => ({
         "@type": "Offer",
         itemOffered: {
@@ -307,52 +327,131 @@ export default async function ServiceDetailPage({ params }) {
 
       <ServiceDetailClient service={service} />
 
-      <section className="bg-[#0b0b0b] border-t border-gray-800 py-14">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <h2 className="font-teko text-4xl md:text-5xl uppercase text-white">
-              {service.title}: Pilihan Paket Sesuai Target Performa
+      <section className="bg-gradient-to-b from-[#0b0b0b] to-black border-t border-gray-800 py-20 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-1/4 w-64 h-64 bg-red-900/10 blur-[80px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-10 left-1/4 w-96 h-96 bg-red-900/10 blur-[100px] rounded-full pointer-events-none" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+            {/* Tagline */}
+            <div className="flex items-center gap-3 mb-5 md:mb-6">
+              <div className="h-[2px] w-10 bg-red-600"></div>
+              <p className="font-jakarta text-[11px] font-bold uppercase tracking-[0.24em] text-red-500 md:text-xs">
+                Pilihan Tindakan Terbaik
+              </p>
+              <div className="h-[2px] w-10 bg-red-600"></div>
+            </div>
+
+            <h2 className="mb-5 font-teko text-3xl uppercase leading-[0.95] text-white sm:text-4xl md:mb-6 md:text-5xl">
+              {slug === "paket-kaki-kaki"
+                ? "Service Kaki-Kaki Mobil di Bengkel Spesialis Kaki-Kaki Mobil"
+                : `${service.title}: Pilihan Paket Sesuai Target Performa`}
             </h2>
-            <p className="mt-4 text-gray-300 leading-relaxed font-jakarta">
-              Layanan {service.title} di TJM Auto Care disusun untuk membantu
-              pemilik mobil mendapatkan tindakan yang lebih tepat berdasarkan
-              gejala dan kondisi kendaraan. Fokus kami bukan hanya menyelesaikan
-              keluhan sesaat, tetapi juga menjaga kenyamanan, stabilitas, dan
-              keamanan mobil untuk pemakaian harian maupun perjalanan jauh.
-            </p>
-            <p className="mt-3 text-gray-300 leading-relaxed font-jakarta">
-              Setiap varian paket memiliki cakupan kerja yang berbeda, sehingga
-              Anda bisa memilih opsi paling relevan dengan kebutuhan mobil dan
-              budget perawatan. Tim mekanik TJM akan membantu membaca hasil
-              inspeksi awal, lalu menyarankan tindakan yang efisien agar biaya
-              servis tetap terkontrol tanpa mengorbankan kualitas pengerjaan.
-            </p>
+
+            <div className="relative mb-8 w-full rounded-lg border border-gray-800 border-l-4 border-l-red-600 bg-[#111] p-5 text-left shadow-2xl transition-colors hover:border-gray-700 sm:p-6 md:mb-10 md:p-8">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-red-600/10 to-transparent rounded-tr-lg pointer-events-none"></div>
+
+              <p className="font-jakarta text-sm leading-7 text-gray-300 sm:text-base md:text-[17px]">
+                Layanan <strong className="text-white">{service.title}</strong>{" "}
+                di TJM Auto Care disusun untuk membantu pemilik mobil
+                mendapatkan tindakan yang lebih tepat berdasarkan gejala dan
+                kondisi kendaraan. Fokus kami bukan hanya menyelesaikan keluhan
+                sesaat, tetapi juga menjaga kenyamanan, stabilitas, dan keamanan
+                mobil untuk pemakaian harian maupun perjalanan jauh.
+              </p>
+              <p className="mt-4 font-jakarta text-sm leading-7 text-gray-300 sm:text-base md:text-[17px]">
+                Setiap varian paket memiliki cakupan kerja yang berbeda,
+                sehingga Anda bisa memilih opsi paling relevan dengan kebutuhan
+                mobil dan budget perawatan. Tim mekanik TJM akan membantu
+                membaca hasil inspeksi awal, lalu menyarankan tindakan yang
+                efisien agar biaya servis tetap terkontrol tanpa mengorbankan
+                kualitas pengerjaan.
+              </p>
+            </div>
+
             {topVariants.length > 0 && (
-              <>
-                <h3 className="mt-6 font-teko text-2xl uppercase text-red-500">
-                  Varian Populer pada Paket Ini
-                </h3>
-                <ul className="mt-3 space-y-2 text-gray-300 font-jakarta">
-                  {topVariants.map((variantName) => (
-                    <li key={variantName}>• {variantName}</li>
+              <div className="mb-10 w-full text-left">
+                <div className="mb-5 flex items-center justify-center gap-3 md:mb-6">
+                  <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-red-600/50"></div>
+                  <h3 className="px-3 font-teko text-xl uppercase tracking-wide text-red-500 sm:px-4 sm:text-2xl md:text-[2rem]">
+                    Varian Populer pada Paket Ini
+                  </h3>
+                  <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-red-600/50"></div>
+                </div>
+
+                <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-3 text-center md:gap-4">
+                  {topVariants.map((variantName, index) => (
+                    <div
+                      key={variantName}
+                      className="group relative flex min-w-[180px] max-w-[280px] flex-1 items-center justify-center overflow-hidden rounded-lg border border-gray-800 bg-[#0b0b0b] px-4 py-3 sm:min-w-[200px] sm:px-5 sm:py-4"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-red-600/0 via-red-600/5 to-red-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <span className="mr-3 select-none font-teko text-xl text-red-600 opacity-80 sm:text-2xl md:text-[1.75rem]">
+                        0{index + 1}
+                      </span>
+                      <span className="z-10 overflow-hidden text-ellipsis whitespace-nowrap font-jakarta text-sm font-medium text-gray-300 sm:text-[15px] md:text-base">
+                        {variantName}
+                      </span>
+                    </div>
                   ))}
-                </ul>
-              </>
+                </div>
+              </div>
             )}
-            <p className="mt-4 text-gray-300 leading-relaxed font-jakarta">
+
+            <p className="mt-4 max-w-3xl font-jakarta text-sm leading-7 text-gray-400 sm:text-base md:text-[17px]">
               Jika Anda mencari bengkel kaki-kaki mobil terdekat atau paket
               servis mobil dengan penanganan transparan, Anda bisa lanjut
               booking melalui tombol WhatsApp pada halaman ini. Untuk
               membandingkan opsi lain, kunjungi juga halaman{" "}
-              <Link href="/layanan" className="text-red-400 hover:text-red-300">
+              <Link
+                href="/layanan"
+                className="text-red-500 font-medium hover:text-red-400 hover:underline transition-all"
+              >
                 semua layanan
               </Link>{" "}
               atau cek cabang terdekat di{" "}
-              <Link href="/kota" className="text-red-400 hover:text-red-300">
+              <Link
+                href="/kota"
+                className="text-red-500 font-medium hover:text-red-400 hover:underline transition-all"
+              >
                 halaman kota
               </Link>
               .
             </p>
+
+            {slug === "paket-kaki-kaki" && priorityCities.length > 0 && (
+              <div className="mt-16 w-full relative">
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent"></div>
+
+                <h3 className="mt-10 flex flex-col items-center font-teko text-2xl uppercase leading-none text-white sm:text-3xl md:text-4xl">
+                  <span className="mb-1 text-red-500">Lokasi Strategis</span>
+                  Cari Bengkel Kaki-Kaki Mobil Terdekat
+                </h3>
+                <p className="mx-auto mt-4 max-w-2xl font-jakarta text-sm leading-7 text-gray-400 sm:text-base md:text-[17px]">
+                  Jika Anda ingin langsung menuju cabang terdekat, buka halaman
+                  kota prioritas di bawah ini. Masing-masing halaman menampilkan
+                  alamat lengkap, jam operasional, peta lokasi, dan tombol
+                  booking WhatsApp.
+                </p>
+                <div className="mt-8 flex flex-wrap justify-center gap-4">
+                  {priorityCities.map((city) => (
+                    <Link
+                      key={city.id}
+                      href={`/kota/${slugify(city.city)}`}
+                      className="group flex flex-col items-center relative"
+                    >
+                      <div className="rounded-lg border border-gray-800 bg-[#0d0d0d] px-5 py-3 font-jakarta text-sm text-gray-300 shadow-[0_4px_10px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-red-600/50 group-hover:bg-[#111] group-hover:text-white group-hover:shadow-[0_10px_20px_-10px_rgba(220,38,38,0.4)] sm:px-6 sm:text-[15px] md:text-base">
+                        Bengkel Kaki-Kaki{" "}
+                        <span className="font-bold text-red-500">
+                          {city.city}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>

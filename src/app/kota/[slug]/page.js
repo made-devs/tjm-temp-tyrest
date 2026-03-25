@@ -15,6 +15,14 @@ import {
 import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
 
 const BOOKING_WA = "6285169576890";
+const PRIORITY_CITY_NAMES = [
+  "Surabaya",
+  "Jogja",
+  "Bekasi",
+  "Bandung",
+  "Samarinda",
+  "Bali",
+];
 // changed: unify SITE_URL fallback to .id (same as sitemap)
 const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id"
@@ -80,22 +88,31 @@ export async function generateMetadata({ params }) {
   if (!loc) return {};
 
   const canonical = `${SITE_URL}/kota/${slugify(loc.city)}`;
+  const isPriorityCity = PRIORITY_CITY_NAMES.includes(loc.city);
+  const title = isPriorityCity
+    ? `Bengkel Kaki-Kaki Mobil Terdekat di ${loc.city} | Spesialis TJM Auto Care`
+    : `Bengkel Kaki-Kaki Mobil ${loc.city} Terdekat | TJM Auto Care`;
+  const description = isPriorityCity
+    ? `Cari bengkel kaki-kaki mobil terdekat di ${loc.city}? TJM Auto Care melayani service kaki-kaki mobil, rack steer, shockbreaker, inspeksi gejala bunyi gluduk, setir getar, dan booking WhatsApp cepat.`
+    : `Bengkel kaki-kaki mobil TJM Auto Care ${loc.city}: alamat, jam operasional (${loc.hours}), peta lokasi, dan booking WhatsApp. Cocok untuk perbaikan kaki-kaki, rack steer, dan shockbreaker.`;
 
   return {
-    title: `Bengkel Kaki-Kaki Mobil ${loc.city} Terdekat | TJM Auto Care`,
-    description: `Bengkel kaki-kaki mobil TJM Auto Care ${loc.city}: alamat, jam operasional (${loc.hours}), peta lokasi, dan booking WhatsApp. Cocok untuk perbaikan kaki-kaki, rack steer, dan shockbreaker.`,
+    title,
+    description,
     keywords: [
       `bengkel kaki kaki mobil ${loc.city}`,
+      `bengkel kaki kaki mobil terdekat di ${loc.city}`,
       `bengkel mobil terdekat ${loc.city}`,
       `service kaki kaki mobil ${loc.city}`,
+      `spesialis kaki kaki mobil ${loc.city}`,
       `tjm auto care ${loc.city}`,
       "bengkel kaki kaki mobil terdekat",
     ],
     alternates: { canonical },
     openGraph: {
       url: canonical,
-      title: `Bengkel Kaki-Kaki Mobil ${loc.city} | TJM Auto Care`,
-      description: `Cabang TJM Auto Care ${loc.city} dengan layanan kaki-kaki mobil, alamat lengkap, jam operasional, dan booking cepat.`,
+      title,
+      description,
       images: [
         loc.photo
           ? loc.photo.startsWith("http")
@@ -111,6 +128,7 @@ export default async function KotaDetailPage({ params }) {
   const { slug } = await params;
   const loc = findLocationBySlug(slug);
   if (!loc) notFound();
+  const isPriorityCity = PRIORITY_CITY_NAMES.includes(loc.city);
 
   // gunakan fungsi baru untuk ambil 4 paket utama
   const kakiKakiServices = getPrimaryKakiPackages(servicesData);
@@ -186,13 +204,16 @@ export default async function KotaDetailPage({ params }) {
           </div>
 
           <h1 className="font-teko text-6xl md:text-8xl font-bold uppercase text-white drop-shadow-2xl leading-none">
-            TJM{" "}
+            Bengkel Kaki-Kaki Mobil <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-red-800">
-              Auto Care
-            </span>{" "}
-            <br />
-            <span className="text-white">{loc.city}</span>
+              {loc.city}
+            </span>
           </h1>
+          <p className="mt-4 max-w-3xl font-jakarta text-sm leading-relaxed text-gray-200 md:text-base">
+            {isPriorityCity
+              ? `Cari bengkel kaki-kaki mobil terdekat di ${loc.city}? Cabang TJM Auto Care ${loc.city} siap membantu pengecekan bunyi gluduk, setir getar, mobil limbung, rack steer, dan shockbreaker dengan booking WhatsApp cepat.`
+              : `Cabang TJM Auto Care ${loc.city} melayani service kaki-kaki mobil, rack steer, dan shockbreaker dengan alamat lengkap, peta lokasi, dan jalur booking yang jelas.`}
+          </p>
         </div>
       </div>
 
@@ -249,12 +270,12 @@ export default async function KotaDetailPage({ params }) {
                 >
                   <span className="relative z-10 flex items-center gap-2 tracking-wide">
                     <MessageCircle size={20} />
-                    BOOKING SEKARANG
+                    BOOKING CABANG {loc.city.toUpperCase()}
                   </span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                 </TrackedWhatsAppLink>
                 <p className="text-center text-xs text-gray-500 mt-3">
-                  Respon cepat via WhatsApp Official
+                  Booking cepat via WhatsApp official TJM Auto Care {loc.city}
                 </p>
               </div>
             </div>
@@ -352,6 +373,37 @@ export default async function KotaDetailPage({ params }) {
                 </Link>
                 .
               </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-[#111] p-6">
+              <p className="font-jakarta text-xs font-bold uppercase tracking-[0.22em] text-red-500">
+                Bengkel Kaki-Kaki Mobil Terdekat di {loc.city}
+              </p>
+              <h2 className="mt-3 font-teko text-3xl uppercase text-white md:text-4xl">
+                Yang Paling Sering Dicari Sebelum Booking di Cabang {loc.city}
+              </h2>
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-white/5 bg-[#0b0b0b] p-4">
+                  <h3 className="font-teko text-2xl uppercase text-white">
+                    Gejala Yang Ditangani
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-300 font-jakarta">
+                    Bunyi gluduk, setir getar, mobil limbung, ban aus tidak
+                    rata, rack steer bermasalah, dan handling yang mulai tidak
+                    presisi.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/5 bg-[#0b0b0b] p-4">
+                  <h3 className="font-teko text-2xl uppercase text-white">
+                    Kenapa Cabang Ini Relevan
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-300 font-jakarta">
+                    Halaman ini dibuat untuk memudahkan Anda menemukan cabang
+                    TJM Auto Care terdekat di {loc.city}, melihat peta lokasi,
+                    lalu lanjut booking tanpa perlu pindah halaman lagi.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -483,6 +535,26 @@ export default async function KotaDetailPage({ params }) {
               estimasi waktu pengerjaan, dan rekomendasi paket yang paling
               cocok.
             </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <TrackedWhatsAppLink
+                href={buildWhatsAppLink(loc.city)}
+                eventProps={{
+                  page: "kota_detail",
+                  placement: "content_secondary_cta",
+                  city: loc.city,
+                  city_slug: slugify(loc.city),
+                }}
+                className="inline-flex items-center justify-center rounded-lg bg-red-600 px-5 py-3 font-semibold text-white transition-colors hover:bg-red-700"
+              >
+                Booking Bengkel Terdekat di {loc.city}
+              </TrackedWhatsAppLink>
+              <Link
+                href="/layanan/paket-kaki-kaki"
+                className="inline-flex items-center justify-center rounded-lg border border-white/10 px-5 py-3 font-semibold text-gray-200 transition-colors hover:border-red-500/40 hover:text-white"
+              >
+                Lihat Paket Kaki-Kaki Utama
+              </Link>
+            </div>
           </div>
         </div>
       </section>

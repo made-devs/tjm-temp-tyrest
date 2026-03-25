@@ -10,15 +10,15 @@ import Contact from "../components/sections/Contact";
 import Cta from "../components/sections/Cta";
 
 export const metadata = {
-  title: "TJM Auto Care | Bengkel Spesialis Kaki-Kaki Mobil #1 di Indonesia",
+  title: "TJM Auto Care | Website Resmi Bengkel Mobil Spesialis Indonesia",
   description:
-    "Bengkel spesialis kaki-kaki mobil terpercaya dengan 20+ cabang di Indonesia. Service shockbreaker, rack steer, tie rod dengan garansi. Konsultasi GRATIS!",
+    "Website resmi TJM Auto Care dengan info cabang, promo, dan layanan perawatan mobil bergaransi di berbagai kota Indonesia.",
   keywords: [
-    "bengkel kaki kaki mobil",
-    "service kaki kaki mobil",
-    "bengkel spesialis suspensi",
-    "perbaikan shockbreaker",
     "tjm auto care",
+    "tjm autocare",
+    "tjm auto care indonesia",
+    "cabang tjm auto care",
+    "tjm auto care terdekat",
   ],
   openGraph: {
     title: "TJM Auto Care | Bengkel Spesialis Kaki-Kaki Mobil",

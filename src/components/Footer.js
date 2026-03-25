@@ -78,6 +78,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/layanan/paket-kaki-kaki"
+                  className="font-jakarta text-sm text-gray-400 hover:text-red-500 transition-colors"
+                >
+                  Bengkel Kaki-Kaki Mobil
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/galeri"
                   className="font-jakarta text-sm text-gray-400 hover:text-red-500 transition-colors"
                 >

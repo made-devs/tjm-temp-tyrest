@@ -53,9 +53,10 @@ const ServiceCard = ({ service }) => (
       {/* Mengganti <a> dengan <Link> dan menggunakan service.href */}
       <Link
         href={service.href}
+        aria-label={`Lihat detail ${service.title}`}
         className="absolute left-6 bottom-6 flex items-center gap-2 font-jakarta text-sm font-bold text-red-500 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 group-[.is-active]:opacity-100 group-[.is-active]:translate-y-0"
       >
-        Lihat Detail <ArrowRight size={16} />
+        Lihat {service.title} <ArrowRight size={16} />
       </Link>
     </div>
   </div>

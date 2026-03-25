@@ -3,6 +3,15 @@ import Image from "next/image";
 import { workshopLocations } from "@/data/locations";
 import { slugify } from "@/lib/slug";
 
+const PRIORITY_CITY_NAMES = [
+  "Surabaya",
+  "Jogja",
+  "Bekasi",
+  "Bandung",
+  "Samarinda",
+  "Bali",
+];
+
 export const metadata = {
   title: "Kota Cabang Bengkel Kaki-Kaki Mobil | TJM Auto Care",
   description:
@@ -32,6 +41,9 @@ export default function KotaIndexPage() {
   const locations = [...workshopLocations].sort((a, b) =>
     a.city.localeCompare(b.city, "id"),
   );
+  const priorityLocations = locations.filter((location) =>
+    PRIORITY_CITY_NAMES.includes(location.city),
+  );
 
   return (
     <main className="bg-black text-white">
@@ -55,9 +67,35 @@ export default function KotaIndexPage() {
           .
         </p>
 
+        <section className="mt-8 rounded-2xl border border-red-500/20 bg-[#0f0f0f] p-6 md:p-8">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-red-500">
+            Kota Prioritas Tier 1
+          </p>
+          <h2 className="mt-3 font-teko text-3xl uppercase md:text-4xl">
+            Cabang Yang Paling Layak Didorong Dulu
+          </h2>
+          <p className="mt-3 max-w-3xl text-gray-300 leading-relaxed">
+            Berdasarkan evaluasi keyword dan query lokal, kota yang paling
+            prioritas untuk intent `terdekat` saat ini adalah Surabaya, Jogja,
+            Bekasi, Bandung, Samarinda, dan Bali.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {priorityLocations.map((loc) => (
+              <Link
+                key={loc.id}
+                href={`/kota/${slugify(loc.city)}`}
+                className="inline-flex items-center rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-semibold text-red-300 transition-colors hover:border-red-400 hover:bg-red-500/20 hover:text-white"
+              >
+                Bengkel Terdekat {loc.city}
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {locations.map((loc) => {
             const slug = slugify(loc.city);
+            const isPriorityCity = PRIORITY_CITY_NAMES.includes(loc.city);
             return (
               <Link
                 key={loc.id}
@@ -74,6 +112,11 @@ export default function KotaIndexPage() {
                 </div>
 
                 <div className="p-5">
+                  {isPriorityCity && (
+                    <span className="inline-flex rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-red-300">
+                      Prioritas
+                    </span>
+                  )}
                   <h2 className="font-teko text-2xl uppercase">{loc.city}</h2>
                   <p className="mt-2 text-sm text-gray-300 line-clamp-2">
                     {loc.address}
@@ -83,7 +126,7 @@ export default function KotaIndexPage() {
                   </p>
 
                   <span className="inline-block mt-4 text-sm text-red-400 group-hover:text-red-300">
-                    Lihat detail →
+                    Lihat cabang & booking →
                   </span>
                 </div>
               </Link>

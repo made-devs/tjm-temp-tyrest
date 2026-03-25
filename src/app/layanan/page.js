@@ -43,6 +43,7 @@ const ServiceCard = ({ service }) => {
         <Link
           href={service.href}
           onClick={(e) => e.stopPropagation()}
+          aria-label={`Lihat detail ${service.title}`}
           className={`absolute left-6 bottom-6 flex items-center gap-2 font-jakarta text-sm font-bold text-red-500 
           ${
             isExpanded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -51,7 +52,7 @@ const ServiceCard = ({ service }) => {
           transition-all duration-500 ease-in-out 
           md:group-hover:opacity-100 md:group-hover:translate-y-0`}
         >
-          Lihat Detail <ArrowRight size={16} />
+          Lihat {service.title} <ArrowRight size={16} />
         </Link>
       </div>
     </div>
