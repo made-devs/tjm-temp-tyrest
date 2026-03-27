@@ -12,7 +12,7 @@ import {
   Tag,
   Wrench,
 } from "lucide-react";
-import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import TrackedWhatsAppLink from "@/components/integrasi/TrackedWhatsAppLink";
 
 const BOOKING_WA = "6285169576890";
 const PRIORITY_CITY_NAMES = [
@@ -561,3 +561,4 @@ export default async function KotaDetailPage({ params }) {
     </main>
   );
 }
+

@@ -24,3 +24,4 @@ export const metadata = {
 export default function KontakLayout({ children }) {
   return <>{children}</>;
 }
+

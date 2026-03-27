@@ -20,3 +20,4 @@ export const metadata = {
 export default function LayananLayout({ children }) {
   return <>{children}</>;
 }
+

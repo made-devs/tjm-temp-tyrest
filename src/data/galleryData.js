@@ -257,3 +257,4 @@ export const galleryImages = [
     category: "berkala",
   },
 ];
+

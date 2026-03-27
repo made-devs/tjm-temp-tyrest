@@ -11,3 +11,4 @@ export const metadata = {
 export default function PeduliLayout({ children }) {
   return <>{children}</>;
 }
+

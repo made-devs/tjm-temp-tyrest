@@ -6,14 +6,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Impor semua komponen seksi untuk halaman Peduli
-import PeduliHero from "@/components/sections/peduli/PeduliHero";
-import PeduliAbout from "@/components/sections/peduli/PeduliAbout";
-import PeduliHowItWorks from "@/components/sections/peduli/PeduliHowItWorks";
-import PeduliImpact from "@/components/sections/peduli/PeduliImpact";
-import PeduliPhotoGallery from "@/components/sections/peduli/PeduliPhotoGallery"; // Impor baru
-import PeduliVideoReels from "@/components/sections/peduli/PeduliVideoReels"; // Impor baru
-import PeduliTestimonials from "@/components/sections/peduli/PeduliTestimonials";
-import PeduliCta from "@/components/sections/peduli/PeduliCta";
+import PeduliHero from "@/components/peduli/PeduliHero";
+import PeduliTentang from "@/components/peduli/PeduliTentang";
+import PeduliCaraKerja from "@/components/peduli/PeduliCaraKerja";
+import PeduliDampak from "@/components/peduli/PeduliDampak";
+import PeduliGaleriFoto from "@/components/peduli/PeduliGaleriFoto";
+import PeduliVideo from "@/components/peduli/PeduliVideo";
+import PeduliTestimoni from "@/components/peduli/PeduliTestimoni";
+import PeduliAjakan from "@/components/peduli/PeduliAjakan";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,27 +45,28 @@ export default function PeduliPage() {
       <PeduliHero />
       {/* Setiap section dibungkus dengan div.page-section untuk trigger animasi */}
       <div className="page-section">
-        <PeduliAbout />
+        <PeduliTentang />
       </div>
       <div className="page-section">
-        <PeduliHowItWorks />
+        <PeduliCaraKerja />
       </div>
       <div className="page-section">
-        <PeduliImpact />
+        <PeduliDampak />
       </div>
       {/* Seksi baru ditambahkan di sini */}
       <div className="page-section">
-        <PeduliPhotoGallery />
+        <PeduliGaleriFoto />
       </div>
       <div className="page-section">
-        <PeduliVideoReels />
+        <PeduliVideo />
       </div>
       <div className="page-section">
-        <PeduliTestimonials />
+        <PeduliTestimoni />
       </div>
       <div className="page-section">
-        <PeduliCta />
+        <PeduliAjakan />
       </div>
     </main>
   );
 }
+

@@ -8,7 +8,7 @@ import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 
 // TAMBAHAN: data layanan + komponen rekomendasi
 import { servicesData } from "@/data/servicesData";
-import RecommendationCard from "@/components/blog/RecommendationCard";
+import KartuRekomendasi from "@/components/blog/KartuRekomendasi";
 
 export const revalidate = 300;
 
@@ -429,7 +429,7 @@ export default async function BlogPost({ params }) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {recommendations.map((s, idx) => (
-                      <RecommendationCard
+                      <KartuRekomendasi
                         key={s.slug}
                         service={s}
                         isTopPick={idx === 0}
@@ -474,7 +474,7 @@ export default async function BlogPost({ params }) {
 
                   <div className="flex flex-col gap-4">
                     {recommendations.map((s, idx) => (
-                      <RecommendationCard
+                      <KartuRekomendasi
                         key={s.slug}
                         service={s}
                         isTopPick={idx === 0}
@@ -505,3 +505,4 @@ export default async function BlogPost({ params }) {
     </main>
   );
 }
+

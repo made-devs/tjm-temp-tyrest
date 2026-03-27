@@ -84,7 +84,17 @@ const nextConfig = {
       // Legacy group page
       {
         source: "/group/:path*",
-        destination: "/partnership/:path*",
+        destination: "/kemitraan/:path*",
+        permanent: true,
+      },
+      {
+        source: "/partnership/:path*",
+        destination: "/kemitraan/:path*",
+        permanent: true,
+      },
+      {
+        source: "/news/:path*",
+        destination: "/berita/:path*",
         permanent: true,
       },
     ];

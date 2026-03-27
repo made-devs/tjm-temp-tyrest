@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ShieldCheck, Eye, Handshake, ChevronRight } from "lucide-react"; // Impor ChevronRight
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import AboutUs from "../../components/sections/AboutUs";
+import TentangKami from "@/components/beranda/TentangKami";
 
 // Komponen untuk Halaman Tentang Kami
 export default function TentangKamiPage() {
@@ -55,7 +55,7 @@ export default function TentangKamiPage() {
       {/* Konten Tentang Kami */}
       <section className="page-element py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <AboutUs />
+          <TentangKami />
 
           {/* Visi & Misi */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
@@ -128,3 +128,4 @@ export default function TentangKamiPage() {
     </main>
   );
 }
+

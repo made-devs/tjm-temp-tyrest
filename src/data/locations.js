@@ -202,3 +202,4 @@ export const workshopLocations = [
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4213170557728!2d112.63766637591961!3d-7.95533819206923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629007e83e067%3A0x9a97e28c24ac60b9!2sTJM%20AUTO%20CARE%20MALANG!5e0!3m2!1sen!2sid!4v1755167037641!5m2!1sen!2sid',
   },
 ];
+

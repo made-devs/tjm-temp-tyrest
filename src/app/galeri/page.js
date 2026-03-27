@@ -7,7 +7,7 @@ import { X, ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import { galleryTabs, galleryImages } from "@/data/galleryData"; // Impor data baru
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/umum/SectionHeader";
 
 export default function GalleryPage() {
   const [activeTab, setActiveTab] = useState(galleryTabs[0].id);
@@ -159,3 +159,4 @@ export default function GalleryPage() {
     </main>
   );
 }
+

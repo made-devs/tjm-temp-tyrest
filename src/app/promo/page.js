@@ -7,11 +7,11 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/umum/SectionHeader";
 import { promoCategories } from "@/data/promoAutocare";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import TrackedWhatsAppLink from "@/components/TrackedWhatsAppLink";
+import TrackedWhatsAppLink from "@/components/integrasi/TrackedWhatsAppLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -289,3 +289,4 @@ export default function PromoPage() {
     </main>
   );
 }
+

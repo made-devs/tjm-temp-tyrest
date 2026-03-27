@@ -28,3 +28,4 @@ if (SPACE_ID && ACCESS_TOKEN) {
 }
 
 export { client };
+

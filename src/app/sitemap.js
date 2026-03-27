@@ -61,9 +61,9 @@ export default async function sitemap() {
     "/galeri",
     "/kontak",
     "/tentang-kami",
-    "/partnership",
+    "/kemitraan",
     "/promo",
-    "/news",
+    "/berita",
     "/peduli",
     "/kota",
   ];
@@ -102,3 +102,4 @@ export default async function sitemap() {
 
   return [...staticRoutes, ...serviceRoutes, ...cityRoutes, ...blogRoutes];
 }
+

@@ -1,9 +1,9 @@
 import "./globals.css";
 import { Teko, Plus_Jakarta_Sans } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import SmoothScrolling from "../components/SmoothScrolling";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Navbar from "@/components/tata-letak/Navbar";
+import Footer from "@/components/tata-letak/Footer";
+import SmoothScrolling from "@/components/integrasi/SmoothScrolling";
+import GoogleAnalytics from "@/components/integrasi/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -116,3 +116,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

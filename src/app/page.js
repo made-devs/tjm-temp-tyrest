@@ -1,13 +1,13 @@
-import Hero from "@/components/sections/Hero";
-import ClientLogos from "@/components/sections/ClientLogos"; // 1. Impor komponen baru
-import Promos from "@/components/sections/Promos";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import AboutUs from "@/components/sections/AboutUs";
-import Services from "@/components/sections/Services";
-import Testimonials from "../components/sections/Testimonials";
-import Blog from "../components/sections/Blog";
-import Contact from "../components/sections/Contact";
-import Cta from "../components/sections/Cta";
+import BerandaHero from "@/components/beranda/BerandaHero";
+import LogoKlien from "@/components/beranda/LogoKlien";
+import PromoBeranda from "@/components/beranda/PromoBeranda";
+import AlasanMemilihKami from "@/components/beranda/AlasanMemilihKami";
+import TentangKami from "@/components/beranda/TentangKami";
+import LayananBeranda from "@/components/beranda/LayananBeranda";
+import TestimoniPelanggan from "@/components/beranda/TestimoniPelanggan";
+import LiputanMedia from "@/components/beranda/LiputanMedia";
+import KontakBeranda from "@/components/beranda/KontakBeranda";
+import AjakanBeranda from "@/components/beranda/AjakanBeranda";
 
 export const metadata = {
   title: "TJM Auto Care | Website Resmi Bengkel Mobil Spesialis Indonesia",
@@ -44,16 +44,17 @@ export const metadata = {
 export default function HomePage() {
   return (
     <main>
-      <Hero />
-      <ClientLogos />
-      <Promos />
-      <WhyChooseUs />
-      <AboutUs />
-      <Services />
-      <Testimonials />
-      <Blog />
-      <Contact />
-      <Cta />
+      <BerandaHero />
+      <LogoKlien />
+      <PromoBeranda />
+      <AlasanMemilihKami />
+      <TentangKami />
+      <LayananBeranda />
+      <TestimoniPelanggan />
+      <LiputanMedia />
+      <KontakBeranda />
+      <AjakanBeranda />
     </main>
   );
 }
+

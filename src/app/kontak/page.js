@@ -13,10 +13,10 @@ import {
 } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import LocationCarousel from "@/components/LocationCarousel";
+import LocationCarousel from "@/components/umum/LocationCarousel";
 import { servicesData } from "@/data/servicesData";
 import { useSearchParams } from "next/navigation";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/umum/SectionHeader";
 import { track } from "@vercel/analytics";
 
 const faqData = [
@@ -333,3 +333,4 @@ export default function ContactPage() {
     </main>
   );
 }
+
