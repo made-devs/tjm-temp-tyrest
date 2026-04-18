@@ -23,6 +23,7 @@ const NewsCard = ({ post }) => (
         src={post.image}
         alt={post.title}
         fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         className="object-cover transition-transform duration-300 group-hover:scale-105"
       />
       <span className="absolute top-4 left-4 bg-red-600 text-white font-jakarta text-xs font-bold px-3 py-1">

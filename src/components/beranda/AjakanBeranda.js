@@ -37,7 +37,7 @@ export default function AjakanBeranda() {
     >
       {/* Background Image dengan Efek Fixed */}
       <div
-        className="absolute inset-0 -z-20 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 -z-20 bg-cover bg-center bg-scroll md:bg-fixed"
         style={{ backgroundImage: "url('/hero.webp')" }}
       />
       {/* Lapisan Overlay Gelap */}

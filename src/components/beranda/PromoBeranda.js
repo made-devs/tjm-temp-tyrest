@@ -100,6 +100,7 @@ const PromoModal = ({ promo, startIndex = 0, onClose }) => {
                 src={images[index]}
                 alt={`${promo?.title || "Promo"} - ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"
                 priority
               />
@@ -154,7 +155,13 @@ const PromoModal = ({ promo, startIndex = 0, onClose }) => {
                     }`}
                     aria-label={`Open image ${i + 1}`}
                   >
-                    <Image src={src} alt="" fill className="object-cover" />
+                    <Image
+                      src={src}
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
                   </button>
                 ))}
               </div>
@@ -277,6 +284,7 @@ export default function PromoBeranda() {
                         src={coverImage}
                         alt={promo.title}
                         fill
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     )}

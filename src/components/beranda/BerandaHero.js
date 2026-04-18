@@ -10,6 +10,7 @@ export default function BerandaHero() {
         src="/hero.webp"
         alt="Mekanik TJM Auto Care sedang bekerja"
         priority
+        fetchPriority="high"
         fill
         className="object-cover z-0"
         sizes="100vw"

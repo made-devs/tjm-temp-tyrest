@@ -38,6 +38,7 @@ const ServiceCard = ({ service }) => (
       src={service.image}
       alt={service.title}
       fill
+      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, (max-width: 1280px) 28vw, 22vw"
       className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-[.is-active]:scale-110"
     />
     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 from-15% to-transparent" />
@@ -120,7 +121,7 @@ export default function LayananBeranda() {
   return (
     <div ref={sectionRef}>
       <div
-        className="fixed inset-0 -z-10 bg-cover bg-center bg-fixed"
+        className="fixed inset-0 -z-10 bg-cover bg-center bg-scroll md:bg-fixed"
         style={{ backgroundImage: "url('/bg-service.webp')" }} // <-- Path gambar diubah di sini
       />
       <div className="fixed inset-0 -z-10 bg-black/70"></div>

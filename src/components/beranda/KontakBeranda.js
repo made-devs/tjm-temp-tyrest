@@ -148,6 +148,7 @@ export default function KontakBeranda() {
                           src={location.photo}
                           alt={location.city}
                           fill
+                          sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover"
                         />
                       </div>
