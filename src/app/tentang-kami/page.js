@@ -7,6 +7,7 @@ import { ShieldCheck, Eye, Handshake, ChevronRight } from "lucide-react"; // Imp
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import TentangKami from "@/components/beranda/TentangKami";
+import PageHero from "@/components/umum/PageHero";
 
 // Komponen untuk Halaman Tentang Kami
 export default function TentangKamiPage() {
@@ -29,28 +30,15 @@ export default function TentangKamiPage() {
   return (
     <main ref={mainRef} className="bg-black text-white">
       {/* Hero Section */}
-      <section className="page-element relative h-[30vh] flex items-center justify-center text-center text-white p-8">
-        <Image
-          src="/hero.webp" // Ganti dengan gambar header yang sesuai
-          alt="Tentang TJM Auto Care"
-          fill
-          className="object-cover z-0"
-          priority
+      <div className="page-element z-20 relative">
+        <PageHero
+          imageSrc="/hero.webp"
+          breadcrumbText="TENTANG KAMI"
+          titleMain="TENTANG"
+          titleHighlight="KAMI"
+          description="Mengenal lebih dekat TJM Auto Care, visi misi dan dedikasi kami dalam memberikan pelayanan bengkel otomotif terbaik."
         />
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <div className="relative z-20">
-          <h1 className="font-teko text-4xl md:text-5xl font-medium uppercase">
-            Tentang Kami
-          </h1>
-          <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2">
-            <Link href="/" className="text-gray-300 hover:text-red-500">
-              Home
-            </Link>
-            <ChevronRight size={20} className="text-red-500" />
-            <span className="text-white">Tentang Kami</span>
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* Konten Tentang Kami */}
       <section className="page-element py-16 md:py-24">
@@ -128,4 +116,3 @@ export default function TentangKamiPage() {
     </main>
   );
 }
-

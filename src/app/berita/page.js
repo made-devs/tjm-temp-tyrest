@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, ChevronRight, ArrowUpRight } from "lucide-react";
 import { beritaData } from "@/data/beritaData";
+import PageHero from "@/components/umum/PageHero";
 
 export default function HalamanBerita() {
   const posts = beritaData;
@@ -9,28 +10,13 @@ export default function HalamanBerita() {
   return (
     <main className="bg-black text-white">
       {/* Hero Section */}
-      <section className="relative h-[30vh] flex items-center justify-center text-center text-white p-8">
-        <Image
-          src="/hero.webp"
-          alt="Berita TJM Auto Care"
-          fill
-          className="object-cover z-0"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <div className="relative z-20">
-          <h1 className="font-teko text-4xl md:text-5xl font-medium uppercase">
-            Berita & Liputan Media
-          </h1>
-          <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2">
-            <Link href="/" className="text-gray-300 hover:text-red-500">
-              Home
-            </Link>
-            <ChevronRight size={16} className="text-red-500" />
-            <span className="text-white">Berita</span>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/hero.webp"
+        breadcrumbText="BERITA"
+        titleMain="BERITA"
+        titleHighlight="& LIPUTAN MEDIA"
+        description="Update terbaru seputar inovasi, layanan cabang, serta liputan media terkait perjalanan TJM Auto Care."
+      />
 
       {/* Konten Daftar Berita */}
       <section className="py-16 md:py-24">
@@ -92,4 +78,3 @@ export const metadata = {
     canonical: "https://tjmautocare.id/berita",
   },
 };
-

@@ -17,6 +17,7 @@ import LocationCarousel from "@/components/umum/LocationCarousel";
 import { servicesData } from "@/data/servicesData";
 import { useSearchParams } from "next/navigation";
 import SectionHeader from "@/components/umum/SectionHeader";
+import PageHero from "@/components/umum/PageHero";
 import { track } from "@vercel/analytics";
 
 const faqData = [
@@ -246,28 +247,15 @@ export default function ContactPage() {
   return (
     <main ref={mainRef} className="bg-black text-white">
       {/* Hero Section */}
-      <section className="page-element relative h-[30vh] flex items-center justify-center text-center text-white p-8">
-        <Image
-          src="/hero.webp"
-          alt="Kontak TJM Auto Care"
-          fill
-          className="object-cover z-0"
-          priority
+      <div className="page-element">
+        <PageHero
+          imageSrc="/hero.webp"
+          breadcrumbText="KONTAK"
+          titleMain="HUBUNGI"
+          titleHighlight="KAMI"
+          description="Jangan ragu untuk menghubungi layanan pelanggan kami. Tim TJM Auto Care siap mendengarkan kebutuhan kendaraan Anda."
         />
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <div className="relative z-20">
-          <h1 className="font-teko text-4xl md:text-5xl font-medium uppercase">
-            Hubungi Kami
-          </h1>
-          <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2">
-            <Link href="/" className="text-gray-300 hover:text-red-500">
-              Home
-            </Link>
-            <span className="text-gray-500">/</span>
-            <span className="text-white">Kontak</span>
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* Formulir Kontak Baru */}
       <Suspense fallback={<div>Loading...</div>}>
@@ -333,4 +321,3 @@ export default function ContactPage() {
     </main>
   );
 }
-

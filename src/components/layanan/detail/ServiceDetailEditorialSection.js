@@ -30,9 +30,9 @@ export default function ServiceDetailEditorialSection({
             {slug === "paket-kaki-kaki"
               ? "Service Kaki-Kaki Mobil di Bengkel Spesialis Kaki-Kaki Mobil"
               : isRackSteerIntentPage
-                ? `${service.title}: Solusi Rack Steer & Steering Presisi`
+                ? `${service.title}: Service Rack Steer Yang Lebih Presisi`
                 : isShockbreakerIntentPage
-                  ? `${service.title}: Solusi Shockbreaker Presisi & Nyaman`
+                  ? `${service.title}: Service Shockbreaker Mobil Yang Lebih Presisi`
                   : `${service.title}: Pilihan Paket Sesuai Target Performa`}
           </h2>
 
@@ -48,12 +48,28 @@ export default function ServiceDetailEditorialSection({
               untuk pemakaian harian maupun perjalanan jauh.
             </p>
             <p className="mt-4 font-jakarta text-sm leading-7 text-gray-300 sm:text-base md:text-[17px]">
-              Setiap varian paket memiliki cakupan kerja yang berbeda, sehingga
-              Anda bisa memilih opsi paling relevan dengan kebutuhan mobil dan
-              budget perawatan. Tim mekanik TJM akan membantu membaca hasil
-              inspeksi awal, lalu menyarankan tindakan yang efisien agar biaya
-              servis tetap terkontrol tanpa mengorbankan kualitas pengerjaan.
+              {isRackSteerIntentPage
+                ? "Untuk service rack steer, proses kami dimulai dari inspeksi gejala seperti setir berat, bunyi saat belok, arah setir tidak presisi, dan rembesan oli power steering. Dari sana tim mekanik TJM akan membantu menentukan apakah cukup service rack steer biasa, perlu rekondisi, atau harus masuk ke repair rack steer yang lebih spesifik agar hasil perbaikan benar-benar tepat sasaran."
+                : isShockbreakerIntentPage
+                  ? "Untuk service shockbreaker mobil, proses kami dimulai dari inspeksi gejala seperti bantingan keras, limbung, kebocoran oli, dan pantulan berlebih. Dari sana tim mekanik TJM akan membantu menentukan apakah shockbreaker cukup direkondisi, perlu penggantian part, atau harus disertai pengecekan komponen suspensi lain agar hasil servis lebih tepat sasaran."
+                  : "Setiap varian paket memiliki cakupan kerja yang berbeda, sehingga Anda bisa memilih opsi paling relevan dengan kebutuhan mobil dan budget perawatan. Tim mekanik TJM akan membantu membaca hasil inspeksi awal, lalu menyarankan tindakan yang efisien agar biaya servis tetap terkontrol tanpa mengorbankan kualitas pengerjaan."}
             </p>
+            {isRackSteerIntentPage && (
+              <p className="mt-4 font-jakarta text-sm leading-7 text-gray-300 sm:text-base md:text-[17px]">
+                Jika Anda sedang mencari service rack steer terdekat, halaman
+                ini memang disusun untuk intent tersebut: ada pilihan paket,
+                alur pengecekan, FAQ, dan akses cepat ke halaman kota agar user
+                bisa langsung menuju cabang TJM Auto Care yang paling dekat.
+              </p>
+            )}
+            {isShockbreakerIntentPage && (
+              <p className="mt-4 font-jakarta text-sm leading-7 text-gray-300 sm:text-base md:text-[17px]">
+                Jika Anda sedang mencari service shockbreaker terdekat, halaman
+                ini memang disusun untuk intent tersebut: ada pilihan paket,
+                alur pengecekan, FAQ, dan akses cepat ke halaman kota agar user
+                bisa langsung menuju cabang TJM Auto Care yang paling dekat.
+              </p>
+            )}
           </div>
 
           {topVariants.length > 0 && (
@@ -109,15 +125,16 @@ export default function ServiceDetailEditorialSection({
 
           {slug === "paket-steering" && (
             <p className="mt-4 max-w-3xl font-jakarta text-sm leading-7 text-gray-400 sm:text-base md:text-[17px]">
-              Jika Anda membutuhkan tindakan rack steer yang lebih spesifik,
-              lihat juga halaman{" "}
+              Jika setelah inspeksi Anda membutuhkan repair rack steer yang
+              lebih spesifik, lihat juga halaman{" "}
               <Link
                 href="/layanan/paket-racksteer-ultimate"
                 className="text-red-500 font-medium hover:text-red-400 hover:underline transition-all"
               >
                 Paket Racksteer Ultimate
               </Link>{" "}
-              untuk opsi rebuild dan pengecekan rack steer lebih detail.
+              untuk opsi rebuild, repair rack steer, dan pengecekan rack steer
+              lebih detail.
             </p>
           )}
 
@@ -164,7 +181,7 @@ export default function ServiceDetailEditorialSection({
                       {isRackSteerIntentPage
                         ? "Service Rack Steer "
                         : isShockbreakerIntentPage
-                          ? "Service Shockbreaker "
+                          ? "Service Shockbreaker Mobil "
                           : "Bengkel Kaki-Kaki "}
                       <span className="font-bold text-red-500">
                         {city.city}

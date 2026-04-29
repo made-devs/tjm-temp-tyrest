@@ -21,6 +21,9 @@ const teko = Teko({
 });
 
 export const metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://tjmautocare.id",
+  ),
   title: {
     default: "TJM Auto Care | Bengkel Kaki-Kaki & Perawatan Mobil Spesialis",
     template: "%s",
@@ -95,7 +98,7 @@ export default function RootLayout({ children }) {
         <GoogleAnalytics measurementId={measurementId} />
         <SmoothScrolling />
         <Navbar />
-        <main className="pt-[72px]">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />
@@ -110,4 +113,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

@@ -5,10 +5,9 @@ export const METADATA_OVERRIDES = {
       "Paket diesel TJM Auto Care untuk tune up, injector cleaner, dan perawatan mesin diesel agar performa tetap bertenaga serta efisien.",
   },
   "paket-kaki-kaki": {
-    title:
-      "Bengkel Kaki-Kaki Mobil Spesialis | Service Mulai Rp 949 Ribu | TJM",
+    title: "Bengkel Kaki-Kaki Mobil Terdekat | Service Spesialis TJM Auto Care",
     description:
-      "Bengkel spesialis kaki-kaki mobil TJM melayani service kaki-kaki mobil, rekondisi rack steer, shockbreaker, tie rod, dan bushing arm mulai Rp 949 ribu dengan garansi pengerjaan.",
+      "Cari bengkel kaki-kaki mobil terdekat? TJM Auto Care melayani service kaki-kaki mobil, rack steer, shockbreaker, tie rod, dan bushing arm dengan pengecekan detail, garansi pengerjaan, dan booking cabang cepat.",
   },
   "paket-super-hemat": {
     title: "Paket Super Hemat 1 Mulai 1,4 Juta | TJM Auto Care",
@@ -179,10 +178,26 @@ export const RACK_STEER_FAQ_SCHEMA = [
   },
   {
     "@type": "Question",
+    name: "Apakah rack steer harus dicek dulu sebelum repair?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Ya. Repair rack steer yang tepat sebaiknya dimulai dari pengecekan kondisi rack steer, tie rod, steering column, dan sistem power steering agar teknisi bisa menentukan apakah cukup service rack steer biasa, perlu rekondisi, atau memang perlu perbaikan yang lebih dalam.",
+    },
+  },
+  {
+    "@type": "Question",
     name: "Berapa lama dan berapa biaya service rack steer?",
     acceptedAnswer: {
       "@type": "Answer",
       text: "Durasi dan biaya mengikuti hasil pengecekan awal, tingkat kerusakan, serta kebutuhan rekondisi atau penggantian part. Konsultasi via WhatsApp untuk estimasi awal sebelum datang ke cabang.",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "Berapa lama pengerjaan service atau repair rack steer?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Durasi pengerjaan mengikuti hasil inspeksi dan tingkat kerusakan. Jika tindakan yang dibutuhkan masih ringan, proses bisa lebih cepat. Untuk kasus yang memerlukan repair rack steer atau penggantian komponen, tim TJM akan menginformasikan estimasi waktu sejak awal.",
     },
   },
 ];
@@ -206,10 +221,26 @@ export const SHOCKBREAKER_FAQ_SCHEMA = [
   },
   {
     "@type": "Question",
+    name: "Apakah shockbreaker harus dicek dulu sebelum ganti?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Ya. Service shockbreaker mobil yang tepat sebaiknya dimulai dari pengecekan kondisi shock, seal, oli, spring, dan komponen pendukung lain agar teknisi bisa menentukan apakah cukup direkondisi atau memang perlu penggantian part.",
+    },
+  },
+  {
+    "@type": "Question",
     name: "Berapa lama dan berapa biaya service shockbreaker mobil?",
     acceptedAnswer: {
       "@type": "Answer",
       text: "Durasi dan biaya mengikuti hasil inspeksi awal, kondisi komponen, serta kebutuhan rekondisi atau penggantian part. Konsultasi via WhatsApp untuk estimasi awal sebelum datang ke cabang.",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "Berapa lama pengerjaan service shockbreaker?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Durasi pengerjaan mengikuti hasil pengecekan dan tingkat kerusakan. Jika tindakan yang dibutuhkan masih ringan, proses bisa lebih cepat. Untuk kasus yang butuh rekondisi atau penggantian komponen, tim TJM akan menginformasikan estimasi waktu sejak awal.",
     },
   },
 ];

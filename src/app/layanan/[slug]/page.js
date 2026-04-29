@@ -2,9 +2,9 @@ import { servicesData } from "@/data/servicesData";
 import { workshopLocations } from "@/data/locations";
 import { notFound } from "next/navigation";
 import ServiceAvailability from "@/components/umum/ServiceAvailability";
+import PageHero from "@/components/umum/PageHero";
 import ServiceDetailJsonLdScripts from "@/components/layanan/detail/ServiceDetailJsonLdScripts";
 import ServiceDetailEditorialSection from "@/components/layanan/detail/ServiceDetailEditorialSection";
-import ServiceDetailHero from "@/components/layanan/detail/ServiceDetailHero";
 import ServiceVariantSection from "@/components/layanan/detail/ServiceVariantSection";
 import ServiceIntentBlocksSection from "@/components/layanan/detail/ServiceIntentBlocksSection";
 import ServiceFAQ from "@/components/layanan/detail/ServiceFAQ";
@@ -26,6 +26,46 @@ function getServiceData(slug) {
 function getTopVariantNames(service) {
   if (!service?.variants?.length) return [];
   return service.variants.slice(0, 4).map((variant) => variant.title);
+}
+
+function getPageHeroContent({
+  service,
+  isKakiKakiPage,
+  isRackSteerIntentPage,
+  isShockbreakerIntentPage,
+}) {
+  if (isKakiKakiPage) {
+    return {
+      titleMain: "Bengkel Kaki-Kaki Mobil",
+      titleHighlight: "Spesialis",
+      description:
+        "Bengkel spesialis kaki-kaki mobil untuk service kaki-kaki mobil mulai Rp 949 ribu, solusi bunyi gluduk, setir getar, dan mobil limbung dengan pengecekan detail serta garansi pengerjaan.",
+    };
+  }
+
+  if (isRackSteerIntentPage) {
+    return {
+      titleMain: "Service Rack Steer",
+      titleHighlight: "& Steering Mobil",
+      description:
+        "Service rack steer untuk atasi setir berat, bunyi saat belok, handling kurang presisi, dan kebutuhan repair rack steer. Booking service rack steer terdekat dengan alur diagnosa jelas dan arahan cabang via WhatsApp.",
+    };
+  }
+
+  if (isShockbreakerIntentPage) {
+    return {
+      titleMain: "Service Shockbreaker",
+      titleHighlight: "Mobil",
+      description:
+        "Service shockbreaker mobil untuk atasi bantingan keras, limbung, body memantul berlebih, atau shockbreaker bocor. Booking service shockbreaker terdekat dengan alur cek yang jelas, diagnosa awal, dan rekomendasi tindakan yang transparan.",
+    };
+  }
+
+  return {
+    titleMain: service.title,
+    titleHighlight: "TJM Auto Care",
+    description: service.description,
+  };
 }
 
 // --- Server Component untuk Halaman ---
@@ -143,6 +183,12 @@ export default async function ServiceDetailPage({ params }) {
   };
 
   const topVariants = getTopVariantNames(service);
+  const pageHeroContent = getPageHeroContent({
+    service,
+    isKakiKakiPage,
+    isRackSteerIntentPage,
+    isShockbreakerIntentPage,
+  });
   const showPriorityCityLinks =
     (slug === "paket-kaki-kaki" ||
       isRackSteerIntentPage ||
@@ -162,13 +208,13 @@ export default async function ServiceDetailPage({ params }) {
       />
 
       <main className="bg-black text-white">
-        <ServiceDetailHero
-          service={service}
-          heroTitle={heroTitle}
-          breadcrumbTitle={breadcrumbTitle}
-          isKakiKakiPage={isKakiKakiPage}
-          isRackSteerIntentPage={isRackSteerIntentPage}
-          isShockbreakerIntentPage={isShockbreakerIntentPage}
+        <PageHero
+          imageSrc={service.image}
+          imageAlt={service.title}
+          breadcrumbText={`LAYANAN ${breadcrumbTitle.toUpperCase()}`}
+          titleMain={pageHeroContent.titleMain}
+          titleHighlight={pageHeroContent.titleHighlight}
+          description={pageHeroContent.description}
         />
 
         <ServiceVariantSection

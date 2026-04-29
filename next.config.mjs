@@ -25,6 +25,36 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    const noindexHeaders = [{ key: "X-Robots-Tag", value: "noindex" }];
+
+    return [
+      {
+        source: "/_next/image",
+        headers: noindexHeaders,
+      },
+      {
+        source: "/aboutus/:path*",
+        headers: noindexHeaders,
+      },
+      {
+        source: "/bengkel/:path*",
+        headers: noindexHeaders,
+      },
+      {
+        source: "/features/:path*",
+        headers: noindexHeaders,
+      },
+      {
+        source: "/logo/:path*",
+        headers: noindexHeaders,
+      },
+      {
+        source: "/services/:path*",
+        headers: noindexHeaders,
+      },
+    ];
+  },
   async redirects() {
     return [
       // Legacy city routes (previously at root) -> current /kota/[slug]

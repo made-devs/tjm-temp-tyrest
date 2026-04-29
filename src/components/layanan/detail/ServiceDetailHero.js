@@ -40,9 +40,10 @@ export default function ServiceDetailHero({
         )}
         {isShockbreakerIntentPage && (
           <p className="font-jakarta text-sm md:text-base text-gray-200 mt-2 max-w-2xl mx-auto">
-            Solusi untuk bantingan keras, limbung, atau shockbreaker bocor.
-            Booking service shockbreaker mobil terdekat dengan alur cek yang
-            jelas dan rekomendasi tindakan yang transparan.
+            Service shockbreaker mobil untuk atasi bantingan keras, limbung,
+            body memantul berlebih, atau shockbreaker bocor. Booking service
+            shockbreaker terdekat dengan alur cek yang jelas, diagnosa awal, dan
+            rekomendasi tindakan yang transparan.
           </p>
         )}
         <div className="flex items-center justify-center gap-2 font-jakarta text-sm mt-2 max-w-full px-2">
