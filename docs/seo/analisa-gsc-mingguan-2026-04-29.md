@@ -253,15 +253,15 @@ Halaman yang tidak perlu jadi prioritas utama pekan ini:
 
 - [x] Perkuat `/layanan/paket-shockbreaker` dengan section yang menjawab query `service shockbreaker mobil` dan `service shockbreaker terdekat`.
 - [x] Perkuat `/layanan/paket-steering` dengan section yang menjawab query `service rack steer`, `service rack steer terdekat`, dan `repair rack steer`.
-- [ ] Tambahkan blok FAQ yang menjawab intent `biaya`, `cek`, dan `berapa lama pengerjaan` pada halaman service utama.
-- [ ] Review apakah `/kontak` perlu meta title dan description yang lebih transaksional agar CTR tidak terus melemah.
+- [x] Tambahkan blok FAQ yang menjawab intent `biaya`, `cek`, dan `berapa lama pengerjaan` pada halaman service utama.
+- [x] Review apakah `/kontak` perlu meta title dan description yang lebih transaksional agar CTR tidak terus melemah.
 
 ## D. Internal linking
 
-- [ ] Tambahkan internal link dari homepage ke halaman kota yang sedang naik: Bandung, Jogja, Samarinda, Malang.
-- [ ] Tambahkan internal link dari halaman kota ke money page `/layanan/paket-kaki-kaki`.
-- [ ] Tambahkan internal link dari halaman service utama ke kota-kota yang sedang tumbuh.
-- [ ] Pastikan anchor text lebih jelas, misalnya `bengkel kaki-kaki mobil Bandung` atau `service kaki-kaki mobil Jogja`, bukan anchor generik.
+- [x] Tambahkan internal link dari homepage ke halaman kota yang sedang naik: Bandung, Jogja, Samarinda, Malang.
+- [x] Tambahkan internal link dari halaman kota ke money page `/layanan/paket-kaki-kaki`.
+- [x] Tambahkan internal link dari halaman service utama ke kota-kota yang sedang tumbuh.
+- [x] Pastikan anchor text lebih jelas, misalnya `bengkel kaki-kaki mobil Bandung` atau `service kaki-kaki mobil Jogja`, bukan anchor generik.
 
 ## E. Content opportunity
 

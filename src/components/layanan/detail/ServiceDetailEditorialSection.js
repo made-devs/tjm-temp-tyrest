@@ -1,6 +1,22 @@
 import Link from "next/link";
 import { slugify } from "@/lib/slug";
 
+function getCityAnchorLabel({
+  cityName,
+  isRackSteerIntentPage,
+  isShockbreakerIntentPage,
+}) {
+  if (isRackSteerIntentPage) {
+    return `Service Rack Steer ${cityName}`;
+  }
+
+  if (isShockbreakerIntentPage) {
+    return `Service Shockbreaker Mobil ${cityName}`;
+  }
+
+  return `Bengkel Kaki-Kaki Mobil ${cityName}`;
+}
+
 export default function ServiceDetailEditorialSection({
   service,
   slug,
@@ -166,9 +182,9 @@ export default function ServiceDetailEditorialSection({
               </h3>
               <p className="mx-auto mt-4 max-w-2xl font-jakarta text-sm leading-7 text-gray-400 sm:text-base md:text-[17px]">
                 Jika Anda ingin langsung menuju cabang terdekat, buka halaman
-                kota prioritas di bawah ini. Masing-masing halaman menampilkan
-                alamat lengkap, jam operasional, peta lokasi, dan tombol booking
-                WhatsApp.
+                kota yang sedang tumbuh di bawah ini. Masing-masing halaman
+                menampilkan alamat lengkap, jam operasional, peta lokasi, dan
+                tombol booking WhatsApp.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 {priorityCities.map((city) => (
@@ -178,13 +194,12 @@ export default function ServiceDetailEditorialSection({
                     className="group flex flex-col items-center relative"
                   >
                     <div className="rounded-lg border border-gray-800 bg-[#0d0d0d] px-5 py-3 font-jakarta text-sm text-gray-300 shadow-[0_4px_10px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-red-600/50 group-hover:bg-[#111] group-hover:text-white group-hover:shadow-[0_10px_20px_-10px_rgba(220,38,38,0.4)] sm:px-6 sm:text-[15px] md:text-base">
-                      {isRackSteerIntentPage
-                        ? "Service Rack Steer "
-                        : isShockbreakerIntentPage
-                          ? "Service Shockbreaker Mobil "
-                          : "Bengkel Kaki-Kaki "}
                       <span className="font-bold text-red-500">
-                        {city.city}
+                        {getCityAnchorLabel({
+                          cityName: city.city,
+                          isRackSteerIntentPage,
+                          isShockbreakerIntentPage,
+                        })}
                       </span>
                     </div>
                   </Link>
@@ -203,7 +218,11 @@ export default function ServiceDetailEditorialSection({
                         href={`/kota/${slugify(city.city)}`}
                         className="rounded-lg border border-gray-800 bg-[#0b0b0b] px-4 py-2 font-jakarta text-xs text-gray-300 transition-all duration-300 hover:-translate-y-1 hover:border-red-600/50 hover:text-white sm:text-sm"
                       >
-                        {city.city}
+                        {getCityAnchorLabel({
+                          cityName: city.city,
+                          isRackSteerIntentPage,
+                          isShockbreakerIntentPage,
+                        })}
                       </Link>
                     ))}
                   </div>

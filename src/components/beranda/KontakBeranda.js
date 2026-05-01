@@ -6,15 +6,22 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import { workshopLocations } from "@/data/locations";
+import { slugify } from "@/lib/slug";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const risingOutletCities = ["Bandung", "Jogja", "Samarinda", "Malang"];
 
 export default function KontakBeranda() {
   const [activeLocation, setActiveLocation] = useState(workshopLocations[0]);
   const sectionRef = useRef(null);
   const mapRef = useRef(null);
+  const risingOutlets = workshopLocations.filter((location) =>
+    risingOutletCities.includes(location.city),
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true });
 
@@ -114,6 +121,35 @@ export default function KontakBeranda() {
             Kunjungi salah satu cabang kami yang tersebar di berbagai kota untuk
             mendapatkan pelayanan terbaik dari TJM Auto Care.
           </p>
+
+          {risingOutlets.length > 0 && (
+            <div className="contact-header-element mt-8 max-w-4xl mx-auto rounded-2xl border border-gray-800 bg-[#111] px-5 py-6 text-left">
+              <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="font-jakarta text-[11px] font-bold uppercase tracking-[0.24em] text-red-500">
+                    Rising Outlet
+                  </p>
+                  <p className="mt-2 font-jakarta text-sm leading-6 text-gray-400 md:text-base">
+                    Outlet dengan performa paling baik minggu ini. Buka halaman
+                    kota pilihan di bawah untuk lihat detail cabang, layanan,
+                    dan jalur booking yang lebih cepat.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-3 md:justify-end">
+                  {risingOutlets.map((location) => (
+                    <Link
+                      key={location.id}
+                      href={`/kota/${slugify(location.city)}`}
+                      className="inline-flex items-center rounded-full border border-gray-700 bg-black px-4 py-2 font-jakarta text-xs font-semibold text-gray-200 transition-all duration-300 hover:-translate-y-1 hover:border-red-500 hover:text-white md:text-sm"
+                    >
+                      {`Bengkel Kaki-Kaki Mobil ${location.city}`}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Carousel Lokasi dengan Tombol Navigasi */}
@@ -212,4 +248,3 @@ export default function KontakBeranda() {
     </section>
   );
 }
-

@@ -11,12 +11,13 @@ import ServiceFAQ from "@/components/layanan/detail/ServiceFAQ";
 import {
   KAKI_KAKI_FAQ_SCHEMA,
   OFFER_OVERRIDES,
-  PRIORITY_CITY_NAMES,
   RACK_STEER_FAQ_SCHEMA,
   RACK_STEER_INTENT_SLUGS,
   SHOCKBREAKER_FAQ_SCHEMA,
   SHOCKBREAKER_INTENT_SLUGS,
 } from "@/components/layanan/detail/serviceDetailSeoData";
+
+const GROWTH_CITY_NAMES = ["Bandung", "Jogja", "Samarinda", "Malang"];
 
 // Fungsi untuk mendapatkan data service berdasarkan slug
 function getServiceData(slug) {
@@ -94,7 +95,7 @@ export default async function ServiceDetailPage({ params }) {
   const firstLocation = workshopLocations?.[0];
   const postalCodeMatch = firstLocation?.address?.match(/\b\d{5}\b/);
   const priorityCities = workshopLocations.filter((location) =>
-    PRIORITY_CITY_NAMES.includes(location.city),
+    GROWTH_CITY_NAMES.includes(location.city),
   );
 
   // Schema Markup JSON-LD (Service)
@@ -195,7 +196,7 @@ export default async function ServiceDetailPage({ params }) {
       isShockbreakerIntentPage) &&
     priorityCities.length > 0;
   const nonPriorityCities = workshopLocations.filter(
-    (location) => !PRIORITY_CITY_NAMES.includes(location.city),
+    (location) => !GROWTH_CITY_NAMES.includes(location.city),
   );
 
   return (
