@@ -87,46 +87,6 @@ export const promoCategories = [
         title: 'Gratis Voucher AC',
         image: '/promo/autocare/auto20.webp',
       },
-      {
-        title: 'Gratis Voucher Anti Karat',
-        image: '/promo/autocare/auto21.webp',
-      },
-      {
-        title: 'Gratis Voucher Caffee',
-        image: '/promo/autocare/auto22.webp',
-      },
-      {
-        title: 'Gratis Voucher Coating',
-        image: '/promo/autocare/auto23.webp',
-      },
-      {
-        title: 'Gratis Voucher Full Detailing',
-        image: '/promo/autocare/auto24.webp',
-      },
-      {
-        title: 'Gratis Voucher Member',
-        image: '/promo/autocare/auto25.webp',
-      },
-      {
-        title: 'Gratis Voucher Potongan Harga',
-        image: '/promo/autocare/auto26.webp',
-      },
-      {
-        title: 'Gratis Voucher Sparepart',
-        image: '/promo/autocare/auto27.webp',
-      },
-      {
-        title: 'Gratis Voucher Tune Up',
-        image: '/promo/autocare/auto28.webp',
-      },
-      {
-        title: 'Gratis Wheel Dressing',
-        image: '/promo/autocare/auto29.webp',
-      },
-      {
-        title: 'Promo Diskon Service Kaki Kaki',
-        image: '/promo/autocare/auto30.webp',
-      },
     ],
   },
   {

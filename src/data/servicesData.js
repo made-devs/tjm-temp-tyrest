@@ -905,16 +905,16 @@ export const servicesData = [
     href: "/layanan/paket-kaki-kaki",
     title: "Paket Kaki-Kaki Mobil Spesialis & Bergaransi",
     description:
-      "Paket servis kaki-kaki mobil untuk mengatasi bunyi gluduk-gluduk, perbaikan shockbreaker, rack steer, tie rod, hingga bushing arm. 93 item pengecekan detail dengan teknisi ahli.",
+      "Paket servis kaki-kaki mobil mulai 649 RB untuk mengatasi bunyi gluduk-gluduk, perbaikan shockbreaker, rack steer, tie rod, hingga bushing arm. Layanan terlengkap hingga 141 item pengecekan detail dengan teknisi ahli.",
     image: "/services/service5.webp",
     details:
-      "TJM Auto Care adalah bengkel kaki-kaki mobil profesional yang fokus pada kenyamanan dan keamanan berkendara. Kami menangani berbagai masalah suspensi dan kemudi dengan 93 item pengerjaan detail, menggunakan suku cadang berkualitas tinggi untuk menghilangkan bunyi gluduk dan meningkatkan stabilitas kendaraan.",
+      "TJM Auto Care adalah bengkel kaki-kaki mobil profesional yang fokus pada kenyamanan dan keamanan berkendara. Kami menangani berbagai masalah suspensi dan kemudi dengan hingga 141 item pengerjaan detail, menggunakan suku cadang berkualitas tinggi untuk menghilangkan bunyi gluduk and meningkatkan stabilitas kendaraan.",
     variants: [
       {
         slug: "kaki-kaki-super-hemat",
         title: "Paket Kaki-Kaki Super Hemat",
         description:
-          "Paket super hemat dengan 93 item layanan terlengkap untuk kendaraan dengan harga paling ekonomis.",
+          "Paket kaki-kaki paling ekonomis dengan 12 titik rekondisi, 20 titik inspeksi AC, dan garansi 30 hari. Harga promo 649 RB (Khusus Bulan Ini).",
         image: "/services/autocare/kaki1.webp",
         details: [
           {
@@ -926,53 +926,16 @@ export const servicesData = [
             description: "Pemeriksaan gratis sistem pendingin udara.",
           },
           {
-            title: "8 Titik Rebuild Kaki-Kaki + Polymer Bushing",
-            description:
-              "Perbaikan dan penggantian komponen dengan kualitas terjamin.",
+            title: "8 Titik Rebuild Kaki-Kaki Polymer Bushing",
+            description: "Perbaikan komponen dengan kualitas terjamin.",
           },
           {
-            title: "30 Hari Garansi Untuk Semua Pengerjaan Mobil Anda",
-            description:
-              "Jaminan kualitas layanan hingga 30 hari setelah service.",
+            title: "30 Hari Garansi & Service Rem Komplit 4 Roda",
+            description: "Jaminan kualitas and keamanan sistem pengereman.",
           },
           {
-            title: "Service Rem Komplit 4 Roda",
-            description:
-              "Perawatan sistem pengereman lengkap untuk keselamatan berkendara.",
-          },
-        ],
-      },
-      {
-        slug: "kaki-kaki-komplit",
-        title: "Paket Kaki-Kaki Komplit",
-        description:
-          "Paket perawatan kaki-kaki lengkap dengan 135 item layanan terlengkap dan termurah untuk kendaraan Anda.",
-        image: "/services/autocare/kaki2.webp",
-        details: [
-          {
-            title:
-              "65 Titik Inspeksi, Service Engine + Gurah Mesin Carbon Clean",
-            description:
-              "Pemeriksaan mesin menyeluruh dan pembersihan ruang bakar.",
-          },
-          {
-            title:
-              "15 Titik Rekondisi + Inspeksi Kaki-Kaki Terlengkap + Engine Scanner",
-            description: "Inspeksi dan rekondisi lengkap sistem kaki-kaki.",
-          },
-          {
-            title: "20 Titik Bonus Inspeksi AC Mobil",
-            description: "Pemeriksaan gratis sistem AC untuk performa optimal.",
-          },
-          {
-            title: "8 Titik Rebuild Kaki-Kaki + Polymer Bushing",
-            description:
-              "Perbaikan dan penggantian komponen kaki-kaki berkualitas.",
-          },
-          {
-            title: "Service Rem Komplit 4 Roda + Grease Area Kaki-Kaki",
-            description:
-              "Perawatan sistem pengereman lengkap untuk keselamatan maksimal.",
+            title: "Special Promo Senilai 5 JT & 15 Promo Gratis Khusus",
+            description: "Dapatkan berbagai keuntungan tambahan eksklusif.",
           },
         ],
       },
@@ -980,40 +943,62 @@ export const servicesData = [
         slug: "kaki-kaki-super-komplit",
         title: "Paket Kaki-Kaki Super Komplit",
         description:
-          "Paket super lengkap dengan 139 item layanan termasuk torque setting dan anti karat area inner fender.",
-        image: "/services/autocare/kaki3.webp",
+          "Paket lengkap termasuk Racksteer & Bubut Discbrake. 135 Layanan terlengkap dengan harga promo 949 RB (Khusus Bulan Ini).",
+        image: "/services/autocare/kaki2.webp",
         details: [
           {
-            title:
-              "65 Titik Inspeksi, Service Engine + Gurah Mesin Carbon Clean",
-            description:
-              "Pemeriksaan mesin menyeluruh dan pembersihan ruang bakar.",
+            title: "135 Layanan Terlengkap (Service Engine & Kaki-Kaki)",
+            description: "Solusi total untuk kesehatan kendaraan.",
           },
           {
-            title:
-              "19 Titik Rekondisi + Bubut Discbrake + Racksteer + Engine Scanner",
-            description:
-              "Rekondisi lengkap dengan service racksteer dan discbrake.",
+            title: "65 Titik Inspeksi + Service Engine + Kuras Mesin Carbon Clean",
+            description: "Pemeriksaan mesin dan pembersihan ruang bakar.",
+          },
+          {
+            title: "19 Titik Rekondisi, Bubut Disc Brake & Service Racksteer",
+            description: "Rekondisi lengkap dengan service racksteer and discbrake.",
           },
           {
             title: "20 Titik Bonus Inspeksi AC Mobil",
-            description: "Pemeriksaan gratis sistem AC berkala.",
+            description: "Pemeriksaan gratis sistem AC untuk performa optimal.",
           },
           {
-            title:
-              "8 Titik Rebuild Kaki-Kaki + Polymer Bushing + Jasa Tambahan Torque Setting & Penyetelan Chamber & Caster",
-            description:
-              "Rebuild lengkap dengan setting presisi untuk handling optimal.",
+            title: "30 Hari Garansi & 5 Special Promo Senilai 5 Juta Rupiah",
+            description: "Jaminan kualitas and keuntungan tambahan eksklusif.",
+          },
+        ],
+      },
+      {
+        slug: "kaki-kaki-all-in-one",
+        title: "Paket Kaki-Kaki All In One",
+        description:
+          "Paket paling komprehensif termasuk Rebuild Shockbreaker. 141 Layanan terlengkap dengan harga promo 1.500 K (Khusus Bulan Ini).",
+        image: "/services/autocare/kaki3.webp",
+        details: [
+          {
+            title: "141 Layanan Terlengkap Untuk Kendaraan Anda",
+            description: "Solusi paling komplit untuk performa maksimal.",
           },
           {
-            title: "4 Titik Anti Karat Area Inner Fender",
-            description: "Perlindungan anti karat untuk daya tahan komponen.",
+            title: "65 Titik Inspeksi + Service Engine + Kuras Mesin Carbon Clean",
+            description: "Pemeriksaan mesin and pembersihan ruang bakar.",
+          },
+          {
+            title: "21 Titik Rekondisi, Bubut Disc Brake & Service Racksteer",
+            description: "Rekondisi menyeluruh komponen kemudi and pengereman.",
+          },
+          {
+            title: "2 Titik Rebuild Shockbreaker + Setting Shockbreaker",
+            description: "Service shockbreaker untuk kenyamanan berkendara.",
+          },
+          {
+            title: "30 Hari Garansi & 5 Special Promo Senilai 5 Juta Rupiah",
+            description: "Jaminan kualitas and benefit eksklusif tambahan.",
           },
         ],
       },
     ],
   },
-
   {
     slug: "paket-diesel",
     href: "/layanan/paket-diesel",

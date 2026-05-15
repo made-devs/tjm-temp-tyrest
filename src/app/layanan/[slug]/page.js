@@ -40,7 +40,7 @@ function getPageHeroContent({
       titleMain: "Bengkel Kaki-Kaki Mobil",
       titleHighlight: "Spesialis",
       description:
-        "Bengkel spesialis kaki-kaki mobil untuk service kaki-kaki mobil mulai Rp 949 ribu, solusi bunyi gluduk, setir getar, dan mobil limbung dengan pengecekan detail serta garansi pengerjaan.",
+        "Bengkel spesialis kaki-kaki mobil untuk service kaki-kaki mobil mulai Rp 649 ribu, solusi bunyi gluduk, setir getar, dan mobil limbung dengan pengecekan detail serta garansi pengerjaan.",
     };
   }
 

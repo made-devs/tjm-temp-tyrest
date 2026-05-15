@@ -12,17 +12,14 @@ export const promoData = [
   {
     id: 'auto-care',
     category: 'Auto Care',
-    title: 'GRAND PROMO AWAL TAHUN - TJM AUTO CARE',
+    title: 'GEBYAR PROMO KAKI KAKI 600K - TJM AUTO CARE',
     description:
-      'Dapatkan 5 promo special + 25 promo gratis senilai 8 juta rupiah. Khusus bulan ini!',
+      'Dapatkan 5 promo special + 15 promo gratis senilai 5 juta rupiah. Khusus bulan ini!',
     whatsappText:
-      'Halo admin, saya mau tanya promo Auto Care (Grand Promo Awal Tahun).',
+      'Halo admin, saya mau tanya promo Auto Care (Gebyar Promo Kaki Kaki 600K).',
     images: [
       '/promo/autocare/autocare1.webp',
       '/promo/autocare/autocare2.webp',
-      '/promo/autocare/autocare3.webp',
-      '/promo/autocare/autocare4.webp',
-      '/promo/autocare/autocare5.webp',
     ],
   },
   {
