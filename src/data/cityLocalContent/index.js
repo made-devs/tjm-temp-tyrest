@@ -2,12 +2,16 @@ import bandungLocalContent from "./bandung";
 import jogjaLocalContent from "./jogja";
 import malangLocalContent from "./malang";
 import samarindaLocalContent from "./samarinda";
+import semarangLocalContent from "./semarang";
+import surabayaLocalContent from "./surabaya";
 
 const CITY_LOCAL_CONTENT = {
   bandung: bandungLocalContent,
   jogja: jogjaLocalContent,
   malang: malangLocalContent,
   samarinda: samarindaLocalContent,
+  semarang: semarangLocalContent,
+  surabaya: surabayaLocalContent,
 };
 
 export function getCityLocalContent(slug) {

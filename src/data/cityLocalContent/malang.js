@@ -1,23 +1,23 @@
 const malangLocalContent = {
   eyebrow: "Konteks Lokal Malang",
-  title: "Mudah Dijangkau dari Blimbing, Purwantoro, dan Sekitarnya",
+  title: "Spesialis Kaki-Kaki (Onderstel) & Skok Mobil Malang di Blimbing",
   intro:
-    "Cabang TJM Auto Care Malang berada di area Purwantoro, Blimbing, sehingga cukup dekat dijangkau dari pusat Kota Malang, jalur harian sekitar Blimbing, dan rute menuju Batu untuk kebutuhan cek dan service kaki-kaki mobil.",
+    "Cabang TJM Auto Care Malang berada di area Purwantoro, Blimbing, sehingga cukup dekat dijangkau dari pusat Kota Malang, jalur harian sekitar Blimbing, dan rute menuju Batu untuk kebutuhan cek kaki-kaki, service onderstel, serta perbaikan skok mobil terdekat.",
   coverageAreas: [
     "Purwantoro, Blimbing, dan area timur Kota Malang",
     "Jalur harian dari pusat Kota Malang ke area permukiman sekitar",
     "Rute keluar kota menuju Batu dan kawasan sekitar Malang Raya",
   ],
   localSignals: [
-    "Mobil harian di Malang yang sering dipakai untuk rute dalam kota biasanya mulai terasa setir kurang presisi saat komponen kaki-kaki mulai aus.",
-    "Saat mobil sering dipakai melewati jalan menanjak, turunan, atau permukaan jalan yang tidak rata, bunyi gluduk, limbung, dan ban aus tidak merata biasanya lebih cepat terasa.",
-    "Cabang Malang sering jadi pilihan untuk pengecekan sebelum mobil dipakai lagi untuk aktivitas harian, perjalanan keluarga, atau rute akhir pekan ke Batu dan area sekitar.",
+    "Mobil harian di Malang yang sering digunakan melibas jalanan kota maupun menanjak membutuhkan kondisi suspensi dan kaki-kaki (onderstel) yang prima agar tidak limbung.",
+    "Jika saat berkendara terdengar bunyi gluduk dari roda depan atau bantingan terasa sangat keras, kemungkinan besar skok mobil atau komponen kaki-kaki Anda telah aus.",
+    "Cabang Malang merupakan spesialis service kaki-kaki mobil dan skok mobil terdekat pilihan warga Blimbing untuk pengecekan sebelum perjalanan jauh atau berlibur ke Batu.",
   ],
   faq: {
     question:
-      "Apakah TJM Auto Care Malang bisa cek kaki-kaki mobil sebelum perjalanan ke Batu atau luar kota?",
+      "Apakah TJM Auto Care Malang bisa cek kaki-kaki (onderstel) dan skok mobil sebelum perjalanan ke Batu?",
     answer:
-      "Ya. Cabang Malang melayani pengecekan kaki-kaki mobil sebelum perjalanan ke Batu maupun luar kota agar gejala seperti bunyi gluduk, setir lari, dan handling kurang stabil bisa diperiksa lebih dulu sebelum mobil dipakai lebih jauh.",
+      "Ya. Cabang Malang melayani pengecekan serta perbaikan kaki-kaki mobil, onderstel, dan skok mobil sebelum perjalanan ke Batu maupun luar kota agar kenyamanan dan keselamatan berkendara Anda tetap terjamin.",
   },
 };
 

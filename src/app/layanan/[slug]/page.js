@@ -6,6 +6,7 @@ import PageHero from "@/components/umum/PageHero";
 import ServiceDetailJsonLdScripts from "@/components/layanan/detail/ServiceDetailJsonLdScripts";
 import ServiceDetailEditorialSection from "@/components/layanan/detail/ServiceDetailEditorialSection";
 import ServiceVariantSection from "@/components/layanan/detail/ServiceVariantSection";
+import ServicePricingSection from "@/components/layanan/detail/ServicePricingSection";
 import ServiceIntentBlocksSection from "@/components/layanan/detail/ServiceIntentBlocksSection";
 import ServiceFAQ from "@/components/layanan/detail/ServiceFAQ";
 import {
@@ -66,6 +67,43 @@ function getPageHeroContent({
     titleMain: service.title,
     titleHighlight: "TJM Auto Care",
     description: service.description,
+  };
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const service = getServiceData(slug);
+
+  if (!service) {
+    return {};
+  }
+
+  const isKakiKakiPage = slug === "paket-kaki-kaki";
+  const isRackSteerIntentPage = RACK_STEER_INTENT_SLUGS.includes(slug);
+  const isShockbreakerIntentPage = SHOCKBREAKER_INTENT_SLUGS.includes(slug);
+
+  let title = `${service.title} Terdekat | TJM Auto Care`;
+  let description = service.description;
+
+  if (isKakiKakiPage) {
+    title = "Bengkel Spesialis Kaki-Kaki Mobil Terdekat - Mulai Rp 649rb";
+    description = "Cari bengkel kaki-kaki mobil terdekat? TJM Auto Care solusinya. Atasi bunyi gluduk, setir getar, dan mobil limbung. Cek gratis & garansi 1 tahun!";
+  } else if (isRackSteerIntentPage) {
+    title = "Service Rack Steer Mobil Terdekat - Spesialis & Bergaransi";
+    description = "Service rack steer mobil terdekat untuk atasi setir berat, bunyi saat belok, dan handling kurang presisi. Diagnosa transparan & bergaransi. Booking sekarang!";
+  } else if (isShockbreakerIntentPage) {
+    title = "Service Shockbreaker Mobil Terdekat - Cepat & Bergaransi";
+    description = "Service shockbreaker mobil terdekat untuk atasi bantingan keras, limbung, dan shockbreaker bocor. Mekanik spesialis & garansi pengerjaan.";
+  }
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [service.image || "/logo/logotjm.webp"],
+    },
   };
 }
 
@@ -223,6 +261,11 @@ export default async function ServiceDetailPage({ params }) {
           isKakiKakiPage={isKakiKakiPage}
           isRackSteerIntentPage={isRackSteerIntentPage}
           isShockbreakerIntentPage={isShockbreakerIntentPage}
+        />
+
+        <ServicePricingSection 
+          service={service} 
+          isKakiKakiPage={isKakiKakiPage} 
         />
 
         {(isKakiKakiPage ||

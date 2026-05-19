@@ -119,22 +119,22 @@ export default function ServiceDetailEditorialSection({
 
           <p className="mt-4 max-w-3xl font-jakarta text-sm leading-7 text-gray-400 sm:text-base md:text-[17px]">
             {isRackSteerIntentPage
-              ? "Jika Anda sedang mencari service rack steer terdekat dengan diagnosa yang jelas, Anda bisa lanjut booking melalui tombol WhatsApp pada halaman ini. Untuk membandingkan opsi paket lain, kunjungi juga halaman "
+              ? "Jika Anda sedang mencari bengkel spesialis service rack steer terdekat dari lokasi Anda dengan diagnosa yang jelas, silakan langsung melakukan booking melalui tombol WhatsApp. Untuk membandingkan opsi perbaikan lain, kunjungi halaman "
               : isShockbreakerIntentPage
-                ? "Jika Anda sedang mencari service shockbreaker mobil terdekat dengan proses pengecekan yang jelas, Anda bisa lanjut booking melalui tombol WhatsApp pada halaman ini. Untuk membandingkan opsi paket lain, kunjungi juga halaman "
-                : "Jika Anda mencari bengkel kaki-kaki mobil terdekat atau paket servis mobil dengan penanganan transparan, Anda bisa lanjut booking melalui tombol WhatsApp pada halaman ini. Untuk membandingkan opsi lain, kunjungi juga halaman "}
+                ? "Jika Anda sedang mencari spesialis service shockbreaker mobil terdekat dari lokasi Anda dengan proses pengecekan yang transparan, silakan langsung melakukan booking via WhatsApp. Untuk membandingkan opsi perawatan lain, kunjungi halaman "
+                : "Bila Anda sedang mencari bengkel kaki-kaki mobil terdekat dari lokasi Anda untuk mengatasi masalah suspensi secara tuntas, silakan langsung melakukan booking melalui WhatsApp. Untuk membandingkan opsi servis mobil lainnya, kunjungi halaman "}
             <Link
               href="/layanan"
               className="text-red-500 font-medium hover:text-red-400 hover:underline transition-all"
             >
               semua layanan
             </Link>{" "}
-            atau cek cabang terdekat di{" "}
+            atau temukan alamat serta rute menuju cabang terdekat di{" "}
             <Link
               href="/kota"
               className="text-red-500 font-medium hover:text-red-400 hover:underline transition-all"
             >
-              halaman kota
+              halaman lokasi kota
             </Link>
             .
           </p>
@@ -181,10 +181,7 @@ export default function ServiceDetailEditorialSection({
                     : "Cari Bengkel Kaki-Kaki Mobil Terdekat"}
               </h3>
               <p className="mx-auto mt-4 max-w-2xl font-jakarta text-sm leading-7 text-gray-400 sm:text-base md:text-[17px]">
-                Jika Anda ingin langsung menuju cabang terdekat, buka halaman
-                kota yang sedang tumbuh di bawah ini. Masing-masing halaman
-                menampilkan alamat lengkap, jam operasional, peta lokasi, dan
-                tombol booking WhatsApp.
+                Untuk menemukan <strong className="text-gray-200">bengkel mobil terdekat dari lokasi Anda saat ini</strong>, silakan pilih salah satu cabang TJM Auto Care di bawah. Setiap halaman cabang telah dilengkapi dengan panduan rute (Maps), estimasi jarak terdekat, jam operasional, hingga tombol <em>booking</em> WhatsApp agar Anda tidak perlu antre panjang saat tiba di bengkel.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 {priorityCities.map((city) => (

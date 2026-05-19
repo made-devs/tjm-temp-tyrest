@@ -11,7 +11,18 @@ import KotaLocalContent from "@/components/kota/KotaLocalContent";
 import KotaSearchIntentSection from "@/components/kota/KotaSearchIntentSection";
 import KotaServicesGrid from "@/components/kota/KotaServicesGrid";
 
-const BOOKING_WA = "6285169576890";
+const JABODETABEK_CITIES = [
+  "Bekasi",
+  "Jakarta Barat",
+  "Cilangkap",
+  "Bogor",
+  "Tangsel",
+];
+
+function getWhatsAppNumber(city) {
+  return JABODETABEK_CITIES.includes(city) ? "6285169576890" : "6285169576891";
+}
+
 const PRIORITY_CITY_NAMES = [
   "Surabaya",
   "Jogja",
@@ -30,8 +41,9 @@ function findLocationBySlug(slug) {
 }
 
 function buildWhatsAppLink(city) {
+  const waNumber = getWhatsAppNumber(city);
   const text = `Halo TJM Auto Care, saya mau booking untuk cabang ${city}.`;
-  return `https://wa.me/${BOOKING_WA}?text=${encodeURIComponent(text)}`;
+  return `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
 }
 
 // helper: pastikan iframe pakai URL embed yang valid
@@ -137,7 +149,7 @@ export default async function KotaDetailPage({ params }) {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     name: `TJM Auto Care ${loc.city}`,
-    telephone: `+${BOOKING_WA}`,
+    telephone: `+${getWhatsAppNumber(loc.city)}`,
     url: `${SITE_URL}/kota/${slugify(loc.city)}`,
     image: loc.photo
       ? loc.photo.startsWith("http")
